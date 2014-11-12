@@ -40,7 +40,7 @@
         <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
     </class>
     
-    <class name="api.model.R1School" table="School">
+    <!--<class name="api.model.R1School" table="School">
         <id name="schoolRefId" column="SchoolRefId" type="string">
             <generator class="guid"/>
         </id>
@@ -51,7 +51,7 @@
         <property name="stateCode" column="StateCode" type="string" length="50"/>
         <property name="postalCode" column="PostalCode" type="string" length="50"/>
         <property name="addressCountyName" column="AddressCountyName" type="string" length="30"/>
-    </class>
+    </class>-->
     
  <!--    
     
