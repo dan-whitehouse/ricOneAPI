@@ -2,34 +2,27 @@ package api.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import sif3.common.model.EnvironmentKey;
 
-//Define database table objects, get and set them.
-public class R1Staff extends EnvironmentKey implements Serializable
+public class R1Staff implements Serializable
 {
-	private static final long serialVersionUID = 4255199616263324184L;
+	private static final long serialVersionUID = 4255199616263324179L;
     
-	private String staffRefId;
+	private String staffRefId;	
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String generationCode;
 	private String prefix; 
-	private Date birthDate;
+	private Date birthdate;
 	private String sexCode;
 	private boolean hispanicLatinoEthnicity;
 	private String usCitizenshipStatusCode;		   
+
 		
 
 	public R1Staff() {}
-	
-	public R1Staff(EnvironmentKey environmenKey)
-	{
-		super(environmenKey);
-	}
-	
+		
 	//-----------------------
-	//staffRefId
 	public String getStaffRefId()
     {
     	return this.staffRefId;
@@ -41,7 +34,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//firstName
 	public String getFirstName()
     {
     	return this.firstName;
@@ -53,7 +45,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//middleName
 	public String getMiddleName()
     {
     	return this.middleName;
@@ -64,8 +55,7 @@ public class R1Staff extends EnvironmentKey implements Serializable
     	this.middleName = middleName;
     }
 	
-	//-----------------------
-	//lastName
+	//-----------------------	
 	public String getLastName()
     {
     	return this.lastName;
@@ -77,7 +67,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//generationCode
 	public String getGenerationCode()
     {
     	return this.generationCode;
@@ -89,7 +78,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//prefix
 	public String getPrefix()
     {
     	return this.prefix;
@@ -101,19 +89,17 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//birthDate
-	public Date getBirthDate()
+	public Date getBirthdate()
     {
-    	return this.birthDate;
+    	return this.birthdate;
     }
 	
-	public void setBirthDate(Date birthDate)
+	public void setBirthdate(Date birthdate)
     {
-    	this.birthDate = birthDate;
+    	this.birthdate = birthdate;
     }
 	
 	//-----------------------
-	//sexCode
 	public String getSexCode()
     {
     	return this.sexCode;
@@ -125,7 +111,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//hispanicLatinoEthnicity
 	public boolean getHispanicLatinoEthnicity()
     {
     	return this.hispanicLatinoEthnicity;
@@ -137,7 +122,6 @@ public class R1Staff extends EnvironmentKey implements Serializable
     }
 	
 	//-----------------------
-	//usCitizenshipStatusCode
 	public String getUsCitizenshipStatusCode()
     {
     	return this.usCitizenshipStatusCode;
@@ -147,17 +131,20 @@ public class R1Staff extends EnvironmentKey implements Serializable
     {
     	this.usCitizenshipStatusCode = usCitizenshipStatusCode;
     }
-
-	//---------------------------------------------------
 	
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "R1Staff [staffRefId=" + staffRefId + ", firstName=" + firstName
 				+ ", middleName=" + middleName + ", lastName=" + lastName
 				+ ", generationCode=" + generationCode + ", prefix=" + prefix
-				+ ", birthDate=" + birthDate + ", sexCode=" + sexCode
+				+ ", birthdate=" + birthdate + ", sexCode=" + sexCode
 				+ ", hispanicLatinoEthnicity=" + hispanicLatinoEthnicity
 				+ ", usCitizenshipStatusCode=" + usCitizenshipStatusCode + "]";
 	}
+
+
+	
+   
+
+	
 }

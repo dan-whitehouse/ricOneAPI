@@ -17,7 +17,7 @@
         <property name="lastName" column="LastName" type="string" length="35"/>
         <property name="generationCode" column="GenerationCode" type="string" length="10"/>
         <property name="prefix" column="Prefix" type="string" length="30"/>
-        <property name="birthDate" column="Birthdate" type="date"/>
+        <property name="birthdate" column="Birthdate" type="date"/>
         <property name="sexCode" column="SexCode" type="string" length="30"/>
         <property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean"/>
         <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
@@ -34,13 +34,13 @@
         <property name="lastName" column="LastName" type="string" length="35"/>
         <property name="generationCode" column="GenerationCode" type="string" length="10"/>
         <property name="prefix" column="Prefix" type="string" length="30"/>
-        <property name="birthDate" column="Birthdate" type="date"/>
+        <property name="birthdate" column="Birthdate" type="date"/>
         <property name="sexCode" column="SexCode" type="string" length="50"/>
         <property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean"/>
         <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
     </class>
     
-    <!--<class name="api.model.R1School" table="School">
+    <class name="api.model.R1School" table="School">
         <id name="schoolRefId" column="SchoolRefId" type="string">
             <generator class="guid"/>
         </id>
@@ -51,7 +51,7 @@
         <property name="stateCode" column="StateCode" type="string" length="50"/>
         <property name="postalCode" column="PostalCode" type="string" length="50"/>
         <property name="addressCountyName" column="AddressCountyName" type="string" length="30"/>
-    </class>-->
+    </class>
     
  <!--    
     

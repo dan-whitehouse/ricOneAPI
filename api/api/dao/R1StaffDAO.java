@@ -21,30 +21,30 @@ public class R1StaffDAO extends BaseDAO
 	
 	//Return Single R1Staff Object
     @SuppressWarnings("unchecked")
-    public R1Staff getStaff(BasicTransaction tx, String StaffRefId, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    public R1Staff getStaff(BasicTransaction tx, String staffRefId, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
     {
     	 try
          {
              Criteria criteria = tx.getSession().createCriteria(R1Staff.class)
-                .add(Restrictions.eq("StaffRefId", StaffRefId)); //the actual sql type query
+                .add(Restrictions.eq("staffRefId", staffRefId)); //the actual sql type query
                
              
-             List<R1Staff> Staffs = criteria.list();
+             List<R1Staff> staffs = criteria.list();
              
              // There can only be a maximum of one
-             if (Staffs.isEmpty()) 
+             if (staffs.isEmpty()) 
              {
-            	 logger.debug("No Staff with staffRefID = "+ StaffRefId);
+            	 logger.debug("No Staff with staffRefID = "+ staffRefId);
                  return null;
              }
              else // already exists
              {
-             	return Staffs.get(0); //always 1 if looking for a specific record, so index 0 is the first record
+             	return staffs.get(0); //always 1 if looking for a specific record, so index 0 is the first record
              }
          }
          catch (HibernateException e)
          {
-             throw new PersistenceException("Unable to retrieve R1Staff with StaffRefId = "+ StaffRefId, e);
+             throw new PersistenceException("Unable to retrieve R1Staff with staffRefId = "+ staffRefId, e);
          }	
     }
     
@@ -55,6 +55,8 @@ public class R1StaffDAO extends BaseDAO
     	try
         {
             Criteria criteria = tx.getSession().createCriteria(R1Staff.class);
+               //.add(Restrictions.eq("environmentID", environmentID))
+               //.add(Restrictions.eq("adapterType", adapterType.name()));
             
             return criteria.list();  
         }

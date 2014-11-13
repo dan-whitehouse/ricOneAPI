@@ -36,9 +36,9 @@ public class R1StaffProvider extends BaseProvider
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
 	@Override
-	public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, IllegalArgumentException 
+	public Object retrieve(SIFZone zone, SIFContext context,PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, IllegalArgumentException 
 	{
-		Collection<R1Staff> r1Staffs = staffService.getStaffs(zone,context, pagingInfo);
+		Collection<R1Staff> r1Staffs = staffService.getStaffs(zone, context, pagingInfo);
 		Collection<K12StaffType> sifStaffs = new ArrayList<K12StaffType>();
 
 		for (R1Staff r1Staff : r1Staffs) 

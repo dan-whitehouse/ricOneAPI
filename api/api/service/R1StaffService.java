@@ -35,7 +35,7 @@ public class R1StaffService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve staff for staffRefID = "+ staffRefID, true, false);
+    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve staff for staffRefID ="+ staffRefID, true, false);
     	}
 		return row;
     }
@@ -54,7 +54,7 @@ public class R1StaffService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "Failed to retrieve all staff...(R1StaffService)" , true, false);
+    		exceptionMapper(ex, "Failed to retrieve all staffs...(R1StaffService)" , true, false);
     	}
 		return list;
     }

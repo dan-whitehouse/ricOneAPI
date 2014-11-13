@@ -35,7 +35,7 @@ public class R1SchoolService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1SchoolService) Failed to retrieve school for schoolRefID = '"+ schoolRefID, true, false);
+    		exceptionMapper(ex, "(Error: R1SchoolService) Failed to retrieve school for schoolRefID = "+ schoolRefID, true, false);
     	}
 		return row;
     }

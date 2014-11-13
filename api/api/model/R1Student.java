@@ -3,12 +3,6 @@ package api.model;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * POJO to encapsulate SIF3 Session Information and configuration.
- * 
- * @author Joerg Huber
- *
- */
 public class R1Student implements Serializable
 {
 	private static final long serialVersionUID = 4255199616263324174L;
@@ -19,7 +13,7 @@ public class R1Student implements Serializable
 	private String lastName;
 	private String generationCode;
 	private String prefix; 
-	private Date birthDate;
+	private Date birthdate;
 	private String sexCode;
 	private boolean hispanicLatinoEthnicity;
 	private String usCitizenshipStatusCode;		   
@@ -96,14 +90,14 @@ public class R1Student implements Serializable
     }
 	
 	//-----------------------
-	public Date getBirthDate()
+	public Date getBirthdate()
     {
-    	return this.birthDate;
+    	return this.birthdate;
     }
 	
-	public void setBirthDate(Date birthDate)
+	public void setBirthdate(Date birthdate)
     {
-    	this.birthDate = birthDate;
+    	this.birthdate = birthdate;
     }
 	
 	//-----------------------
@@ -171,7 +165,7 @@ public class R1Student implements Serializable
 		return "R1Student [studentRefId=" + studentRefId + ", firstName="
 				+ firstName + ", middleName=" + middleName + ", lastName="
 				+ lastName + ", generationCode=" + generationCode + ", prefix="
-				+ prefix + ", birthDate=" + birthDate + ", sexCode=" + sexCode
+				+ prefix + ", birthDate=" + birthdate + ", sexCode=" + sexCode
 				+ ", hispanicLatinoEthnicity=" + hispanicLatinoEthnicity
 				+ ", usCitizenshipStatusCode=" + usCitizenshipStatusCode
 				+ ", counselor=" + counselor + ", cohortGraduationYear="

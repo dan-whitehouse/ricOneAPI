@@ -1,13 +1,25 @@
 package api.mapping;
 
-import sif.dd.us32.model.K12SchoolType;
+//SIF Common
+
+
+import sif.dd.us32.model.ObjectFactory;
+
+//SIF Student
+import sif.dd.us32.model.K12StudentType;
 import sif.dd.us32.model.K12StudentType.AcademicRecord;
 import sif.dd.us32.model.K12StudentType.Demographic;
 import sif.dd.us32.model.K12StudentType.Identity;
 import sif.dd.us32.model.K12StudentType.Identity.Name;
-import sif.dd.us32.model.ObjectFactory;
-import sif.dd.us32.model.K12StudentType;
+//SIF Staff
 import sif.dd.us32.model.K12StaffType;
+//SIF School
+import sif.dd.us32.model.K12SchoolType;
+import sif.dd.us32.model.K12SchoolType.AddressList;
+import sif.dd.us32.model.K12SchoolType.AddressList.Address;
+import sif.dd.us32.model.K12SchoolType.AddressList.Address.Street;
+import sif.dd.us32.model.K12SchoolType.Identification;
+//-----------R1--------------------------
 import api.model.R1School;
 import api.model.R1Student;
 import api.model.R1Staff;
@@ -35,8 +47,7 @@ public class R1Mapper
 		
 		//Demographics
 		sifDemographic.setSex(r1Student.getSexCode());
-				
-		
+						
 		//Academics
 		sifAcademicRecord.setCohortDescription(r1Student.getCohortGraduationYear());
 		
@@ -48,7 +59,7 @@ public class R1Mapper
 		return sifStudent;
 	}
 	
-	/*public R1Student sifToModel(K12StudentType sifStudent)
+	public R1Student sifToModel(K12StudentType sifStudent)
 	{
 		R1Student r1Student = new R1Student();
 		r1Student.setStudentRefId(sifStudent.getRefId());		
@@ -70,7 +81,7 @@ public class R1Mapper
 		//r1Student.setGenerationCode(sifStudent.getDemographic().);	
 		
 		return r1Student;
-	}*/
+	}
 	
 	//--Staff---------------------------------------------------------------//
 		public K12StaffType modelToSIF(R1Staff r1Staff)
@@ -92,16 +103,52 @@ public class R1Mapper
 	public K12SchoolType modelToSIF(R1School r1School)
 	{
 		K12SchoolType sifSchool = oFac.createK12SchoolType();
-		sifSchool.setRefId(r1School.getSchoolRefId());
+		Identification sifIdentification = oFac.createK12SchoolTypeIdentification();
+		AddressList sifAddressList = oFac.createK12SchoolTypeAddressList();
+		Address sifAddress = oFac.createK12SchoolTypeAddressListAddress();
+		Street sifStreet = oFac.createK12SchoolTypeAddressListAddressStreet();
 		
+		//Identification Data
+		sifIdentification.setName(r1School.getLeaName());
+		
+		//Address Data
+		sifStreet.setLine1(r1School.getStreetNumberAndName());
+		sifAddress.setStreet(sifStreet);
+		sifAddress.setCity(r1School.getCity());
+		sifAddress.setCounty(r1School.getAddressCountyName());
+		sifAddress.setStateProvince(r1School.getStateCode());
+		sifAddress.setPostalCode(r1School.getPostalCode());			
+		sifAddressList.getAddress().add(sifAddress);
+				
+		//Fill Object
+		sifSchool.setRefId(r1School.getSchoolRefId());
+		sifSchool.setIdentification(sifIdentification);
+		sifSchool.setAddressList(sifAddressList);
+			
 		return sifSchool;
 	}
 	
 	public R1School sifToModel(K12SchoolType sifSchool)
 	{
 		R1School r1School = new R1School();
+		
+		//Identification Data
 		r1School.setSchoolRefId(sifSchool.getRefId());
+		
+		//Address Data
+		r1School.setStreetNumberAndName(sifSchool.getIdentification().getName());		
+		
+		for(Address address : sifSchool.getAddressList().getAddress())
+		{
+			r1School.setStreetNumberAndName(address.getStreet().getLine1());
+			r1School.setCity(address.getCity());
+			r1School.setAddressCountyName(address.getCounty());
+			r1School.setStateCode(address.getStateProvince());
+			r1School.setPostalCode(address.getPostalCode());
+		}
+		
 		return r1School;
+		
 	}
 	
 	
