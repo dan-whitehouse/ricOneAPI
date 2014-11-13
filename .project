@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>Servers</project>
-		<project>SIF3Training</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

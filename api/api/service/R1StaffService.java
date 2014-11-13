@@ -48,11 +48,12 @@ public class R1StaffService extends DBService
     	try
     	{
     		tx = startTransaction();
-        	list = r1StaffDAO.getStaffs(tx, zone, context, pagingInfo);
+        	list = r1StaffDAO.getStaffs(tx, zone, context, pagingInfo); //returning null
     		tx.commit();
     	}
     	catch (Exception ex)
     	{
+    		System.out.println("~~~~DW" + ex.getMessage());
     		rollback(tx);
     		exceptionMapper(ex, "Failed to retrieve all staffs...(R1StaffService)" , true, false);
     	}

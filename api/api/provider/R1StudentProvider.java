@@ -23,7 +23,7 @@ import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
 
 import api.common.ModelObjectConstants;
-import api.mapping.R1Mapper;
+import api.mapping.R1StudentMapper;
 import api.model.R1Student;
 import api.service.R1StudentService;
 
@@ -31,7 +31,7 @@ public class R1StudentProvider extends BaseProvider
 {
 	private ObjectFactory oFac = new ObjectFactory();
 	private R1StudentService studentService = new R1StudentService(); 
-	private R1Mapper mapper = new R1Mapper();
+	private R1StudentMapper mapper = new R1StudentMapper();
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
