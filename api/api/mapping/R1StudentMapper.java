@@ -3,15 +3,25 @@ package api.mapping;
 //SIF Common
 
 
-import sif.dd.us32.model.ObjectFactory;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+/*import sif.dd.us32.model.K12StudentType.AcademicRecord;
+import sif.dd.us32.model.K12StudentType.Contact;
+import sif.dd.us32.model.K12StudentType.Immigrant;
+import sif.dd.us32.model.K12StudentType.IndividualizedProgramList;
+import sif.dd.us32.model.K12StudentType.IndividualizedProgramList.IndividualizedProgram;
+import sif.dd.us32.model.K12StudentType.Lep;*/
 
 //SIF Student
+import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.K12StudentType;
-import sif.dd.us32.model.K12StudentType.AcademicRecord;
 import sif.dd.us32.model.K12StudentType.Demographic;
 import sif.dd.us32.model.K12StudentType.Identity;
 import sif.dd.us32.model.K12StudentType.Identity.Name;
-
+import sif.dd.us32.model.K12StudentType.EnrollmentList;
+import sif.dd.us32.model.K12StudentType.EnrollmentList.Enrollment;
 import api.model.R1Student;
 
 
@@ -25,8 +35,16 @@ public class R1StudentMapper
 	{
 		K12StudentType sifStudent = oFac.createK12StudentType();
 		Identity sifIdentity = oFac.createK12StudentTypeIdentity();
-		Demographic sifDemographic = oFac.createK12StudentTypeDemographic();
-		AcademicRecord sifAcademicRecord = oFac.createK12StudentTypeAcademicRecord();
+		Demographic sifDemographic = oFac.createK12StudentTypeDemographic();	
+		EnrollmentList sifEnrollmentList = oFac.createK12StudentTypeEnrollmentList();
+		Enrollment sifEnrollment = oFac.createK12StudentTypeEnrollmentListEnrollment();
+		//--------------------
+		//AcademicRecord sifAcademicRecord = oFac.createK12StudentTypeAcademicRecord();
+		//Contact sifContact = oFac.createK12StudentTypeContact();
+		//IndividualizedProgramList sifIndividualizedProgramList = oFac.createK12StudentTypeIndividualizedProgramList();
+		//IndividualizedProgram sifIndividualizedProgram = oFac.createK12StudentTypeIndividualizedProgramListIndividualizedProgram();
+		//Lep sifLep = oFac.createK12StudentTypeLep();
+		//Immigrant sifImmigrant = oFac.createK12StudentTypeImmigrant();
 		
 		//Identity
 		Name name = new Name();
@@ -36,17 +54,31 @@ public class R1StudentMapper
 		name.setPrefix(r1Student.getPrefix());
 		sifIdentity.setName(name);
 		
+
 		//Demographics
 		sifDemographic.setSex(r1Student.getSexCode());
-						
-		//Academics
-		sifAcademicRecord.setCohortDescription(r1Student.getCohortGraduationYear());
+		sifDemographic.setBirthdate(r1Student.getBirthdate().toString());
 		
+		if(r1Student.getHispanicLatinoEthnicity())
+		{
+			sifDemographic.setHispanicOrLatinoEthnicity("Yes");
+		}
+		else
+		{
+			sifDemographic.setHispanicOrLatinoEthnicity("No");
+		}
+								
+		//Enrollment	
+		sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
+		sifEnrollmentList.getEnrollment().add(sifEnrollment);
+		
+
 		//Set K12Student
 		sifStudent.setRefId(r1Student.getStudentRefId());
 		sifStudent.setIdentity(sifIdentity);
 		sifStudent.setDemographic(sifDemographic);
-		sifStudent.setAcademicRecord(sifAcademicRecord);
+		sifStudent.setEnrollmentList(sifEnrollmentList);
+		//sifStudent.setAcademicRecord(sifAcademicRecord);
 		return sifStudent;
 	}
 	
@@ -61,13 +93,36 @@ public class R1StudentMapper
 		r1Student.setLastName(sifStudent.getIdentity().getName().getLastName());
 		r1Student.setPrefix(sifStudent.getIdentity().getName().getPrefix());
 				
-		//Demographic
+		//Demographics
 		r1Student.setSexCode(sifStudent.getDemographic().getSex());
-		//r1Student.setBirthDate(sifStudent.getDemographic().getBirthdate());
-		//r1Student.setHispanicLatinoEthnicity(sifStudent.getDemographic().getHispanicOrLatinoEthnicity()); //returns string..should it be ?
+		
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try
+		{
+			r1Student.setBirthdate(format.parse(sifStudent.getDemographic().getBirthdate()));
+		} 
+		catch (ParseException e)
+		{
+			System.out.println("R1StudentMapper: failed to format date of: birthdate");
+			e.printStackTrace();
+		}
+		
+		if(sifStudent.getDemographic().getHispanicOrLatinoEthnicity().equalsIgnoreCase("Yes"))
+		{
+			r1Student.setHispanicLatinoEthnicity(true);
+		}
+		else
+		{
+			r1Student.setHispanicLatinoEthnicity(false);
+		}
+
 		//r1Student.setUsCitizenshipStatusCode(sifStudent.getDemographic().???);	
-				
-		//r1Student.setCohortGraduationYear(sifStudent.getAcademicRecord().getCohortDescription());
+					
+		for(Enrollment enrollment : sifStudent.getEnrollmentList().getEnrollment())
+		{
+			r1Student.setCohortGraduationYear(enrollment.getCohortGraduationYear());
+		}
+		
 		//r1Student.setCounselor(sifStudent.getAcademicRecord().get);
 		//r1Student.setGenerationCode(sifStudent.getDemographic().);	
 		
