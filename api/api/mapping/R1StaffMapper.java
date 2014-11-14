@@ -4,6 +4,10 @@ package api.mapping;
 
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.K12StaffType;
 import sif.dd.us32.model.K12StaffType.Demographic;
@@ -23,7 +27,7 @@ public class R1StaffMapper
 			K12StaffType sifStaff = oFac.createK12StaffType();		
 			Identity sifIdentity = oFac.createK12StaffTypeIdentity();
 			Demographic sifDemographic = oFac.createK12StaffTypeDemographic();
-			
+						
 			//Identity
 			Name name = new Name();
 			name.setFirstName(r1Staff.getFirstName());
@@ -34,6 +38,26 @@ public class R1StaffMapper
 			
 			//Demographics
 			sifDemographic.setSex(r1Staff.getSexCode());
+			
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			try
+			{
+				r1Staff.setBirthdate(format.parse(sifStaff.getDemographic().getBirthdate()));
+			} 
+			catch (ParseException e)
+			{
+				System.out.println("R1StudentMapper: failed to format date of: birthdate");
+				e.printStackTrace();
+			}
+			
+			if(sifStaff.getDemographic().getHispanicOrLatinoEthnicity().equalsIgnoreCase("Yes"))
+			{
+				r1Staff.setHispanicLatinoEthnicity(true);
+			}
+			else
+			{
+				r1Staff.setHispanicLatinoEthnicity(false);
+			}
 			
 			//Fill Object
 			sifStaff.setRefId(r1Staff.getStaffRefId());
