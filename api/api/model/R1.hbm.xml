@@ -92,6 +92,55 @@
         <property name="addressCountyName" column="addressCountyName" type="string" length="30"/>
         <property name="countryCode" column="CountryCode" type="string" length="50"/>  
     </class>
-
+    
+    <class name="api.model.R1StudentEnrollment" table="StudentEnrollment">
+    	<id name="studentEnrollmentRefId" column="StudentEnrollmentRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="schoolRefId" column="SchoolRefId" type="string"/>
+        <property name="entryGradeLevelCode" column="EntryGradeLevelCode" type="string" length="50"/>
+        <property name="enrollmentStatusCode" column="EnrollmentStatusCode" type="string" length="50"/>
+        <property name="entryTypeCode" column="EntryTypeCode" type="string" length="50"/>     
+        <property name="exitGradeLevelCode" column="ExitGradeLevelCode" type="string" length="50"/>     
+        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
+        <property name="exitOrWithdrawalTypeCode" column="ExitOrWithdrawalTypeCode" type="string" length="50"/>   
+        <property name="displacedStudentStatus" column="DisplacedStudentStatus" type="boolean"/>
+        <property name="endOfTermStatusCode" column="EndOfTermStatusCode" type="string" length="50"/>     
+        <property name="promotionReasonCode" column="PromotionReasonCode" type="string" length="50"/>     
+        <property name="foodServiceEligibilityCode" column="FoodServiceEligibilityCode" type="string" length="50"/>   
+        <property name="firstEntryDateIntoUSSchool" column="FirstEntryDateIntoUSSchool" type="date"/>   
+        <property name="homeRoomIdentifier" column="HomeRoomIdentifier" type="string" length="30"/>  
+    </class>
+    
+     <class name="api.model.R1StudentCourseSection" table="StudentCourseSection">
+    	<id name="studentCourseSectionRefId" column="StudentCourseSectionRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="courseSectionRefId" column="CourseSectionRefId" type="string"/>
+        <property name="courseSectionEnrollmentStatusTypeCode" column="CourseSectionEnrollmentStatusTypeCode" type="string" length="50"/>
+        <property name="courseSectionEntryTypeCode" column="courseSectionEntryTypeCode" type="string" length="50"/>
+        <property name="courseSectionExitTypeCode" column="CourseSectionExitTypeCode" type="string" length="50"/>        
+        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
+        <property name="gradeLevelWhenCourseTakenCode" column="GradeLevelWhenCourseTakenCode" type="string" length="50"/>    
+    </class>
+    
+    <class name="api.model.R1StudentContactRelationship" table="StudentContactRelationship">
+    	<id name="studentContactRelationshipRefId" column="StudentContactRelationshipRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="studentContactRefId" column="StudentContactRefId" type="string"/>
+        <property name="relationshipCode" column="RelationshipCode" type="string" length="50"/>
+        <property name="custodialRelationshipIndicator" column="CustodialRelationshipIndicator" type="boolean"/>
+        <property name="emergencyContactIndicator" column="EmergencyContactIndicator" type="boolean"/>     
+        <property name="contactPriorityNumber" column="ContactPriorityNumber" type="int"/>     
+        <property name="contactRestrictions" column="ContactRestrictions" type="string" length="2000"/>   
+        <property name="livesWithIndicator" column="LivesWithIndicator" type="boolean"/>   
+        <property name="primaryContactIndicator" column="PrimaryContactIndicator" type="boolean"/>
+    </class>
+    
+	
    
 </hibernate-mapping>
