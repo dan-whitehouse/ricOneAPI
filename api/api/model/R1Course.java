@@ -30,7 +30,7 @@ import sif3.common.model.ServiceRights.AccessRight;
 import sif3.common.model.ServiceRights.AccessType;
 
 
-public class R1Course extends EnvironmentKey implements Serializable
+public class R1Course implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
@@ -43,220 +43,115 @@ public class R1Course extends EnvironmentKey implements Serializable
 	private String courseApplicableEducationLevelCode;
 	private String scedCourseLevelCode;
 	private String scedCourseSubjectAreaCode;
-		
-	private transient SIFZone defaultZone = null;
-	private transient ArrayList<ServiceInfo> services = new ArrayList<ServiceInfo>();
-
+	
+	
 	public R1Course() {}
 	
-	public R1Course(EnvironmentKey environmenKey)
-	{
-		super(environmenKey);
-	}
-	
-	//-----------------------
 	public String getCourseRefId()
-    {
-    	return this.courseRefId;
-    }
-	
+	{
+		return courseRefId;
+	}
+
+
 	public void setCourseRefId(String courseRefId)
-    {
-    	this.courseRefId = courseRefId;
-    }
-	
-	//-----------------------
+	{
+		this.courseRefId = courseRefId;
+	}
+
+
 	public String getSchoolRefId()
-    {
-    	return this.schoolRefId;
-    }
-	
+	{
+		return schoolRefId;
+	}
+
+
 	public void setSchoolRefId(String schoolRefId)
-    {
-    	this.schoolRefId = schoolRefId;
-    }
-	
-	//-----------------------
-	public String getLEACourseId()
-    {
-    	return this.leaCourseId;
-    }
-	
-	public void setLEACourseId(String leaCourseId)
-    {
-    	this.leaCourseId = leaCourseId;
-    }
-	
-	//-----------------------
-	public String geTitle()
-    {
-    	return this.title;
-    }
-	
+	{
+		this.schoolRefId = schoolRefId;
+	}
+
+
+	public String getLeaCourseId()
+	{
+		return leaCourseId;
+	}
+
+
+	public void setLeaCourseId(String leaCourseId)
+	{
+		this.leaCourseId = leaCourseId;
+	}
+
+
+	public String getTitle()
+	{
+		return title;
+	}
+
+
 	public void setTitle(String title)
-    {
-    	this.title = title;
-    }
-	
-	//-----------------------
+	{
+		this.title = title;
+	}
+
+
 	public String getDescription()
-    {
-    	return this.description;
-    }
-	
+	{
+		return description;
+	}
+
+
 	public void setDescription(String description)
-    {
-    	this.description = description;
-    }
-	
-	//-----------------------
+	{
+		this.description = description;
+	}
+
+
 	public String getSubjectCode()
-    {
-    	return this.subjectCode;
-    }
-	
+	{
+		return subjectCode;
+	}
+
+
 	public void setSubjectCode(String subjectCode)
-    {
-    	this.subjectCode = subjectCode;
-    }
-	
-	//-----------------------
+	{
+		this.subjectCode = subjectCode;
+	}
+
+
 	public String getCourseApplicableEducationLevelCode()
-    {
-    	return this.courseApplicableEducationLevelCode;
-    }
-	
+	{
+		return courseApplicableEducationLevelCode;
+	}
+
+
 	public void setCourseApplicableEducationLevelCode(String courseApplicableEducationLevelCode)
-    {
-    	this.courseApplicableEducationLevelCode = courseApplicableEducationLevelCode;
-    }
-	
-	//-----------------------
-	public String getSCEDCourseLevelCode()
-    {
-    	return this.scedCourseLevelCode;
-    }
-	
-	public void setSCEDCourseLevelCode(String scedCourseLevelCode)
-    {
-    	this.scedCourseLevelCode = scedCourseLevelCode;
-    }
-		
-	//-----------------------
-	public String getSCEDCourseSubjectAreaCode()
-    {
-    	return this.scedCourseSubjectAreaCode;
-    }
-	
-	public void setSCEDCourseSubjectAreaCode(String scedCourseSubjectAreaCode)
-    {
-    	this.scedCourseSubjectAreaCode = scedCourseSubjectAreaCode;
-    }
-	
-	
-	//---------------------------------------------------
-	
-    public ArrayList<ServiceInfo> getServices()
-    {
-    	return this.services;
-    }
-
-	public void setServices(ArrayList<ServiceInfo> services)
-    {
-    	this.services = services;
-    }
-
-	public SIFZone getDefaultZone()
 	{
-		return this.defaultZone;
+		this.courseApplicableEducationLevelCode = courseApplicableEducationLevelCode;
 	}
 
-	public void setDefaultZone(SIFZone defaultZone)
+
+	public String getScedCourseLevelCode()
 	{
-		this.defaultZone = defaultZone;
+		return scedCourseLevelCode;
 	}
 
 
-	public boolean hasAccess(AccessRight right, AccessType accessType, String serviceName, SIFZone zone, SIFContext context)
+	public void setScedCourseLevelCode(String scedCourseLevelCode)
 	{
-		boolean accessApproved = false;
-		for (ServiceInfo serviceInfo : getServices())
-		{
-			if (serviceInfo.getServiceName().equals(serviceName)) //service name matches
-			{
-				//Check if Zone matches
-				boolean zoneMatches = (zone == null) ? serviceInfo.getZone().getIsDefault() : zone.getId().equals(serviceInfo.getZone().getId());
-				
-				//check if context matches as well
-				boolean contextMatches = (context == null) ? serviceInfo.getContext().getIsDefault() : context.getId().equals(serviceInfo.getContext().getId());
-
-				// Check if access right is the correct level
-				if (zoneMatches && contextMatches)
-				{
-					accessApproved = serviceInfo.getRights().hasRight(right, accessType);
-				}
-			}
-		}
-		return accessApproved;
+		this.scedCourseLevelCode = scedCourseLevelCode;
 	}
 
 
-	public List<ServiceInfo> getServiceInfoForService(String serviceName, ServiceType serviceType)
+	public String getScedCourseSubjectAreaCode()
 	{
-		ArrayList<ServiceInfo> validServices = new ArrayList<ServiceInfo>();
-		if (getServices() != null)
-		{
-			for (ServiceInfo serviceInfo : getServices())
-			{
-				if (serviceInfo.getServiceName().equals(serviceName) && (serviceInfo.getServiceType() == serviceType))
-				{
-					validServices.add(serviceInfo);
-				}
-			}
-		}
-		return validServices;
+		return scedCourseSubjectAreaCode;
 	}
 
-	 public List<ServiceInfo> getServiceInfoForService(String serviceName, ServiceType serviceType, AccessRight right, AccessType accessType)
-   {
-	    ArrayList<ServiceInfo> validServices = new ArrayList<ServiceInfo>();
-	    if (getServices() != null)
-	    {
-	      for (ServiceInfo serviceInfo : getServices())
-	      {
-	        if (serviceInfo.getServiceName().equals(serviceName) && (serviceInfo.getServiceType() == serviceType))
-	        {
-	          if (serviceInfo.getRights().hasRight(right, accessType))
-	          {
-	            validServices.add(serviceInfo);
-	          }
-	        }
-	      }
-	    }
-	    return validServices;
-	}
-		
 
-	public ServiceInfo getServiceInfoForService(SIFZone zone, SIFContext context, String serviceName, ServiceType serviceType)
+	public void setScedCourseSubjectAreaCode(String scedCourseSubjectAreaCode)
 	{
-		List<ServiceInfo> validServices = getServiceInfoForService(serviceName, serviceType);
-		if ((validServices != null) && (validServices.size() > 0))
-		{
-			for (ServiceInfo serviceInfo : validServices)
-			{
-				if (serviceInfo.getZone().getId().equals(zone.getId()) && serviceInfo.getContext().getId().equals(context.getId()))
-				{
-					return serviceInfo;
-				}
-			}
-		}
-		return null; // not found
+		this.scedCourseSubjectAreaCode = scedCourseSubjectAreaCode;
 	}
-	
-	@Override
-    public String toString()
-    {
-		String output = String.format("Course Output [refID: %1$s], [FN: %2$s], [MN: %3$s], [LN: %4$s]", courseRefId, schoolRefId , leaCourseId, title);
-	    return output;
-    }	
+
 }

@@ -29,7 +29,7 @@ import sif3.common.model.ServiceInfo;
 import sif3.common.model.ServiceRights.AccessRight;
 import sif3.common.model.ServiceRights.AccessType;
 
-public class R1LEA extends EnvironmentKey implements Serializable
+public class R1LEA implements Serializable
 {
 	private static final long serialVersionUID = 4255199616263324177L;
     
@@ -39,67 +39,59 @@ public class R1LEA extends EnvironmentKey implements Serializable
 	private String leaNCESId;
 	private String leaName;
 		
-	private transient SIFZone defaultZone = null;
-	private transient ArrayList<ServiceInfo> services = new ArrayList<ServiceInfo>();
-
 	public R1LEA() {}
 	
-	public R1LEA(EnvironmentKey environmenKey)
-	{
-		super(environmenKey);
-	}
-	
 	//-----------------------
-	public String getLEARefId()
+	public String getLeaRefId()
     {
     	return this.leaRefId;
     }
 	
-	public void setLEARefId(String leaRefId)
+	public void setLeaRefId(String leaRefId)
     {
     	this.leaRefId = leaRefId;
     }
 	
 	//-----------------------
-	public String getLEAId()
+	public String getLeaId()
     {
     	return this.leaId;
     }
 	
-	public void setLEAId(String leaId)
+	public void setLeaId(String leaId)
     {
     	this.leaId = leaId;
     }
 	
 	//-----------------------
-	public String getLEASEAId()
+	public String getLeaSEAId()
     {
     	return this.leaSEAId;
     }
 	
-	public void setLEASEAId(String leaSEAId)
+	public void setLeaSEAId(String leaSEAId)
     {
     	this.leaSEAId = leaSEAId;
     }
 	
 	//-----------------------
-	public String getLEANCESId()
+	public String getLeaNCESId()
     {
     	return this.leaNCESId;
     }
 	
-	public void setLEANCESId(String leaNCESId)
+	public void setLeaNCESId(String leaNCESId)
     {
     	this.leaNCESId = leaNCESId;
     }
 	
 	//-----------------------
-	public String getLEAName()
+	public String getLeaName()
     {
     	return this.leaName;
     }
 	
-	public void setLEAName(String leaName)
+	public void setLeaName(String leaName)
     {
     	this.leaName = leaName;
     }
@@ -107,103 +99,6 @@ public class R1LEA extends EnvironmentKey implements Serializable
 	
 	
 	//---------------------------------------------------
-	
-    public ArrayList<ServiceInfo> getServices()
-    {
-    	return this.services;
-    }
-
-	public void setServices(ArrayList<ServiceInfo> services)
-    {
-    	this.services = services;
-    }
-
-	public SIFZone getDefaultZone()
-	{
-		return this.defaultZone;
-	}
-
-	public void setDefaultZone(SIFZone defaultZone)
-	{
-		this.defaultZone = defaultZone;
-	}
-
-
-	public boolean hasAccess(AccessRight right, AccessType accessType, String serviceName, SIFZone zone, SIFContext context)
-	{
-		boolean accessApproved = false;
-		for (ServiceInfo serviceInfo : getServices())
-		{
-			if (serviceInfo.getServiceName().equals(serviceName)) //service name matches
-			{
-				//Check if Zone matches
-				boolean zoneMatches = (zone == null) ? serviceInfo.getZone().getIsDefault() : zone.getId().equals(serviceInfo.getZone().getId());
-				
-				//check if context matches as well
-				boolean contextMatches = (context == null) ? serviceInfo.getContext().getIsDefault() : context.getId().equals(serviceInfo.getContext().getId());
-
-				// Check if access right is the correct level
-				if (zoneMatches && contextMatches)
-				{
-					accessApproved = serviceInfo.getRights().hasRight(right, accessType);
-				}
-			}
-		}
-		return accessApproved;
-	}
-
-
-	public List<ServiceInfo> getServiceInfoForService(String serviceName, ServiceType serviceType)
-	{
-		ArrayList<ServiceInfo> validServices = new ArrayList<ServiceInfo>();
-		if (getServices() != null)
-		{
-			for (ServiceInfo serviceInfo : getServices())
-			{
-				if (serviceInfo.getServiceName().equals(serviceName) && (serviceInfo.getServiceType() == serviceType))
-				{
-					validServices.add(serviceInfo);
-				}
-			}
-		}
-		return validServices;
-	}
-
-	 public List<ServiceInfo> getServiceInfoForService(String serviceName, ServiceType serviceType, AccessRight right, AccessType accessType)
-   {
-	    ArrayList<ServiceInfo> validServices = new ArrayList<ServiceInfo>();
-	    if (getServices() != null)
-	    {
-	      for (ServiceInfo serviceInfo : getServices())
-	      {
-	        if (serviceInfo.getServiceName().equals(serviceName) && (serviceInfo.getServiceType() == serviceType))
-	        {
-	          if (serviceInfo.getRights().hasRight(right, accessType))
-	          {
-	            validServices.add(serviceInfo);
-	          }
-	        }
-	      }
-	    }
-	    return validServices;
-	}
-		
-
-	public ServiceInfo getServiceInfoForService(SIFZone zone, SIFContext context, String serviceName, ServiceType serviceType)
-	{
-		List<ServiceInfo> validServices = getServiceInfoForService(serviceName, serviceType);
-		if ((validServices != null) && (validServices.size() > 0))
-		{
-			for (ServiceInfo serviceInfo : validServices)
-			{
-				if (serviceInfo.getZone().getId().equals(zone.getId()) && serviceInfo.getContext().getId().equals(context.getId()))
-				{
-					return serviceInfo;
-				}
-			}
-		}
-		return null; // not found
-	}
 	
 	@Override
     public String toString()

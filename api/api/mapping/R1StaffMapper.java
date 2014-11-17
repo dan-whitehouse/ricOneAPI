@@ -19,6 +19,7 @@ import api.model.R1Staff;
 public class R1StaffMapper
 {
 	private ObjectFactory oFac = new ObjectFactory();
+	private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
 	
 	//--Staff---------------------------------------------------------------//
@@ -39,24 +40,27 @@ public class R1StaffMapper
 			//Demographics
 			sifDemographic.setSex(r1Staff.getSexCode());
 			
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			try
+			//Error for these
+			if(sifStaff.getDemographic() != null)
 			{
-				r1Staff.setBirthdate(format.parse(sifStaff.getDemographic().getBirthdate()));
-			} 
-			catch (ParseException e)
-			{
-				System.out.println("R1StudentMapper: failed to format date of: birthdate");
-				e.printStackTrace();
-			}
-			
-			if(sifStaff.getDemographic().getHispanicOrLatinoEthnicity().equalsIgnoreCase("Yes"))
-			{
-				r1Staff.setHispanicLatinoEthnicity(true);
-			}
-			else
-			{
-				r1Staff.setHispanicLatinoEthnicity(false);
+				if(sifStaff.getDemographic().getHispanicOrLatinoEthnicity().equalsIgnoreCase("Yes"))
+				{
+					r1Staff.setHispanicLatinoEthnicity(true);
+				}
+				else
+				{
+					r1Staff.setHispanicLatinoEthnicity(false);
+				}
+				
+				try
+				{
+					r1Staff.setBirthdate(format.parse(sifStaff.getDemographic().getBirthdate()));
+				} 
+				catch (ParseException e)
+				{
+					System.out.println("R1StudentMapper: failed to format date of: birthdate");
+					e.printStackTrace();
+				}
 			}
 			
 			//Fill Object
@@ -71,6 +75,10 @@ public class R1StaffMapper
 		{
 			R1Staff r1Staff = new R1Staff();
 			r1Staff.setStaffRefId(sifStaff.getRefId());
+			r1Staff.setFirstName(sifStaff.getIdentity().getName().getFirstName());
+			r1Staff.setMiddleName(sifStaff.getIdentity().getName().getMiddleName());
+			r1Staff.setLastName(sifStaff.getIdentity().getName().getLastName());
+			r1Staff.setSexCode(sifStaff.getDemographic().getSex());
 			return r1Staff;
 		}
 	

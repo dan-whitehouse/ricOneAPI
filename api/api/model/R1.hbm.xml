@@ -53,8 +53,6 @@
         <property name="addressCountyName" column="AddressCountyName" type="string" length="30"/>
     </class>
     
- <!--    
-    
     
     <class name="api.model.R1LEA" table="LEA">
         <id name="leaRefId" column="LEARefId" type="string">
@@ -79,6 +77,6 @@
         <property name="scedCourseLevelCode" column="SCEDCourseLevelCode" type="string" length="50"/>   
         <property name="scedCourseSubjectAreaCode" column="SCEDCourseSubjectAreaCode" type="string" length="50"/>   
     </class>
-  -->   
+
    
 </hibernate-mapping>

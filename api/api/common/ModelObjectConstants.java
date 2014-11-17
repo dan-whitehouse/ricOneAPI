@@ -17,12 +17,16 @@
  */
 
 package api.common;
+import sif.dd.us32.model.K12CourseCollectionType;
+import sif.dd.us32.model.K12CourseType;
 import sif.dd.us32.model.K12SchoolCollectionType;
 import sif.dd.us32.model.K12SchoolType;
 import sif.dd.us32.model.K12StudentCollectionType;
 import sif.dd.us32.model.K12StudentType;
 import sif.dd.us32.model.K12StaffCollectionType;
 import sif.dd.us32.model.K12StaffType;
+import sif.dd.us32.model.LeaCEDSCollectionType;
+import sif.dd.us32.model.LeaCEDSType;
 import sif3.common.conversion.ModelObjectInfo;
 
 /**
@@ -42,10 +46,14 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo STAFFS = new ModelObjectInfo("k12Staffs", K12StaffCollectionType.class);
 	public static final ModelObjectInfo STAFF = new ModelObjectInfo("k12Staff", K12StaffType.class);
 	
-	/*
+	public static final ModelObjectInfo LEAS = new ModelObjectInfo("leas", LeaCEDSCollectionType.class);
+	public static final ModelObjectInfo LEA = new ModelObjectInfo("lea", LeaCEDSType.class);
+	
+	
 	public static final ModelObjectInfo COURSES = new ModelObjectInfo("k12Courses", K12CourseCollectionType.class);
 	public static final ModelObjectInfo COURSE = new ModelObjectInfo("k12Course", K12CourseType.class);
 	
+	/*
 	public static final ModelObjectInfo SECTIONS = new ModelObjectInfo("k12Sections", K12SectionCollectionType.class);
 	public static final ModelObjectInfo SECTION = new ModelObjectInfo("k12Section", K12SectionType.class);
 	
