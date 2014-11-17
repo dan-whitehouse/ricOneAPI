@@ -72,6 +72,17 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
+                <service name="k12Courses" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
                 
             </services>            
         </provisionedZone>

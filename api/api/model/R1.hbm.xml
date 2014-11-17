@@ -77,6 +77,21 @@
         <property name="scedCourseLevelCode" column="SCEDCourseLevelCode" type="string" length="50"/>   
         <property name="scedCourseSubjectAreaCode" column="SCEDCourseSubjectAreaCode" type="string" length="50"/>   
     </class>
+    
+    <class name="api.model.R1StudentAddress" table="StudentAddress">
+        <id name="studentAddressRefId" column="StudentRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="addressTypeCode" column="AddressTypeCode" type="string" length="50"/>
+        <property name="streetNumberAndName" column="StreetNumberAndName" type="string" length="40"/>
+        <property name="apartmentRoomOrSuiteNumber" column="ApartmentRoomOrSuiteNumber" type="string" length="30"/>
+        <property name="city" column="City" type="string" length="30"/>
+        <property name="stateCode" column="StateCode" type="string" length="50"/>
+        <property name="postalCode" column="PostalCode" type="string" length="50"/>
+        <property name="addressCountyName" column="addressCountyName" type="string" length="30"/>
+        <property name="countryCode" column="CountryCode" type="string" length="50"/>  
+    </class>
 
    
 </hibernate-mapping>

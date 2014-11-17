@@ -53,6 +53,10 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo COURSES = new ModelObjectInfo("k12Courses", K12CourseCollectionType.class);
 	public static final ModelObjectInfo COURSE = new ModelObjectInfo("k12Course", K12CourseType.class);
 	
+	
+	public static final ModelObjectInfo STUDENTADDRESSES = new ModelObjectInfo("k12StudetAddresses", K12CourseCollectionType.class);
+	public static final ModelObjectInfo STUDENTADDRESS = new ModelObjectInfo("k12StudetAddress", K12CourseType.class);
+	
 	/*
 	public static final ModelObjectInfo SECTIONS = new ModelObjectInfo("k12Sections", K12SectionCollectionType.class);
 	public static final ModelObjectInfo SECTION = new ModelObjectInfo("k12Section", K12SectionType.class);
