@@ -48,14 +48,12 @@ public class ModelObjectConstants
 	
 	public static final ModelObjectInfo LEAS = new ModelObjectInfo("leas", LeaCEDSCollectionType.class);
 	public static final ModelObjectInfo LEA = new ModelObjectInfo("lea", LeaCEDSType.class);
-	
-	
+		
 	public static final ModelObjectInfo COURSES = new ModelObjectInfo("k12Courses", K12CourseCollectionType.class);
 	public static final ModelObjectInfo COURSE = new ModelObjectInfo("k12Course", K12CourseType.class);
-	
-	
-	public static final ModelObjectInfo STUDENTADDRESSES = new ModelObjectInfo("k12StudetAddresses", K12CourseCollectionType.class);
-	public static final ModelObjectInfo STUDENTADDRESS = new ModelObjectInfo("k12StudetAddress", K12CourseType.class);
+		
+	public static final ModelObjectInfo STUDENTADDRESSES = new ModelObjectInfo("k12StudentAddresses", K12StudentCollectionType.class);
+	public static final ModelObjectInfo STUDENTADDRESS = new ModelObjectInfo("k12StudentAddress", K12StudentType.class);
 	
 	/*
 	public static final ModelObjectInfo SECTIONS = new ModelObjectInfo("k12Sections", K12SectionCollectionType.class);

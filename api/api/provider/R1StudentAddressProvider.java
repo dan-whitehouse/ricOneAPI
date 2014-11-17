@@ -27,7 +27,7 @@ import api.mapping.R1StudentAddressMapper;
 import api.model.R1StudentAddress;
 import api.service.R1StudentAddressService;
 
-public class R1StudentAddresslProvider extends BaseProvider 
+public class R1StudentAddressProvider extends BaseProvider 
 {
 	private ObjectFactory oFac = new ObjectFactory();
 	private R1StudentAddressService studentAddressService = new R1StudentAddressService(); 
@@ -81,13 +81,13 @@ public class R1StudentAddresslProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.COURSE;
+		return ModelObjectConstants.STUDENTADDRESS;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.COURSES;
+		return ModelObjectConstants.STUDENTADDRESSES;
 	}
 
 	// Not Implemented Yet
