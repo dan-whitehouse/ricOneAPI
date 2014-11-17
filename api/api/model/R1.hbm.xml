@@ -53,6 +53,14 @@
         <property name="addressCountyName" column="AddressCountyName" type="string" length="30"/>
     </class>
     
+     <class name="api.model.R1SchoolIdentifier" table="SchoolIdentifier">
+        <id name="schoolIdentifierRefId" column="SchoolIdentifierRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="schoolRefId" column="SchoolRefId" type="string"/>
+        <property name="identificationSystemCode" column="IdentificationSystemCode" type="string" length="50"/>
+        <property name="schoolId" column="SchoolId" type="string" length="50"/>
+    </class>
     
     <class name="api.model.R1LEA" table="LEA">
         <id name="leaRefId" column="LEARefId" type="string">
@@ -154,6 +162,39 @@
         <property name="languageCode" column="LanguageCode" type="string" length="50"/>
         <property name="languageUseTypeCode" column="LanguageUseTypeCode" type="string" length="50"/>
     </class>
+    
+    <class name="api.model.R1StudentContactAddress" table="StudentContactAddress">
+        <id name="studentContactAddressRefId" column="StudentContactAddressRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentContactRefId" column="StudentContactRefId" type="string"/>
+        <property name="addressTypeCode" column="AddressTypeCode" type="string" length="50"/>
+        <property name="streetNumberAndName" column="StreetNumberAndName" type="string" length="40"/>
+        <property name="apartmentRoomOrSuiteNumber" column="ApartmentRoomOrSuiteNumber" type="string" length="30"/>
+        <property name="city" column="City" type="string" length="30"/>
+        <property name="stateCode" column="StateCode" type="string" length="50"/>
+        <property name="postalCode" column="PostalCode" type="string" length="50"/>
+        <property name="addressCountyName" column="addressCountyName" type="string" length="30"/>
+        <property name="countryCode" column="CountryCode" type="string" length="50"/>  
+    </class>
 	
+	<class name="api.model.R1StudentContactTelephone" table="StudentContactTelephone">
+        <id name="studentContactPhoneRefId" column="StudentContactPhoneRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentContactRefId" column="StudentContactRefId" type="string"/>
+        <property name="telephoneNumber" column="TelephoneNumber" type="string" length="24"/>
+        <property name="primaryTelephoneNumberIndicator" column="PrimaryTelephoneNumberIndicator" type="boolean"/>
+        <property name="telephoneNumberTypeCode" column="TelephoneNumberTypeCode" type="string" length="50"/>
+    </class>
+    
+  	<class name="api.model.R1StudentContactEmail" table="StudentContactEmail">
+        <id name="studentContactEmailRefId" column="StudentContactEmailRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentContactRefId" column="StudentContactRefId" type="string"/>
+        <property name="emailAddress" column="EmailAddress" type="string" length="128"/>
+        <property name="emailTypeCode" column="EmailTypeCode" type="string" length="50"/>
+    </class>
    
 </hibernate-mapping>
