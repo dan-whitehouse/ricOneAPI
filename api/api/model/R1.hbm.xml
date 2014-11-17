@@ -79,7 +79,7 @@
     </class>
     
     <class name="api.model.R1StudentAddress" table="StudentAddress">
-        <id name="studentAddressRefId" column="StudentRefId" type="string">
+        <id name="studentAddressRefId" column="StudentAddressRefId" type="string">
             <generator class="guid"/>
         </id>
         <property name="studentRefId" column="StudentRefId" type="string"/>
@@ -141,6 +141,19 @@
         <property name="primaryContactIndicator" column="PrimaryContactIndicator" type="boolean"/>
     </class>
     
+     <class name="api.model.R1StudentContact" table="StudentContact">
+        <id name="studentContactRefId" column="StudentContactRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="firstName" column="FirstName" type="string" length="35"/>
+        <property name="middleName" column="MiddleName" type="string" length="35"/>
+        <property name="lastName" column="LastName" type="string" length="35"/>
+        <property name="generationCode" column="GenerationCode" type="string" length="10"/>
+        <property name="prefix" column="Prefix" type="string" length="30"/>
+        <property name="sexCode" column="SexCode" type="string" length="50"/>    
+        <property name="languageCode" column="LanguageCode" type="string" length="50"/>
+        <property name="languageUseTypeCode" column="LanguageUseTypeCode" type="string" length="50"/>
+    </class>
 	
    
 </hibernate-mapping>
