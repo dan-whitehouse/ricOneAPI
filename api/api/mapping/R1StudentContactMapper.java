@@ -4,6 +4,7 @@ package api.mapping;
 
 import api.model.R1StudentContact;
 import sif.dd.us32.model.ContactPersonCEDSType;
+import sif.dd.us32.model.ContactPersonCEDSType.Demographic;
 import sif.dd.us32.model.ContactPersonCEDSType.Identity;
 import sif.dd.us32.model.ContactPersonCEDSType.Identity.Name;
 import sif.dd.us32.model.K12StudentType;
@@ -23,6 +24,7 @@ public class R1StudentContactMapper
 	{
 		ContactPersonCEDSType sifContactPerson = oFac.createContactPersonCEDSType();
 		Identity sifIdentity = oFac.createContactPersonCEDSTypeIdentity();
+		Demographic sifDemographic = oFac.createContactPersonCEDSTypeDemographic();
 		Name sifName = oFac.createContactPersonCEDSTypeIdentityName();
 		
 		sifName.setFirstName(r1StudentContact.getFirstName());
@@ -30,9 +32,12 @@ public class R1StudentContactMapper
 		sifName.setLastName(r1StudentContact.getLastName());
 		sifName.setPrefix(r1StudentContact.getPrefix());
 		
-		sifIdentity.setName(sifName);
+		sifDemographic.setSex(r1StudentContact.getSexCode());
 		
+		
+		sifIdentity.setName(sifName);	
 		sifContactPerson.setIdentity(sifIdentity);
+		sifContactPerson.setDemographic(sifDemographic);
 		sifContactPerson.setRefId(r1StudentContact.getStudentContactRefId());
 				
 		return sifContactPerson;
