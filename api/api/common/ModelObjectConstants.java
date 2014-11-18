@@ -69,5 +69,14 @@ public class ModelObjectConstants
 	/**********************************************COURSE STUFF**********************************************/	
 	public static final ModelObjectInfo c_Courses = new ModelObjectInfo("k12Courses", K12CourseCollectionType.class);
 	public static final ModelObjectInfo c_Course = new ModelObjectInfo("k12Course", K12CourseType.class);
+	
+	public static final ModelObjectInfo c_CourseIdentifiers = new ModelObjectInfo("k12CourseIdentifiers", K12CourseCollectionType.class);
+	public static final ModelObjectInfo c_CourseIdentifier = new ModelObjectInfo("k12CourseIdentifier", K12CourseType.class);
+	
+	public static final ModelObjectInfo c_CourseSections = new ModelObjectInfo("k12CourseSections", K12CourseCollectionType.class);
+	public static final ModelObjectInfo c_CourseSection = new ModelObjectInfo("k12CourseSection", K12CourseType.class);
+	
+	public static final ModelObjectInfo c_CourseSectionSchedules = new ModelObjectInfo("k12CourseSectionSchedules", K12CourseCollectionType.class);
+	public static final ModelObjectInfo c_CourseSectionSchedule = new ModelObjectInfo("k12CourseSectionSchedule", K12CourseType.class);
 
 }
