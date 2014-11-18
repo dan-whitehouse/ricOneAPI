@@ -64,7 +64,7 @@ public class StudentConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-	    return ModelObjectConstants.STUDENTS;
+	    return ModelObjectConstants.c_Students;
     }
 
 	/* (non-Javadoc)
@@ -73,7 +73,7 @@ public class StudentConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-	    return ModelObjectConstants.STUDENT;
+	    return ModelObjectConstants.c_Student;
     }
 
 

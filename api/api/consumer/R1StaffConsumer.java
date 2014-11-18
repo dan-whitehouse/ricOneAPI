@@ -64,7 +64,7 @@ public class R1StaffConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-	    return ModelObjectConstants.STAFFS;
+	    return ModelObjectConstants.c_Staffs;
     }
 
 	/* (non-Javadoc)
@@ -73,7 +73,7 @@ public class R1StaffConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-	    return ModelObjectConstants.STAFF;
+	    return ModelObjectConstants.c_Staff;
     }
 
 

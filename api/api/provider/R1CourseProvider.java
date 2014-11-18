@@ -81,13 +81,13 @@ public class R1CourseProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.COURSE;
+		return ModelObjectConstants.c_Course;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.COURSES;
+		return ModelObjectConstants.c_Courses;
 	}
 
 	// Not Implemented Yet

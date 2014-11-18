@@ -6,8 +6,8 @@ import java.util.List;
 
 import sif.dd.us32.conversion.DataModelMarshalFactory;
 import sif.dd.us32.conversion.DataModelUnmarshalFactory;
-import sif.dd.us32.model.K12StudentCollectionType;
-import sif.dd.us32.model.K12StudentType;
+import sif.dd.us32.model.K12SchoolCollectionType;
+import sif.dd.us32.model.K12SchoolType;
 import sif.dd.us32.model.ObjectFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
@@ -23,47 +23,47 @@ import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
 
 import api.common.ModelObjectConstants;
-import api.mapping.R1StudentMapper;
-import api.model.R1Student;
-import api.service.R1StudentService;
+import api.mapping.R1SchoolIdentifierMapper;
+import api.model.R1SchoolIdentifier;
+import api.service.R1SchoolIdentifierService;
 
-public class R1StudentProvider extends BaseProvider 
+public class R1SchoolIdentifierProvider extends BaseProvider 
 {
 	private ObjectFactory oFac = new ObjectFactory();
-	private R1StudentService studentService = new R1StudentService(); 
-	private R1StudentMapper mapper = new R1StudentMapper();
+	private R1SchoolIdentifierService schoolIdentifierService = new R1SchoolIdentifierService(); 
+	private R1SchoolIdentifierMapper mapper = new R1SchoolIdentifierMapper();
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
 	@Override
 	public Object retrieve(SIFZone zone, SIFContext context,PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, IllegalArgumentException 
 	{
-		Collection<R1Student> r1Students = studentService.getStudents(zone,context, pagingInfo);
-		Collection<K12StudentType> sifStudents = new ArrayList<K12StudentType>();
+		Collection<R1SchoolIdentifier> r1SchoolIdentifiers = schoolIdentifierService.getSchoolIdentifiers(zone,context, pagingInfo);
+		Collection<K12SchoolType> sifSchoolIdentifiers = new ArrayList<K12SchoolType>();
 
-		for (R1Student r1Student : r1Students) 
+		for (R1SchoolIdentifier r1SchoolIdentifier : r1SchoolIdentifiers) 
 		{
-			sifStudents.add(mapper.modelToSIF(r1Student));
+			sifSchoolIdentifiers.add(mapper.modelToSIF(r1SchoolIdentifier));
 		}
 
-		K12StudentCollectionType sifStudentCollection = oFac.createK12StudentCollectionType();
-		sifStudentCollection.getK12Student().addAll(sifStudents);
+		K12SchoolCollectionType sifSchoolIdentifierCollection = oFac.createK12SchoolCollectionType();
+		sifSchoolIdentifierCollection.getK12School().addAll(sifSchoolIdentifiers);
 
-		return sifStudentCollection;
+		return sifSchoolIdentifierCollection;
 	}
 
 	@Override
 	public Object retrievByPrimaryKey(String resourceID, SIFZone zone,SIFContext context, RequestMetadata metadata) throws PersistenceException, IllegalArgumentException 
 	{
-		R1Student r1Student = studentService.getStudent(resourceID, zone, context);
+		R1SchoolIdentifier r1SchoolIdentifier = schoolIdentifierService.getSchoolIdentifier(resourceID, zone, context);
 
-		if (r1Student == null) 
+		if (r1SchoolIdentifier == null) 
 		{
 			return null;
 		}
 
-		K12StudentType sifStudent = mapper.modelToSIF(r1Student);
-		return sifStudent;
+		K12SchoolType sifSchoolIdentifier = mapper.modelToSIF(r1SchoolIdentifier);
+		return sifSchoolIdentifier;
 	}
 
 	@Override
@@ -81,13 +81,13 @@ public class R1StudentProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.c_Student;
+		return ModelObjectConstants.c_SchoolIdentifier;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.c_Students;
+		return ModelObjectConstants.c_SchoolIdentifiers;
 	}
 
 	// Not Implemented Yet

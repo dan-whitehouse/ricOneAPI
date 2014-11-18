@@ -81,13 +81,13 @@ public class R1StudentAddressProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.STUDENTADDRESS;
+		return ModelObjectConstants.c_StudentAddress;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.STUDENTADDRESSES;
+		return ModelObjectConstants.c_StudentAddresses;
 	}
 
 	// Not Implemented Yet

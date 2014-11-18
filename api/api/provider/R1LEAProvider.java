@@ -81,13 +81,13 @@ public class R1LEAProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.LEA;
+		return ModelObjectConstants.c_LEA;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.LEAS;
+		return ModelObjectConstants.c_LEAs;
 	}
 
 	// Not Implemented Yet

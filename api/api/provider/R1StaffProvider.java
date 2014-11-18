@@ -80,13 +80,13 @@ public class R1StaffProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.STAFF;
+		return ModelObjectConstants.c_Staff;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.STAFFS;
+		return ModelObjectConstants.c_Staffs;
 	}
 
 	// Not Implemented Yet

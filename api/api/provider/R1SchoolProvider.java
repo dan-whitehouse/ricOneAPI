@@ -81,13 +81,13 @@ public class R1SchoolProvider extends BaseProvider
 	@Override
 	public ModelObjectInfo getSingleObjectClassInfo() 
 	{
-		return ModelObjectConstants.SCHOOL;
+		return ModelObjectConstants.c_School;
 	}
 
 	@Override
 	public ModelObjectInfo getMultiObjectClassInfo() 
 	{
-		return ModelObjectConstants.SCHOOLS;
+		return ModelObjectConstants.c_Schools;
 	}
 
 	// Not Implemented Yet
