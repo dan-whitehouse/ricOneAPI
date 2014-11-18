@@ -9,7 +9,7 @@ public class R1StudentContactEmail implements Serializable
 	private String studentContactEmailRefId;
 	private String studentContactRefId;
 	private String emailAddress;
-	private boolean emailTypeCode;
+	private String emailTypeCode;
 		
 	public R1StudentContactEmail() {}
 
@@ -43,12 +43,12 @@ public class R1StudentContactEmail implements Serializable
 		this.emailAddress = emailAddress;
 	}
 
-	public boolean isEmailTypeCode() 
+	public String getEmailTypeCode()
 	{
 		return emailTypeCode;
 	}
 
-	public void setEmailTypeCode(boolean emailTypeCode) 
+	public void setEmailTypeCode(String emailTypeCode)
 	{
 		this.emailTypeCode = emailTypeCode;
 	}
