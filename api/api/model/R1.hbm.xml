@@ -53,6 +53,39 @@
         <property name="addressCountyName" column="AddressCountyName" type="string" length="30"/>
     </class>
     
+    <class name="api.model.R1SchoolCalendar" table="SchoolCalendar">
+        <id name="schoolCalendarRefId" column="SchoolCalendarRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="schoolRefId" column="SchoolRefId" type="string" length="16"/>
+        <property name="calendarCode" column="CalendarCode" type="string" length="30"/>
+        <property name="calendarDescription" column="CalendarDescription" type="string" length="60"/>
+        <property name="calendarYear" column="CalendarYear" type="string" length="4"/>
+    </class>
+    
+    <class name="api.model.R1SchoolCalendarSession" table="SchoolCalendarSession">
+        <id name="schoolCalendarSessionRefId" column="SchoolCalendarSessionRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="schoolCalendarRefId" column="SchoolCalendarRefId" type="string" length="16"/>
+        <property name="designator" column="Designator" type="string" length="7"/>
+        <property name="beginDate" column="BeginDate" type="date"/>
+        <property name="endDate" column="EndDate" type="date"/>
+        <property name="sessionTypeCode" column="SessionTypeCode" type="string" length="50"/>
+        <property name="instructionalMinutes" column="InstructionalMinutes" type="bigdecimal" length="18"/>
+        <property name="code" column="Code" type="string" length="30"/>
+        <property name="description" column="Description" type="string"/>
+        <property name="markingTermIndicator" column="MarkingTermIndicator" type="boolean"/>
+        <property name="schedulingTermIndicator" column="SchedulingTermIndicator" type="boolean"/>
+        <property name="attendanceTermIndicator" column="AttendanceTermIndicator" type="boolean"/>
+        <property name="daysInSession" column="DaysInSession" type="int"/>
+        <property name="firstInstructionDate" column="FirstInstructionDate" type="date"/>
+        <property name="lastInstructionDate" column="LastInstructionDate" type="date"/>
+        <property name="minutesPerDay" column="MinutesPerDay" type="int"/>
+        <property name="sessionStartTime" column="SessionStartTime" type="date" length="7"/>
+        <property name="sessionEndTime" column="SessionEndTime" type="date" length="7"/>
+    </class>
+    
      <class name="api.model.R1SchoolIdentifier" table="SchoolIdentifier">
         <id name="schoolIdentifierRefId" column="SchoolIdentifierRefId" type="string">
             <generator class="guid"/>
