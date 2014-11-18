@@ -86,6 +86,38 @@
         <property name="scedCourseSubjectAreaCode" column="SCEDCourseSubjectAreaCode" type="string" length="50"/>   
     </class>
     
+    <class name="api.model.R1CourseIdentifier" table="CourseIdentifier">
+        <id name="courseIdentifierRefId" column="CourseIdentifierRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="courseRefId" column="CourseRefId" type="string"/>
+        <property name="identificationSystemCode" column="IdentificationSystemCode" type="string" length="50"/>
+        <property name="courseId" column="CourseId" type="string" length="50"/> 
+    </class>
+    
+    <class name="api.model.R1CourseSection" table="CourseSection">
+        <id name="courseSectionRefId" column="CourseSectionRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="schoolCalendarSessionRefId" column="SchoolCalendarSessionRefId" type="string"/>
+        <property name="courseRefId" column="CourseRefId" type="string"/>
+        <property name="leaSectionId" column="LEASectionId" type="string" length="50"/>
+        <property name="systemSectionId" column="SystemSectionId" type="string" length="50"/> 
+    </class>
+    
+    <class name="api.model.R1CourseSectionSchedule" table="CourseSectionSchedule">
+        <id name="courseSectionScheduleRefId" column="CourseSectionScheduleRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="courseSectionRefId" column="CourseSectionRefId" type="string"/>
+        <property name="classMeetingDays" column="ClassMeetingDays" type="string" length="60"/>
+        <property name="classBeginningTime" column="ClassBeginningTime" type="date" length="7"/>
+        <property name="classEndingTime" column="ClassEndingTime" type="date" length="7"/>
+        <property name="classPeriod" column="ClassPeriod" type="string" length="30"/>
+        <property name="timeDayIdentifier" column="TimeDayIdentifier" type="string" length="30"/>
+        <property name="classroomIdentifier" column="ClassroomIdentifier" type="string" length="30"/> 
+    </class>
+    
     <class name="api.model.R1StudentAddress" table="StudentAddress">
         <id name="studentAddressRefId" column="StudentAddressRefId" type="string">
             <generator class="guid"/>
