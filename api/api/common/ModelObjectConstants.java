@@ -40,7 +40,7 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo c_StudentContactRelationships = new ModelObjectInfo("k12StudentContactRelationships", ContactPersonCEDSCollectionType.class);
 	public static final ModelObjectInfo c_StudentContactRelationship = new ModelObjectInfo("k12StudentContactRelationship", ContactPersonCEDSType.class);
 	
-	public static final ModelObjectInfo c_StudentContactTelephones = new ModelObjectInfo("k12StudentContactTelephons", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContactTelephones = new ModelObjectInfo("k12StudentContactTelephones", ContactPersonCEDSCollectionType.class);
 	public static final ModelObjectInfo c_StudentContactTelephone = new ModelObjectInfo("k12StudentContactTelephone", ContactPersonCEDSType.class);
 	
 	public static final ModelObjectInfo c_StudentCourseSections = new ModelObjectInfo("k12StudentCourseSections", K12StudentCollectionType.class);
@@ -62,8 +62,8 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo c_Schools = new ModelObjectInfo("k12Schools", K12SchoolCollectionType.class);
 	public static final ModelObjectInfo c_School = new ModelObjectInfo("k12School", K12SchoolType.class);
 	
-	public static final ModelObjectInfo c_SchoolIdentifier = new ModelObjectInfo("k12SchoolIdentifiers", K12SchoolCollectionType.class);
-	public static final ModelObjectInfo c_SchoolIdentifiers = new ModelObjectInfo("k12SchoolIdentifier", K12SchoolType.class);
+	public static final ModelObjectInfo c_SchoolIdentifiers = new ModelObjectInfo("k12SchoolIdentifiers", K12SchoolCollectionType.class);
+	public static final ModelObjectInfo c_SchoolIdentifier = new ModelObjectInfo("k12SchoolIdentifier", K12SchoolType.class);
 	
 	
 	/**********************************************COURSE STUFF**********************************************/	

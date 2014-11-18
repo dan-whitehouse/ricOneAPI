@@ -18,11 +18,13 @@ public class R1StudentCourseSectionMapper
 		K12StudentType sifStudent = oFac.createK12StudentType();
 		CourseList sifCourseList = oFac.createK12StudentTypeCourseList();
 		Course sifCourse = oFac.createK12StudentTypeCourseListCourse();
-	
+		
+		
 		sifCourse.setGradeLevelWhenCourseTaken(r1StudentCourseSection.getGradeLevelWhenCourseTakenCode());	
 		sifCourseList.getCourse().add(sifCourse);
 		sifStudent.setCourseList(sifCourseList);
 		sifStudent.setRefId(r1StudentCourseSection.getStudentRefId());
+		
 
 		return sifStudent;
 	}

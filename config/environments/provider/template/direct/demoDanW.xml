@@ -27,7 +27,7 @@
     </infrastructureServices>
     <provisionedZones>
        <provisionedZone id="DemoZone">
-            <services>
+            <services>   
                 <service name="k12Students" contextId="DEFAULT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
@@ -36,6 +36,94 @@
                     <right type="DELETE">APPROVED</right>
                     <right type="PROVIDE">REJECTED</right>
                     <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentAddresses" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentContacts" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentContactAddresses" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentContactEmails" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                 <service name="k12StudentContactTelephones" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12StudentCourseSections" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                 <service name="k12StudentEnrollments" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
@@ -51,6 +139,17 @@
                   </rights>
                 </service>
                 <service name="k12Schools" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">SUPPORTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="k12SchoolIdentifiers" contextId="DEFAULT" type="OBJECT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
                     <right type="CREATE">APPROVED</right>
@@ -83,17 +182,7 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
-                <service name="k12StudentAddresses" contextId="DEFAULT" type="OBJECT">
-                  <rights>
-                    <right type="QUERY">APPROVED</right>
-                    <right type="CREATE">APPROVED</right>
-                    <right type="UPDATE">APPROVED</right>
-                    <right type="DELETE">APPROVED</right>
-                    <right type="PROVIDE">REJECTED</right>
-                    <right type="SUBSCRIBE">SUPPORTED</right>
-                    <right type="ADMIN">REJECTED</right>
-                  </rights>
-                </service>
+                
                 
                 
                 

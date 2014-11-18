@@ -65,5 +65,6 @@ public class R1StudentCourseSectionDAO extends BaseDAO
             throw new PersistenceException("Unable to retrieve List of R1StudentCourseSections from R1StudentCourseSectionDAO");
         }	
     }
+    
 
 }
