@@ -31,72 +31,86 @@ public class R1StudentContactAddress implements Serializable
 	public R1StudentContactAddress() {}
 
 
-	public String getStudentContactAddressRefId() {
+	public String getStudentContactAddressRefId() 
+	{
 		return studentContactAddressRefId;
 	}
 
 
-	public void setStudentContactAddressRefId(String studentContactAddressRefId) {
+	public void setStudentContactAddressRefId(String studentContactAddressRefId) 
+	{
 		this.studentContactAddressRefId = studentContactAddressRefId;
 	}
 
 
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
 
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
 
-	public String getAddressTypeCode() {
+	public String getAddressTypeCode() 
+	{
 		return addressTypeCode;
 	}
 
 
-	public void setAddressTypeCode(String addressTypeCode) {
+	public void setAddressTypeCode(String addressTypeCode) 
+	{
 		this.addressTypeCode = addressTypeCode;
 	}
 
 
-	public String getStreetNumberAndName() {
+	public String getStreetNumberAndName() 
+	{
 		return streetNumberAndName;
 	}
 
 
-	public void setStreetNumberAndName(String streetNumberAndName) {
+	public void setStreetNumberAndName(String streetNumberAndName) 
+	{
 		this.streetNumberAndName = streetNumberAndName;
 	}
 
 
-	public String getApartmentRoomOrSuiteNumber() {
+	public String getApartmentRoomOrSuiteNumber() 
+	{
 		return apartmentRoomOrSuiteNumber;
 	}
 
 
-	public void setApartmentRoomOrSuiteNumber(String apartmentRoomOrSuiteNumber) {
+	public void setApartmentRoomOrSuiteNumber(String apartmentRoomOrSuiteNumber) 
+	{
 		this.apartmentRoomOrSuiteNumber = apartmentRoomOrSuiteNumber;
 	}
 
 
-	public String getCity() {
+	public String getCity() 
+	{
 		return city;
 	}
 
 
-	public void setCity(String city) {
+	public void setCity(String city) 
+	{
 		this.city = city;
 	}
 
 
-	public String getStateCode() {
+	public String getStateCode() 
+	{
 		return stateCode;
 	}
 
 
-	public void setStateCode(String stateCode) {
+	public void setStateCode(String stateCode) 
+	{
 		this.stateCode = stateCode;
 	}
 
@@ -106,33 +120,39 @@ public class R1StudentContactAddress implements Serializable
 	}
 
 
-	public void setPostalCode(String postalCode) {
+	public void setPostalCode(String postalCode) 
+	{
 		this.postalCode = postalCode;
 	}
 
 
-	public String getAddressCountyName() {
+	public String getAddressCountyName() 
+	{
 		return addressCountyName;
 	}
 
 
-	public void setAddressCountyName(String addressCountyName) {
+	public void setAddressCountyName(String addressCountyName) 
+	{
 		this.addressCountyName = addressCountyName;
 	}
 
 
-	public String getCountryCode() {
+	public String getCountryCode() 
+	{
 		return countryCode;
 	}
 
 
-	public void setCountryCode(String countryCode) {
+	public void setCountryCode(String countryCode) 
+	{
 		this.countryCode = countryCode;
 	}
 
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentContactAddress [studentContactAddressRefId="
 				+ studentContactAddressRefId + ", studentContactRefId="
 				+ studentContactRefId + ", addressTypeCode=" + addressTypeCode

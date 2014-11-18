@@ -13,40 +13,49 @@ public class R1StudentContactEmail implements Serializable
 		
 	public R1StudentContactEmail() {}
 
-	public String getStudentContactEmailRefId() {
+	public String getStudentContactEmailRefId() 
+	{
 		return studentContactEmailRefId;
 	}
 
-	public void setStudentContactEmailRefId(String studentContactEmailRefId) {
+	public void setStudentContactEmailRefId(String studentContactEmailRefId) 
+	{
 		this.studentContactEmailRefId = studentContactEmailRefId;
 	}
 
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
-	public String getEmailAddress() {
+	public String getEmailAddress() 
+	{
 		return emailAddress;
 	}
 
-	public void setEmailAddress(String emailAddress) {
+	public void setEmailAddress(String emailAddress) 
+	{
 		this.emailAddress = emailAddress;
 	}
 
-	public boolean isEmailTypeCode() {
+	public boolean isEmailTypeCode() 
+	{
 		return emailTypeCode;
 	}
 
-	public void setEmailTypeCode(boolean emailTypeCode) {
+	public void setEmailTypeCode(boolean emailTypeCode) 
+	{
 		this.emailTypeCode = emailTypeCode;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentContactEmail [studentContactEmailRefId="
 				+ studentContactEmailRefId + ", studentContactRefId="
 				+ studentContactRefId + ", emailAddress=" + emailAddress

@@ -27,47 +27,58 @@ public class R1StudentEnrollment implements Serializable
 	public R1StudentEnrollment() {}
 		
 	//-----------------------
-	public String getStudentEnrollmentRefId() {
+	public String getStudentEnrollmentRefId() 
+	{
 		return studentEnrollmentRefId;
 	}
 
-	public void setStudentEnrollmentRefId(String studentEnrollmentRefId) {
+	public void setStudentEnrollmentRefId(String studentEnrollmentRefId) 
+	{
 		this.studentEnrollmentRefId = studentEnrollmentRefId;
 	}
 	
-	public String getStudentRefId() {
+	public String getStudentRefId() 
+	{
 		return studentRefId;
 	}
 
-	public void setStudentRefId(String studentRefId) {
+	public void setStudentRefId(String studentRefId) 
+	{
 		this.studentRefId = studentRefId;
 	}
 
-	public String getSchoolRefId() {
+	public String getSchoolRefId() 
+	{
 		return schoolRefId;
 	}
 
-	public void setSchoolRefId(String schoolRefId) {
+	public void setSchoolRefId(String schoolRefId) 
+	{
 		this.schoolRefId = schoolRefId;
 	}
 
-	public String getEntryGradeLevelCode() {
+	public String getEntryGradeLevelCode() 
+	{
 		return entryGradeLevelCode;
 	}
 
-	public void setEntryGradeLevelCode(String entryGradeLevelCode) {
+	public void setEntryGradeLevelCode(String entryGradeLevelCode) 
+	{
 		this.entryGradeLevelCode = entryGradeLevelCode;
 	}
 
-	public String getEnrollmentStatusCode() {
+	public String getEnrollmentStatusCode() 
+	{
 		return enrollmentStatusCode;
 	}
 
-	public void setEnrollmentStatusCode(String enrollmentStatusCode) {
+	public void setEnrollmentStatusCode(String enrollmentStatusCode) 
+	{
 		this.enrollmentStatusCode = enrollmentStatusCode;
 	}
 
-	public String getEntryTypeCode() {
+	public String getEntryTypeCode() 
+	{
 		return entryTypeCode;
 	}
 
@@ -79,15 +90,18 @@ public class R1StudentEnrollment implements Serializable
 		return exitGradeLevelCode;
 	}
 
-	public void setExitGradeLevelCode(String exitGradeLevelCode) {
+	public void setExitGradeLevelCode(String exitGradeLevelCode) 
+	{
 		this.exitGradeLevelCode = exitGradeLevelCode;
 	}
 
-	public String getExitOrWithdrawalStatusCode() {
+	public String getExitOrWithdrawalStatusCode() 
+	{
 		return exitOrWithdrawalStatusCode;
 	}
 
-	public void setExitOrWithdrawalStatusCode(String exitOrWithdrawalStatusCode) {
+	public void setExitOrWithdrawalStatusCode(String exitOrWithdrawalStatusCode) 
+	{
 		this.exitOrWithdrawalStatusCode = exitOrWithdrawalStatusCode;
 	}
 
@@ -95,15 +109,18 @@ public class R1StudentEnrollment implements Serializable
 		return exitOrWithdrawalTypeCode;
 	}
 
-	public void setExitOrWithdrawalTypeCode(String exitOrWithdrawalTypeCode) {
+	public void setExitOrWithdrawalTypeCode(String exitOrWithdrawalTypeCode) 
+	{
 		this.exitOrWithdrawalTypeCode = exitOrWithdrawalTypeCode;
 	}
 
-	public String getDisplacedStudentStatus() {
+	public String getDisplacedStudentStatus() 
+	{
 		return displacedStudentStatus;
 	}
 
-	public void setDisplacedStudentStatus(String displacedStudentStatus) {
+	public void setDisplacedStudentStatus(String displacedStudentStatus) 
+	{
 		this.displacedStudentStatus = displacedStudentStatus;
 	}
 
@@ -111,46 +128,56 @@ public class R1StudentEnrollment implements Serializable
 		return endOfTermStatusCode;
 	}
 
-	public void setEndOfTermStatusCode(String endOfTermStatusCode) {
+	public void setEndOfTermStatusCode(String endOfTermStatusCode) 
+	{
 		this.endOfTermStatusCode = endOfTermStatusCode;
 	}
 
-	public String getPromotionReasonCode() {
+	public String getPromotionReasonCode() 
+	{
 		return promotionReasonCode;
 	}
 
-	public void setPromotionReasonCode(String promotionReasonCode) {
+	public void setPromotionReasonCode(String promotionReasonCode) 
+	{
 		this.promotionReasonCode = promotionReasonCode;
 	}
 
-	public String getFoodServiceEligibilityCode() {
+	public String getFoodServiceEligibilityCode() 
+	{
 		return foodServiceEligibilityCode;
 	}
 
-	public void setFoodServiceEligibilityCode(String foodServiceEligibilityCode) {
+	public void setFoodServiceEligibilityCode(String foodServiceEligibilityCode) 
+	{
 		this.foodServiceEligibilityCode = foodServiceEligibilityCode;
 	}
 
-	public Date getFirstEntryDateIntoUSSchool() {
+	public Date getFirstEntryDateIntoUSSchool() 
+	{
 		return firstEntryDateIntoUSSchool;
 	}
 
-	public void setFirstEntryDateIntoUSSchool(Date firstEntryDateIntoUSSchool) {
+	public void setFirstEntryDateIntoUSSchool(Date firstEntryDateIntoUSSchool) 
+	{
 		this.firstEntryDateIntoUSSchool = firstEntryDateIntoUSSchool;
 	}
 
-	public String getHomeRoomIdentifier() {
+	public String getHomeRoomIdentifier() 
+	{
 		return homeRoomIdentifier;
 	}
 
-	public void setHomeRoomIdentifier(String homeRoomIdentifier) {
+	public void setHomeRoomIdentifier(String homeRoomIdentifier) 
+	{
 		this.homeRoomIdentifier = homeRoomIdentifier;
 	}	
 	
 	//---------------------------------------------------
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentEnrollment [studentEnrollmentRefId="
 				+ studentEnrollmentRefId + ", studentRefId=" + studentRefId
 				+ ", schoolRefId=" + schoolRefId + ", entryGradeLevelCode="

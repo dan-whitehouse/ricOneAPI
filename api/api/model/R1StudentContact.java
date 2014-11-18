@@ -21,12 +21,14 @@ public class R1StudentContact implements Serializable
 	public R1StudentContact() {}
 
 	//-----------------------
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
 
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
@@ -36,77 +38,92 @@ public class R1StudentContact implements Serializable
 	}
 
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName) 
+	{
 		this.firstName = firstName;
 	}
 
 
-	public String getMiddleName() {
+	public String getMiddleName() 
+	{
 		return middleName;
 	}
 
 
-	public void setMiddleName(String middleName) {
+	public void setMiddleName(String middleName) 
+	{
 		this.middleName = middleName;
 	}
 
 
-	public String getLastName() {
+	public String getLastName() 
+	{
 		return lastName;
 	}
 
 
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName) 
+	{
 		this.lastName = lastName;
 	}
 
 
-	public String getGenerationCode() {
+	public String getGenerationCode() 
+	{
 		return generationCode;
 	}
 
 
-	public void setGenerationCode(String generationCode) {
+	public void setGenerationCode(String generationCode) 
+	{
 		this.generationCode = generationCode;
 	}
 
 
-	public String getPrefix() {
+	public String getPrefix() 
+	{
 		return prefix;
 	}
 
 
-	public void setPrefix(String prefix) {
+	public void setPrefix(String prefix) 
+	{
 		this.prefix = prefix;
 	}
 
 
-	public String getSexCode() {
+	public String getSexCode() 
+	{
 		return sexCode;
 	}
 
 
-	public void setSexCode(String sexCode) {
+	public void setSexCode(String sexCode) 
+	{
 		this.sexCode = sexCode;
 	}
 
 
-	public String getLanguageCode() {
+	public String getLanguageCode() 
+	{
 		return languageCode;
 	}
 
 
-	public void setLanguageCode(String languageCode) {
+	public void setLanguageCode(String languageCode) 
+	{
 		this.languageCode = languageCode;
 	}
 
 
-	public String getLanguageUseTypeCode() {
+	public String getLanguageUseTypeCode() 
+	{
 		return languageUseTypeCode;
 	}
 
 
-	public void setLanguageUseTypeCode(String languageUseTypeCode) {
+	public void setLanguageUseTypeCode(String languageUseTypeCode) 
+	{
 		this.languageUseTypeCode = languageUseTypeCode;
 	}
 
@@ -114,7 +131,8 @@ public class R1StudentContact implements Serializable
 	//---------------------------------------------------
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentContact [studentContactRefId=" + studentContactRefId
 				+ ", firstName=" + firstName + ", middleName=" + middleName
 				+ ", lastName=" + lastName + ", generationCode="

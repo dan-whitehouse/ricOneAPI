@@ -13,33 +13,42 @@ public class R1SchoolIdentifier implements Serializable
 	
 	public R1SchoolIdentifier() {}
 	
-	public String getSchoolIdentifierRefId() {
+	public String getSchoolIdentifierRefId() 
+	{
 		return schoolIdentifierRefId;
 	}
-	public void setSchoolIdentifierRefId(String schoolIdentifierRefId) {
+	public void setSchoolIdentifierRefId(String schoolIdentifierRefId) 
+	{
 		this.schoolIdentifierRefId = schoolIdentifierRefId;
 	}
-	public String getSchoolRefId() {
+	public String getSchoolRefId() 
+	{
 		return schoolRefId;
 	}
-	public void setSchoolRefId(String schoolRefId) {
+	public void setSchoolRefId(String schoolRefId) 
+	{
 		this.schoolRefId = schoolRefId;
 	}
-	public String getIdentificationSystemCode() {
+	public String getIdentificationSystemCode() 
+	{
 		return identificationSystemCode;
 	}
-	public void setIdentificationSystemCode(String identificationSystemCode) {
+	public void setIdentificationSystemCode(String identificationSystemCode) 
+	{
 		this.identificationSystemCode = identificationSystemCode;
 	}
-	public String getSchoolId() {
+	public String getSchoolId() 
+	{
 		return schoolId;
 	}
-	public void setSchoolId(String schoolId) {
+	public void setSchoolId(String schoolId) 
+	{
 		this.schoolId = schoolId;
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1SchoolIdentifier [schoolIdentifierRefId="
 				+ schoolIdentifierRefId + ", schoolRefId=" + schoolRefId
 				+ ", identificationSystemCode=" + identificationSystemCode

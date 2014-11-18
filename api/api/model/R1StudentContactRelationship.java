@@ -21,111 +21,130 @@ public class R1StudentContactRelationship implements Serializable
 	public R1StudentContactRelationship() {}
 
 	//-----------------------
-	public String getStudentContactRelationshipRefId() {
+	public String getStudentContactRelationshipRefId() 
+	{
 		return studentContactRelationshipRefId;
 	}
 
 
-	public void setStudentContactRelationshipRefId(
-			String studentContactRelationshipRefId) {
+	public void setStudentContactRelationshipRefId(String studentContactRelationshipRefId) 
+	{
 		this.studentContactRelationshipRefId = studentContactRelationshipRefId;
 	}
 
 
-	public String getStudentRefId() {
+	public String getStudentRefId() 
+	{
 		return studentRefId;
 	}
 
 
-	public void setStudentRefId(String studentRefId) {
+	public void setStudentRefId(String studentRefId) 
+	{
 		this.studentRefId = studentRefId;
 	}
 
 
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
 
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
 
-	public String getRelationshipCode() {
+	public String getRelationshipCode() 
+	{
 		return relationshipCode;
 	}
 
 
-	public void setRelationshipCode(String relationshipCode) {
+	public void setRelationshipCode(String relationshipCode) 
+	{
 		this.relationshipCode = relationshipCode;
 	}
 
 
-	public boolean isCustodialRelationshipIndicator() {
+	public boolean isCustodialRelationshipIndicator() 
+	{
 		return custodialRelationshipIndicator;
 	}
 
 
-	public void setCustodialRelationshipIndicator(
-			boolean custodialRelationshipIndicator) {
+	public void setCustodialRelationshipIndicator(boolean custodialRelationshipIndicator) 
+	{
 		this.custodialRelationshipIndicator = custodialRelationshipIndicator;
 	}
 
 
-	public boolean isEmergencyContactIndicator() {
+	public boolean isEmergencyContactIndicator() 
+	{
 		return emergencyContactIndicator;
 	}
 
 
-	public void setEmergencyContactIndicator(boolean emergencyContactIndicator) {
+	public void setEmergencyContactIndicator(boolean emergencyContactIndicator) 
+	{
 		this.emergencyContactIndicator = emergencyContactIndicator;
 	}
 
 
-	public int getContactPriorityNumber() {
+	public int getContactPriorityNumber() 
+	{
 		return contactPriorityNumber;
 	}
 
 
-	public void setContactPriorityNumber(int contactPriorityNumber) {
+	public void setContactPriorityNumber(int contactPriorityNumber) 
+	{
 		this.contactPriorityNumber = contactPriorityNumber;
 	}
 
 
-	public String getContactRestrictions() {
+	public String getContactRestrictions() 
+	{
 		return contactRestrictions;
 	}
 
 
-	public void setContactRestrictions(String contactRestrictions) {
+	public void setContactRestrictions(String contactRestrictions) 
+	{
 		this.contactRestrictions = contactRestrictions;
 	}
 
 
-	public boolean isLivesWithIndicator() {
+	public boolean isLivesWithIndicator() 
+	{
 		return livesWithIndicator;
 	}
 
 
-	public void setLivesWithIndicator(boolean livesWithIndicator) {
+	public void setLivesWithIndicator(boolean livesWithIndicator) 
+	{
 		this.livesWithIndicator = livesWithIndicator;
 	}
 
 
-	public boolean isPrimaryContactIndicator() {
+	public boolean isPrimaryContactIndicator() 
+	{
 		return primaryContactIndicator;
 	}
 
 
-	public void setPrimaryContactIndicator(boolean primaryContactIndicator) {
+	public void setPrimaryContactIndicator(boolean primaryContactIndicator) 
+	{
 		this.primaryContactIndicator = primaryContactIndicator;
 	}
 	
 	//---------------------------------------------------
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentContactRelationship [studentContactRelationshipRefId="
 				+ studentContactRelationshipRefId + ", studentRefId="
 				+ studentRefId + ", studentContactRefId=" + studentContactRefId

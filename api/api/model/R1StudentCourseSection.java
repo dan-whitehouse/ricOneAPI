@@ -18,76 +18,91 @@ public class R1StudentCourseSection implements Serializable
 	public R1StudentCourseSection() {}
 		
 	//-----------------------
-	public String getStudentCourseSectionRefId() {
+	public String getStudentCourseSectionRefId() 
+	{
 		return studentCourseSectionRefId;
 	}
 
-	public void setStudentCourseSectionRefId(String studentCourseSectionRefId) {
+	public void setStudentCourseSectionRefId(String studentCourseSectionRefId) 
+	{
 		this.studentCourseSectionRefId = studentCourseSectionRefId;
 	}
 
-	public String getStudentRefId() {
+	public String getStudentRefId() 
+	{
 		return studentRefId;
 	}
 
-	public void setStudentRefId(String studentRefId) {
+	public void setStudentRefId(String studentRefId) 
+	{
 		this.studentRefId = studentRefId;
 	}
 
-	public String getCourseSectionRefId() {
+	public String getCourseSectionRefId() 
+	{
 		return courseSectionRefId;
 	}
 
-	public void setCourseSectionRefId(String courseSectionRefId) {
+	public void setCourseSectionRefId(String courseSectionRefId) 
+	{
 		this.courseSectionRefId = courseSectionRefId;
 	}
 
-	public String getCourseSectionEnrollmentStatusTypeCode() {
+	public String getCourseSectionEnrollmentStatusTypeCode() 
+	{
 		return courseSectionEnrollmentStatusTypeCode;
 	}
 
-	public void setCourseSectionEnrollmentStatusTypeCode(
-			String courseSectionEnrollmentStatusTypeCode) {
+	public void setCourseSectionEnrollmentStatusTypeCode(String courseSectionEnrollmentStatusTypeCode) 
+	{
 		this.courseSectionEnrollmentStatusTypeCode = courseSectionEnrollmentStatusTypeCode;
 	}
 
-	public String getCourseSectionEntryTypeCode() {
+	public String getCourseSectionEntryTypeCode() 
+	{
 		return courseSectionEntryTypeCode;
 	}
 
-	public void setCourseSectionEntryTypeCode(String courseSectionEntryTypeCode) {
+	public void setCourseSectionEntryTypeCode(String courseSectionEntryTypeCode) 
+	{
 		this.courseSectionEntryTypeCode = courseSectionEntryTypeCode;
 	}
 
-	public String getCourseSectionExitTypeCode() {
+	public String getCourseSectionExitTypeCode() 
+	{
 		return courseSectionExitTypeCode;
 	}
 
-	public void setCourseSectionExitTypeCode(String courseSectionExitTypeCode) {
+	public void setCourseSectionExitTypeCode(String courseSectionExitTypeCode) 
+	{
 		this.courseSectionExitTypeCode = courseSectionExitTypeCode;
 	}
 
-	public String getExitOrWithdrawalStatusCode() {
+	public String getExitOrWithdrawalStatusCode() 
+	{
 		return exitOrWithdrawalStatusCode;
 	}
 
-	public void setExitOrWithdrawalStatusCode(String exitOrWithdrawalStatusCode) {
+	public void setExitOrWithdrawalStatusCode(String exitOrWithdrawalStatusCode) 
+	{
 		this.exitOrWithdrawalStatusCode = exitOrWithdrawalStatusCode;
 	}
 
-	public String getGradeLevelWhenCourseTakenCode() {
+	public String getGradeLevelWhenCourseTakenCode() 
+	{
 		return gradeLevelWhenCourseTakenCode;
 	}
 
-	public void setGradeLevelWhenCourseTakenCode(
-			String gradeLevelWhenCourseTakenCode) {
+	public void setGradeLevelWhenCourseTakenCode(String gradeLevelWhenCourseTakenCode) 
+	{
 		this.gradeLevelWhenCourseTakenCode = gradeLevelWhenCourseTakenCode;
 	}
 	
 	//---------------------------------------------------
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentCourseSection [studentCourseSectionRefId="
 				+ studentCourseSectionRefId + ", studentRefId=" + studentRefId
 				+ ", courseSectionRefId=" + courseSectionRefId

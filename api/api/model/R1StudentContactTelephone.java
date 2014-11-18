@@ -14,49 +14,59 @@ public class R1StudentContactTelephone implements Serializable
 		
 	public R1StudentContactTelephone() {}
 
-	public String getStudentContactPhoneRefId() {
+	public String getStudentContactPhoneRefId() 
+	{
 		return studentContactPhoneRefId;
 	}
 
-	public void setStudentContactPhoneRefId(String studentContactPhoneRefId) {
+	public void setStudentContactPhoneRefId(String studentContactPhoneRefId) 
+	{
 		this.studentContactPhoneRefId = studentContactPhoneRefId;
 	}
 
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
-	public String getTelephoneNumber() {
+	public String getTelephoneNumber() 
+	{
 		return telephoneNumber;
 	}
 
-	public void setTelephoneNumber(String telephoneNumber) {
+	public void setTelephoneNumber(String telephoneNumber) 
+	{
 		this.telephoneNumber = telephoneNumber;
 	}
 
-	public boolean isPrimaryTelephoneNumberIndicator() {
+	public boolean isPrimaryTelephoneNumberIndicator() 
+	{
 		return primaryTelephoneNumberIndicator;
 	}
 
-	public void setPrimaryTelephoneNumberIndicator(
-			boolean primaryTelephoneNumberIndicator) {
+	public void setPrimaryTelephoneNumberIndicator(boolean primaryTelephoneNumberIndicator) 
+	{
 		this.primaryTelephoneNumberIndicator = primaryTelephoneNumberIndicator;
 	}
 
-	public String getTelephoneNumberTypeCode() {
+	public String getTelephoneNumberTypeCode() 
+	{
 		return telephoneNumberTypeCode;
 	}
 
-	public void setTelephoneNumberTypeCode(String telephoneNumberTypeCode) {
+	public void setTelephoneNumberTypeCode(String telephoneNumberTypeCode) 
+	{
 		this.telephoneNumberTypeCode = telephoneNumberTypeCode;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "R1StudentContactTelephone [studentContactPhoneRefId="
 				+ studentContactPhoneRefId + ", studentContactRefId="
 				+ studentContactRefId + ", telephoneNumber=" + telephoneNumber
