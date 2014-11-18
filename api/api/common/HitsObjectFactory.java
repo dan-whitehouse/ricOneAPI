@@ -1,4 +1,4 @@
-package api.mapping;
+package api.common;
 
 
 import sif.dd.us32.model.*;

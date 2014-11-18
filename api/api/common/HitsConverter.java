@@ -1,4 +1,4 @@
-package api.mapping;
+package api.common;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
