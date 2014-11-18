@@ -8,6 +8,7 @@ import sif.dd.us32.model.ContactPersonCEDSType.Contact;
 import sif.dd.us32.model.ContactPersonCEDSType.Contact.AddressList;
 import sif.dd.us32.model.ContactPersonCEDSType.Contact.AddressList.Address;
 import sif.dd.us32.model.ContactPersonCEDSType.Contact.AddressList.Address.Street;
+import sif.dd.us32.model.K12StudentType;
 import sif.dd.us32.model.ObjectFactory;
 
 
@@ -39,8 +40,7 @@ public class R1StudentContactAddressMapper
 		sifAddressList.getAddress().add(sifAddress);
 		sifContact.setAddressList(sifAddressList);
 		sifContactPerson.setContact(sifContact);
-		sifContactPerson.setRefId(r1StudentContactAddress.getStudentContactRefId());
-	
+		sifContactPerson.setRefId(r1StudentContactAddress.getStudentContactRefId());	
 		return sifContactPerson;
 	}
 	

@@ -29,17 +29,17 @@ public class R1StudentContactAddressDAO extends BaseDAO
                 .add(Restrictions.eq("studentContactAddressRefId", studentContactAddressRefId)); //the actual sql type query
                
              
-             List<R1StudentContactAddress> studentContactAddresss = criteria.list();
+             List<R1StudentContactAddress> studentContactAddresses = criteria.list();
              
              // There can only be a maximum of one
-             if (studentContactAddresss.isEmpty()) 
+             if (studentContactAddresses.isEmpty()) 
              {
             	 logger.debug("No StudentContactAddress with staffRefID = "+ studentContactAddressRefId);
                  return null;
              }
              else // already exists
              {
-             	return studentContactAddresss.get(0); //always 1 if looking for a specific record, so index 0 is the first record
+             	return studentContactAddresses.get(0); //always 1 if looking for a specific record, so index 0 is the first record
              }
          }
          catch (HibernateException e)
@@ -50,7 +50,7 @@ public class R1StudentContactAddressDAO extends BaseDAO
     
     //Return Multiple R1StudentContactAddress Objects
     @SuppressWarnings("unchecked")
-	public List<R1StudentContactAddress> getStudentContactAddresss(BasicTransaction tx, SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws IllegalArgumentException, PersistenceException
+	public List<R1StudentContactAddress> getStudentContactAddresses(BasicTransaction tx, SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws IllegalArgumentException, PersistenceException
     {        
     	try
         {

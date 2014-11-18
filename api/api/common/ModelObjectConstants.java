@@ -1,22 +1,6 @@
-/*
- * ModelObjectConstants.java
- * Created: 30/09/2014
- *
- * Copyright 2014 Systemic Pty Ltd
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License 
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied.
- * See the License for the specific language governing permissions and limitations under the License.
- */
-
 package api.common;
+import sif.dd.us32.model.ContactPersonCEDSCollectionType;
+import sif.dd.us32.model.ContactPersonCEDSType;
 import sif.dd.us32.model.K12CourseCollectionType;
 import sif.dd.us32.model.K12CourseType;
 import sif.dd.us32.model.K12SchoolCollectionType;
@@ -44,20 +28,20 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo c_StudentAddresses = new ModelObjectInfo("k12StudentAddresses", K12StudentCollectionType.class);
 	public static final ModelObjectInfo c_StudentAddress = new ModelObjectInfo("k12StudentAddress", K12StudentType.class);
 	
-	public static final ModelObjectInfo c_StudentContacts = new ModelObjectInfo("k12StudentContacts", K12StudentCollectionType.class);
-	public static final ModelObjectInfo c_StudentContact = new ModelObjectInfo("k12StudentContact", K12StudentType.class);
+	public static final ModelObjectInfo c_StudentContacts = new ModelObjectInfo("k12StudentContacts", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContact = new ModelObjectInfo("k12StudentContact", ContactPersonCEDSType.class);
 	
-	public static final ModelObjectInfo c_StudentContactAddresses = new ModelObjectInfo("k12StudentContactAddresses", K12StudentCollectionType.class);
-	public static final ModelObjectInfo c_StudentContactAddress = new ModelObjectInfo("k12StudentContactAddress", K12StudentType.class);
+	public static final ModelObjectInfo c_StudentContactAddresses = new ModelObjectInfo("k12StudentContactAddresses", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContactAddress = new ModelObjectInfo("k12StudentContactAddress", ContactPersonCEDSType.class);
 	
-	public static final ModelObjectInfo c_StudentContactEmails = new ModelObjectInfo("k12StudentContactEmails", K12StudentCollectionType.class);
-	public static final ModelObjectInfo c_StudentContactEmail = new ModelObjectInfo("k12StudentContactEmail", K12StudentType.class);
+	public static final ModelObjectInfo c_StudentContactEmails = new ModelObjectInfo("k12StudentContactEmails", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContactEmail = new ModelObjectInfo("k12StudentContactEmail", ContactPersonCEDSType.class);
 	
-	public static final ModelObjectInfo c_StudentContactRelationships = new ModelObjectInfo("k12StudentContactRelationships", K12StudentCollectionType.class);
-	public static final ModelObjectInfo c_StudentContactRelationship = new ModelObjectInfo("k12StudentContactRelationship", K12StudentType.class);
+	public static final ModelObjectInfo c_StudentContactRelationships = new ModelObjectInfo("k12StudentContactRelationships", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContactRelationship = new ModelObjectInfo("k12StudentContactRelationship", ContactPersonCEDSType.class);
 	
-	public static final ModelObjectInfo c_StudentContactTelephones = new ModelObjectInfo("k12StudentContactTelephons", K12StudentCollectionType.class);
-	public static final ModelObjectInfo c_StudentContactTelephone = new ModelObjectInfo("k12StudentContactTelephone", K12StudentType.class);
+	public static final ModelObjectInfo c_StudentContactTelephones = new ModelObjectInfo("k12StudentContactTelephons", ContactPersonCEDSCollectionType.class);
+	public static final ModelObjectInfo c_StudentContactTelephone = new ModelObjectInfo("k12StudentContactTelephone", ContactPersonCEDSType.class);
 	
 	public static final ModelObjectInfo c_StudentCourseSections = new ModelObjectInfo("k12StudentCourseSections", K12StudentCollectionType.class);
 	public static final ModelObjectInfo c_StudentCourseSection = new ModelObjectInfo("k12StudentCourseSection", K12StudentType.class);

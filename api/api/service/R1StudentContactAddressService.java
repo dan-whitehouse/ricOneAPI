@@ -40,7 +40,7 @@ public class R1StudentContactAddressService extends DBService
 		return row;
     }
     
-    public List<R1StudentContactAddress> getStudentContactAddresss(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws IllegalArgumentException, PersistenceException
+    public List<R1StudentContactAddress> getStudentContactAddresses(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws IllegalArgumentException, PersistenceException
     {
     	List<R1StudentContactAddress> list = null;
     	BasicTransaction tx = null;
@@ -48,13 +48,13 @@ public class R1StudentContactAddressService extends DBService
     	try
     	{
     		tx = startTransaction();
-        	list = r1StudentContactAddressDAO.getStudentContactAddresss(tx, zone, context, pagingInfo);
+        	list = r1StudentContactAddressDAO.getStudentContactAddresses(tx, zone, context, pagingInfo);
     		tx.commit();
     	}
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "Failed to retrieve all studentContactAddresss...(R1StudentContactAddressService)" , true, false);
+    		exceptionMapper(ex, "Failed to retrieve all studentContactAddresses...(R1StudentContactAddressService)" , true, false);
     	}
 		return list;
     }

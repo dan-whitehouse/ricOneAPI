@@ -19,9 +19,8 @@ public class R1StudentContactMapper
 
 		
 	//--Student---------------------------------------------------------------//
-	public K12StudentType modelToSIF(R1StudentContact r1StudentContact)
+	public ContactPersonCEDSType modelToSIF(R1StudentContact r1StudentContact)
 	{
-		K12StudentType sifStudent = oFac.createK12StudentType();
 		ContactPersonCEDSType sifContactPerson = oFac.createContactPersonCEDSType();
 		Identity sifIdentity = oFac.createContactPersonCEDSTypeIdentity();
 		Name sifName = oFac.createContactPersonCEDSTypeIdentityName();
@@ -35,11 +34,8 @@ public class R1StudentContactMapper
 		
 		sifContactPerson.setIdentity(sifIdentity);
 		sifContactPerson.setRefId(r1StudentContact.getStudentContactRefId());
-		
-		
-		
-			
-		return sifStudent;
+				
+		return sifContactPerson;
 	}
 	
 	public R1StudentContact sifToModel(AddressType sifAddress)
