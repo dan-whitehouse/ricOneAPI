@@ -63,6 +63,7 @@
         <property name="calendarYear" column="CalendarYear" type="string" length="4"/>
     </class>
     
+    
     <class name="api.model.R1SchoolCalendarSession" table="SchoolCalendarSession">
         <id name="schoolCalendarSessionRefId" column="SchoolCalendarSessionRefId" type="string">
             <generator class="guid"/>
@@ -72,7 +73,7 @@
         <property name="beginDate" column="BeginDate" type="date"/>
         <property name="endDate" column="EndDate" type="date"/>
         <property name="sessionTypeCode" column="SessionTypeCode" type="string" length="50"/>
-        <property name="instructionalMinutes" column="InstructionalMinutes" type="bigdecimal" length="18"/>
+        <property name="instructionalMinutes" column="InstructionalMinutes" type="big_decimal" length="18"/>
         <property name="code" column="Code" type="string" length="30"/>
         <property name="description" column="Description" type="string"/>
         <property name="markingTermIndicator" column="MarkingTermIndicator" type="boolean"/>
@@ -85,7 +86,7 @@
         <property name="sessionStartTime" column="SessionStartTime" type="date" length="7"/>
         <property name="sessionEndTime" column="SessionEndTime" type="date" length="7"/>
     </class>
-    
+
      <class name="api.model.R1SchoolIdentifier" table="SchoolIdentifier">
         <id name="schoolIdentifierRefId" column="SchoolIdentifierRefId" type="string">
             <generator class="guid"/>

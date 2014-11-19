@@ -20,19 +20,22 @@ public class R1CourseSectionMapper
 	//--Course---------------------------------------------------------------//
 	public K12CourseType modelToSIF(R1CourseSection r1CourseSection)
 	{
-		K12CourseType sifCourse = oFac.createK12CourseType();
-		/*K12SectionType sifSection = oFac.createK12SectionType();
-		Course sifCourse = oFac.createK12SectionTypeCourse();
+		K12CourseType sifSection = oFac.createK12CourseType();
+		//K12SectionType sifSection = oFac.createK12SectionType();
+		//Course sifCourse = oFac.createK12SectionTypeCourse();
 		//Directory sifDirectory = oFac.createK12SectionTypeDirectory();
 		
-		//sifDirectory.set
-		sifCourse.setCourseIdentifier(r1CourseSection.getCourseRefId());
-		sifSection.setRefId(r1CourseSection.getCourseSectionRefId());
+		
+		
+		
+		//sifDirectory.setclass
+		
 		//sifSection.setDirectory(sifDirectory);
-		sifSection.setCourse(sifCourse);*/
-		
-		
-		return sifCourse;
+		//sifSection.setEnrollment(Enrollment);
+		//sifSection.setCourse(sifCourse);
+		//sifSection.setRefId(r1CourseSection.getCourseSectionRefId());
+				
+		return sifSection;
 	}
 	
 	public R1CourseSection sifToModel(K12CourseType sifCourseIdentifier)

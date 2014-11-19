@@ -140,17 +140,20 @@ public class R1SchoolCalendarSession implements Serializable
 	}
 
 
-	public boolean MarkingTermIndicator() {
+	public boolean isMarkingTermIndicator() 
+	{
 		return markingTermIndicator;
 	}
 
 
-	public void setMarkingTermIndicator(boolean markingTermIndicator) {
+	public void setMarkingTermIndicator(boolean markingTermIndicator) 
+	{
 		this.markingTermIndicator = markingTermIndicator;
 	}
 
 
-	public boolean SchedulingTermIndicator() {
+	public boolean isSchedulingTermIndicator() 
+	{
 		return schedulingTermIndicator;
 	}
 
@@ -160,7 +163,7 @@ public class R1SchoolCalendarSession implements Serializable
 	}
 
 
-	public boolean AttendanceTermIndicator() {
+	public boolean isAttendanceTermIndicator() {
 		return attendanceTermIndicator;
 	}
 
