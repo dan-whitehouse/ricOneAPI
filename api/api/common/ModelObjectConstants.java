@@ -65,6 +65,11 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo c_SchoolIdentifiers = new ModelObjectInfo("k12SchoolIdentifiers", K12SchoolCollectionType.class);
 	public static final ModelObjectInfo c_SchoolIdentifier = new ModelObjectInfo("k12SchoolIdentifier", K12SchoolType.class);
 	
+	public static final ModelObjectInfo c_SchoolCalendars = new ModelObjectInfo("k12SchoolCalendars", K12SchoolCollectionType.class);
+	public static final ModelObjectInfo c_SchoolCalendar = new ModelObjectInfo("k12SchoolCalendar", K12SchoolType.class);
+	
+	public static final ModelObjectInfo c_SchoolCalendarSessions = new ModelObjectInfo("k12SchoolCalendarSessions", K12SchoolCollectionType.class);
+	public static final ModelObjectInfo c_SchoolCalendarSession = new ModelObjectInfo("k12SchoolCalendarSession", K12SchoolType.class);
 	
 	/**********************************************COURSE STUFF**********************************************/	
 	public static final ModelObjectInfo c_Courses = new ModelObjectInfo("k12Courses", K12CourseCollectionType.class);

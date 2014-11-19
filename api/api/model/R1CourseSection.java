@@ -25,6 +25,7 @@ public class R1CourseSection implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	private String courseSectionRefId;
 	private String schoolCalendarSessionRefId;
 	private String courseRefId;
 	private String leaSectionId;
@@ -32,6 +33,19 @@ public class R1CourseSection implements Serializable
 	
 	
 	public R1CourseSection() {}
+
+
+	
+	public String getCourseSectionRefId()
+	{
+		return courseSectionRefId;
+	}
+
+	public void setCourseSectionRefId(String courseSectionRefId)
+	{
+		this.courseSectionRefId = courseSectionRefId;
+	}
+
 
 
 	public String getSchoolCalendarSessionRefId() {
