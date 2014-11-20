@@ -8,22 +8,7 @@
     <!-- ************************* -->
     <!-- R1_Core Objects           -->
     <!-- ************************* -->
-    <class name="api.model.R1Student" table="Student">
-        <id name="studentRefId" column="StudentRefId" type="string">
-            <generator class="guid"/>
-        </id>
-        <property name="firstName" column="FirstName" type="string" length="35"/>
-        <property name="middleName" column="MiddleName" type="string" length="35"/>
-        <property name="lastName" column="LastName" type="string" length="35"/>
-        <property name="generationCode" column="GenerationCode" type="string" length="10"/>
-        <property name="prefix" column="Prefix" type="string" length="30"/>
-        <property name="birthdate" column="Birthdate" type="date"/>
-        <property name="sexCode" column="SexCode" type="string" length="30"/>
-        <property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean"/>
-        <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
-        <property name="counselor" column="Counselor" type="string" length="50"/>
-        <property name="cohortGraduationYear" column="CohortGraduationYear" type="string" length="4"/>
-    </class>
+    
     
     <class name="api.model.R1Staff" table="Staff">
         <id name="staffRefId" column="StaffRefId" type="string">
@@ -67,6 +52,15 @@
         <property name="staffRefId" column="StaffRefId" type="string"/>
         <property name="emailAddress" column="EmailAddress" type="string" length="128"/>
         <property name="emailTypeCode" column="EmailTypeCode" type="string" length="50"/>
+    </class>
+    
+    <class name="api.model.R1StaffIdentifier" table="StaffIdentifier">
+        <id name="staffIdentifierRefId" column="StaffIdentifierRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="staffRefId" column="StaffRefId" type="string"/>
+        <property name="identificationSystemCode" column="IdentificationSystemCode" type="string" length="50"/>
+        <property name="staffId" column="StaffId" type="string" length="50"/> 
     </class>
     
     <class name="api.model.R1School" table="School">
@@ -196,38 +190,9 @@
         <property name="countryCode" column="CountryCode" type="string" length="50"/>  
     </class>
     
-    <class name="api.model.R1StudentEnrollment" table="StudentEnrollment">
-    	<id name="studentEnrollmentRefId" column="StudentEnrollmentRefId" type="string">
-            <generator class="guid"/>
-        </id>
-        <property name="studentRefId" column="StudentRefId" type="string"/>
-        <property name="schoolRefId" column="SchoolRefId" type="string"/>
-        <property name="entryGradeLevelCode" column="EntryGradeLevelCode" type="string" length="50"/>
-        <property name="enrollmentStatusCode" column="EnrollmentStatusCode" type="string" length="50"/>
-        <property name="entryTypeCode" column="EntryTypeCode" type="string" length="50"/>     
-        <property name="exitGradeLevelCode" column="ExitGradeLevelCode" type="string" length="50"/>     
-        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
-        <property name="exitOrWithdrawalTypeCode" column="ExitOrWithdrawalTypeCode" type="string" length="50"/>   
-        <property name="displacedStudentStatus" column="DisplacedStudentStatus" type="boolean"/>
-        <property name="endOfTermStatusCode" column="EndOfTermStatusCode" type="string" length="50"/>     
-        <property name="promotionReasonCode" column="PromotionReasonCode" type="string" length="50"/>     
-        <property name="foodServiceEligibilityCode" column="FoodServiceEligibilityCode" type="string" length="50"/>   
-        <property name="firstEntryDateIntoUSSchool" column="FirstEntryDateIntoUSSchool" type="date"/>   
-        <property name="homeRoomIdentifier" column="HomeRoomIdentifier" type="string" length="30"/>  
-    </class>
+
     
-     <class name="api.model.R1StudentCourseSection" table="StudentCourseSection">
-    	<id name="studentCourseSectionRefId" column="StudentCourseSectionRefId" type="string">
-            <generator class="guid"/>
-        </id>
-        <property name="studentRefId" column="StudentRefId" type="string"/>
-        <property name="courseSectionRefId" column="CourseSectionRefId" type="string"/>
-        <property name="courseSectionEnrollmentStatusTypeCode" column="CourseSectionEnrollmentStatusTypeCode" type="string" length="50"/>
-        <property name="courseSectionEntryTypeCode" column="courseSectionEntryTypeCode" type="string" length="50"/>
-        <property name="courseSectionExitTypeCode" column="CourseSectionExitTypeCode" type="string" length="50"/>        
-        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
-        <property name="gradeLevelWhenCourseTakenCode" column="GradeLevelWhenCourseTakenCode" type="string" length="50"/>    
-    </class>
+    
     
     <class name="api.model.R1StudentContactRelationship" table="StudentContactRelationship">
     	<id name="studentContactRelationshipRefId" column="StudentContactRelationshipRefId" type="string">
@@ -290,6 +255,136 @@
         <property name="studentContactRefId" column="StudentContactRefId" type="string"/>
         <property name="emailAddress" column="EmailAddress" type="string" length="128"/>
         <property name="emailTypeCode" column="EmailTypeCode" type="string" length="50"/>
+    </class>
+    
+    
+    
+    
+    <!-- ########################################## R1STUDENT ########################################## -->
+    <class name="api.model.R1Student" table="Student">
+        <id name="studentRefId" column="StudentRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="firstName" column="FirstName" type="string" length="35"/>
+        <property name="middleName" column="MiddleName" type="string" length="35"/>
+        <property name="lastName" column="LastName" type="string" length="35"/>
+        <property name="generationCode" column="GenerationCode" type="string" length="10"/>
+        <property name="prefix" column="Prefix" type="string" length="30"/>
+        <property name="birthdate" column="Birthdate" type="date"/>
+        <property name="sexCode" column="SexCode" type="string" length="30"/>
+        <property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean"/>
+        <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
+        <property name="counselor" column="Counselor" type="string" length="50"/>
+        <property name="cohortGraduationYear" column="CohortGraduationYear" type="string" length="4"/>
+    </class>
+    
+    
+     <class name="api.model.R1StudentCourseSection" table="StudentCourseSection">
+    	<id name="studentCourseSectionRefId" column="StudentCourseSectionRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="courseSectionRefId" column="CourseSectionRefId" type="string"/>
+        <property name="courseSectionEnrollmentStatusTypeCode" column="CourseSectionEnrollmentStatusTypeCode" type="string" length="50"/>
+        <property name="courseSectionEntryTypeCode" column="courseSectionEntryTypeCode" type="string" length="50"/>
+        <property name="courseSectionExitTypeCode" column="CourseSectionExitTypeCode" type="string" length="50"/>        
+        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
+        <property name="gradeLevelWhenCourseTakenCode" column="GradeLevelWhenCourseTakenCode" type="string" length="50"/>    
+    </class>
+    
+  	 <class name="api.model.R1StudentEmail" table="StudentEmail">
+        <id name="studentEmailRefId" column="StudentEmailRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="emailAddress" column="EmailAddress" type="string" length="128"/>
+        <property name="emailTypeCode" column="EmailTypeCode" type="string" length="50"/>
+     </class>
+    
+     <class name="api.model.R1StudentEnrollment" table="StudentEnrollment">
+    	<id name="studentEnrollmentRefId" column="StudentEnrollmentRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="schoolRefId" column="SchoolRefId" type="string"/>
+        <property name="entryGradeLevelCode" column="EntryGradeLevelCode" type="string" length="50"/>
+        <property name="enrollmentStatusCode" column="EnrollmentStatusCode" type="string" length="50"/>
+        <property name="entryTypeCode" column="EntryTypeCode" type="string" length="50"/>     
+        <property name="exitGradeLevelCode" column="ExitGradeLevelCode" type="string" length="50"/>     
+        <property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50"/>   
+        <property name="exitOrWithdrawalTypeCode" column="ExitOrWithdrawalTypeCode" type="string" length="50"/>   
+        <property name="displacedStudentStatus" column="DisplacedStudentStatus" type="boolean"/>
+        <property name="endOfTermStatusCode" column="EndOfTermStatusCode" type="string" length="50"/>     
+        <property name="promotionReasonCode" column="PromotionReasonCode" type="string" length="50"/>     
+        <property name="foodServiceEligibilityCode" column="FoodServiceEligibilityCode" type="string" length="50"/>   
+        <property name="firstEntryDateIntoUSSchool" column="FirstEntryDateIntoUSSchool" type="date"/>   
+        <property name="homeRoomIdentifier" column="HomeRoomIdentifier" type="string" length="30"/>  
+    </class>
+    
+    <class name="api.model.R1StudentHealth" table="StudentHealth">
+        <id name="studentHealthRefId" column="StudentHealthRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="visionScreeningDate" column="VisionScreeningDate" type="date"/>
+        <property name="visionScreeningStatusCode" column="VisionScreeningStatusCode" type="string" length="50"/>
+        <property name="hearingScreeningDate" column="HearingScreeningDate" type="date"/>
+        <property name="hearingScreeningStatusCode" column="HearingScreeningStatusCode" type="string" length="50"/>
+        <property name="dentalScreeningDate" column="DentalScreeningDate" type="date"/>
+        <property name="dentalScreeningStatusCode" column="DentalScreeningStatusCode" type="string" length="50"/>
+        <property name="healthInsuranceCoverageCode" column="HealthInsuranceCoverageCode" type="string" length="50"/>
+        <property name="dentalInsuranceCoverageTypeCode" column="DentalInsuranceCoverageTypeCode" type="string" length="50"/>
+        <property name="medicalAlertIndicatorCode" column="MedicalAlertIndicatorCode" type="string" length="50"/>
+        <property name="healthScreeningEquipmentUsed" column="HealthScreeningEquipmentUsed" type="string" length="300"/>
+        <property name="healthScreeningFollowUpRecommendation" column="HealthScreeningFollowUpRecommendation" type="string"/>
+    </class>
+    
+    <class name="api.model.R1StudentIdentifier" table="StudentIdentifier">
+        <id name="studentIdentifierRefId" column="StudentIdentifierRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="identificationSystemCode" column="IdentificationSystemCode" type="string" length="50"/>
+        <property name="studentId" column="StudentId" type="string" length="50"/> 
+    </class>
+    
+    <class name="api.model.R1StudentLanguage" table="StudentLanguage">
+        <id name="studentLanguageRefId" column="StudentLanguageRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="languageCode" column="LanguageCode" type="string" length="50"/>
+        <property name="languageUseTypeCode" column="LanguageUseTypeCode" type="string" length="50"/> 
+    </class>
+	
+	<class name="api.model.R1StudentOtherName" table="StudentOtherName">
+        <id name="studentOtherNameRefId" column="StudentOtherNameRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="firstName" column="FirstName" type="string" length="35"/>
+        <property name="middleName" column="MiddleName" type="string" length="35"/>
+        <property name="lastName" column="LastName" type="string" length="35"/>
+        <property name="generationCode" column="GenerationCode" type="string" length="10"/>
+        <property name="prefix" column="Prefix" type="string" length="30"/>
+    </class>
+    
+    <class name="api.model.R1StudentRace" table="StudentRace">
+        <id name="studentRaceRefId" column="StudentRaceRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="raceCode" column="RaceCode" type="string"/>
+    </class>
+    
+    <class name="api.model.R1StudentTelephone" table="StudentTelephone">
+        <id name="studentPhoneRefId" column="StudentPhoneRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="studentRefId" column="StudentRefId" type="string"/>
+        <property name="telephoneNumber" column="TelephoneNumber" type="string" length="24"/>
+        <property name="primaryTelephoneNumberIndicator" column="PrimaryTelephoneNumberIndicator" type="boolean"/>
+        <property name="telephoneNumberTypeCode" column="TelephoneNumberTypeCode" type="string" length="50"/>
     </class>
    
 </hibernate-mapping>
