@@ -23,11 +23,9 @@ public class R1SchoolIdentifierMapper
 		Identification sifIdentification = oFac.createK12SchoolTypeIdentification();
 				
 		//Identification Data
-		sifIdentification.setSchoolId(r1School.getSchoolId());
-		sifIdentification.setOrganizationType(r1School.getIdentificationSystemCode()); //May not match		
+		sifIdentification.setSchoolId(r1School.getSchoolId());	
 		sifSchool.setRefId(r1School.getSchoolRefId());
 		
-
 		sifSchool.setIdentification(sifIdentification);
 			
 		return sifSchool;

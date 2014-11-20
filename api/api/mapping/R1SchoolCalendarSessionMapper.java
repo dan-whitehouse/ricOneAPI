@@ -3,11 +3,16 @@ package api.mapping;
 //SIF Common
 
 
+import sif.dd.us32.model.CalendarCEDSType;
+import sif.dd.us32.model.CalendarCEDSType.EventList;
+import sif.dd.us32.model.CalendarCEDSType.EventList.Event;
 import sif.dd.us32.model.ObjectFactory;
 
 //SIF School
 import sif.dd.us32.model.K12SchoolType;
 import sif.dd.us32.model.K12SchoolType.Identification;
+import sif.dd.us32.model.SchoolCalendarCollectionType;
+import sif.dd.us32.model.SchoolCalendarType;
 import api.model.R1SchoolCalendarSession;
 
 
@@ -20,10 +25,10 @@ public class R1SchoolCalendarSessionMapper
 	public K12SchoolType modelToSIF(R1SchoolCalendarSession r1SchoolCalendarSession)
 	{
 		K12SchoolType sifSchool = oFac.createK12SchoolType();
-		Identification sifIdentification = oFac.createK12SchoolTypeIdentification();
+		
 
-		sifSchool.setIdentification(sifIdentification);
-			
+		SchoolCalendarType  sifCalendar = oFac.createSchoolCalendarType();
+		sifCalendar.setSchoolRefId(r1SchoolCalendarSession.getSchoolCalendarRefId());		
 		return sifSchool;
 	}
 	

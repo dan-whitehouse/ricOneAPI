@@ -36,7 +36,7 @@ public class R1StudentEnrollmentMapper
 		sifEnrollment.setExitStatus(r1StudentEnrollment.getExitOrWithdrawalStatusCode());
 		sifEnrollment.setExitType(r1StudentEnrollment.getExitOrWithdrawalTypeCode());
 		sifEnrollment.setDisplacedStudent(r1StudentEnrollment.getDisplacedStudentStatus());
-		
+				
 		//Fill Objects
 		sifEnrollmentList.getEnrollment().add(sifEnrollment);
 		sifStudent.setEnrollmentList(sifEnrollmentList);
