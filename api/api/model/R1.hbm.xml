@@ -40,6 +40,35 @@
         <property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50"/>
     </class>
     
+    <class name="api.model.R1StaffAssignment" table="StaffAssignment">
+        <id name="staffAssignmentRefId" column="StaffAssignmentRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="staffRefId" column="StaffRefId" type="string"/>
+        <property name="schoolRefId" column="SchoolRefId" type="string"/>
+        <property name="primaryAssignment" column="PrimaryAssignment" type="boolean"/>
+        <property name="positionTitle" column="PositionTitle" type="string" length="45"/>
+    </class>
+    
+    <class name="api.model.R1StaffCourseSection" table="StaffCourseSection">
+    	<id name="staffCourseSectionRefId" column="StaffCourseSectionRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="staffRefId" column="StaffRefId" type="string"/>
+        <property name="courseSectionRefId" column="CourseSectionRefId" type="string"/>
+        <property name="teacherOfRecord" column="TeacherOfRecord" type="boolean"/>
+        <property name="contributionPercentage" column="ContributionPercentage" type="big_decimal" length="5"/> 
+    </class>
+    
+    <class name="api.model.R1StaffEmail" table="StaffEmail">
+        <id name="staffEmailRefId" column="StaffEmailRefId" type="string">
+            <generator class="guid"/>
+        </id>
+        <property name="staffRefId" column="StaffRefId" type="string"/>
+        <property name="emailAddress" column="EmailAddress" type="string" length="128"/>
+        <property name="emailTypeCode" column="EmailTypeCode" type="string" length="50"/>
+    </class>
+    
     <class name="api.model.R1School" table="School">
         <id name="schoolRefId" column="SchoolRefId" type="string">
             <generator class="guid"/>
