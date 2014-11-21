@@ -334,7 +334,6 @@
 		<property name="studentRefId" column="StudentRefId" type="string" />
 		<property name="emailAddress" column="EmailAddress" type="string" length="128" />
 		<property name="emailTypeCode" column="EmailTypeCode" type="string" length="50" />
-		<property name="emailTypeCode" column="EmailTypeCode" type="string" length="50" />
 		<property name="primaryEmailAddressIndicator" column="PrimaryEmailAddressIndicator" type="boolean" />
 	</class>
 
