@@ -22,6 +22,8 @@ public class R1StudentEnrollment implements Serializable
 	private String foodServiceEligibilityCode;
 	private Date firstEntryDateIntoUSSchool;
 	private String homeRoomIdentifier;
+	private String responsibleSchoolTypeCode;
+	private String counselorRefId;
 		
 
 	public R1StudentEnrollment() {}
@@ -173,8 +175,29 @@ public class R1StudentEnrollment implements Serializable
 		this.homeRoomIdentifier = homeRoomIdentifier;
 	}	
 	
+	
 	//---------------------------------------------------
 	
+	public String getResponsibleSchoolTypeCode()
+	{
+		return responsibleSchoolTypeCode;
+	}
+
+	public void setResponsibleSchoolTypeCode(String responsibleSchoolTypeCode)
+	{
+		this.responsibleSchoolTypeCode = responsibleSchoolTypeCode;
+	}
+
+	public String getCounselorRefId()
+	{
+		return counselorRefId;
+	}
+
+	public void setCounselorRefId(String counselorRefId)
+	{
+		this.counselorRefId = counselorRefId;
+	}
+
 	@Override
 	public String toString() 
 	{

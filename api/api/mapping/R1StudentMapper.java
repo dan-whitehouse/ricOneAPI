@@ -59,7 +59,7 @@ public class R1StudentMapper
 		sifDemographic.setSex(r1Student.getSexCode());
 		sifDemographic.setBirthdate(r1Student.getBirthdate().toString());
 		
-		if(r1Student.getHispanicLatinoEthnicity())
+		if(r1Student.isHispanicLatinoEthnicity())
 		{
 			sifDemographic.setHispanicOrLatinoEthnicity("Yes");
 		}

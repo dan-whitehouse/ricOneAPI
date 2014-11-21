@@ -25,7 +25,6 @@ public class R1CourseMapper
 		sifCourse.setScedCourseSubjectArea(r1Course.getScedCourseSubjectAreaCode());
 		sifCourse.setCourseApplicableEducationLevel(r1Course.getCourseApplicableEducationLevelCode());
 		sifCourse.setSchoolInfoRefId(r1Course.getSchoolRefId());
-		sifCourse.setCourseIdentifier(r1Course.getLeaCourseId()); //I don't think this is the right SIF Object...
 
 		return sifCourse;
 	}
@@ -40,7 +39,6 @@ public class R1CourseMapper
 		r1Course.setScedCourseSubjectAreaCode(sifCourse.getScedCourseSubjectArea());
 		r1Course.setSchoolRefId(sifCourse.getSchoolInfoRefId());
 		r1Course.setTitle(sifCourse.getCourseTitle());
-		r1Course.setLeaCourseId(sifCourse.getCourseIdentifier());
 	
 		return r1Course;
 	}

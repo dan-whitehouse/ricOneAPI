@@ -10,35 +10,36 @@ public class R1StudentContactEmail implements Serializable
 	private String studentContactRefId;
 	private String emailAddress;
 	private String emailTypeCode;
+	private boolean primaryEmailAddressIndicator;
 		
 	public R1StudentContactEmail() {}
 
-	public String getStudentContactEmailRefId() 
+	public String getStudentContactEmailRefId()
 	{
 		return studentContactEmailRefId;
 	}
 
-	public void setStudentContactEmailRefId(String studentContactEmailRefId) 
+	public void setStudentContactEmailRefId(String studentContactEmailRefId)
 	{
 		this.studentContactEmailRefId = studentContactEmailRefId;
 	}
 
-	public String getStudentContactRefId() 
+	public String getStudentContactRefId()
 	{
 		return studentContactRefId;
 	}
 
-	public void setStudentContactRefId(String studentContactRefId) 
+	public void setStudentContactRefId(String studentContactRefId)
 	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
-	public String getEmailAddress() 
+	public String getEmailAddress()
 	{
 		return emailAddress;
 	}
 
-	public void setEmailAddress(String emailAddress) 
+	public void setEmailAddress(String emailAddress)
 	{
 		this.emailAddress = emailAddress;
 	}
@@ -53,12 +54,15 @@ public class R1StudentContactEmail implements Serializable
 		this.emailTypeCode = emailTypeCode;
 	}
 
-	@Override
-	public String toString() 
+	public boolean isPrimaryEmailAddressIndicator()
 	{
-		return "R1StudentContactEmail [studentContactEmailRefId="
-				+ studentContactEmailRefId + ", studentContactRefId="
-				+ studentContactRefId + ", emailAddress=" + emailAddress
-				+ ", emailTypeCode=" + emailTypeCode + "]";
+		return primaryEmailAddressIndicator;
 	}
+
+	public void setPrimaryEmailAddressIndicator(boolean primaryEmailAddressIndicator)
+	{
+		this.primaryEmailAddressIndicator = primaryEmailAddressIndicator;
+	}
+
+	
 }

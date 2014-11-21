@@ -13,6 +13,7 @@ public class R1StudentOtherName implements Serializable
 	private String lastName;
 	private String generationCode;
 	private String prefix; 
+	private String type;
 		
 
 	public R1StudentOtherName() {}
@@ -85,6 +86,19 @@ public class R1StudentOtherName implements Serializable
 
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
+	}
+
+	
+	
+	public String getType()
+	{
+		return type;
+	}
+
+
+	public void setType(String type)
+	{
+		this.type = type;
 	}
 
 

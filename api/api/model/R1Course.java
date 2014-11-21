@@ -36,17 +36,18 @@ public class R1Course implements Serializable
     
 	private String courseRefId;
 	private String schoolRefId;
-	private String leaCourseId;
 	private String title;
 	private String description;
 	private String subjectCode;
 	private String courseApplicableEducationLevelCode;
+	private String scedCourseLCode;
 	private String scedCourseLevelCode;
 	private String scedCourseSubjectAreaCode;
 	
 	
 	public R1Course() {}
-	
+
+
 	public String getCourseRefId()
 	{
 		return courseRefId;
@@ -68,18 +69,6 @@ public class R1Course implements Serializable
 	public void setSchoolRefId(String schoolRefId)
 	{
 		this.schoolRefId = schoolRefId;
-	}
-
-
-	public String getLeaCourseId()
-	{
-		return leaCourseId;
-	}
-
-
-	public void setLeaCourseId(String leaCourseId)
-	{
-		this.leaCourseId = leaCourseId;
 	}
 
 
@@ -125,9 +114,22 @@ public class R1Course implements Serializable
 	}
 
 
-	public void setCourseApplicableEducationLevelCode(String courseApplicableEducationLevelCode)
+	public void setCourseApplicableEducationLevelCode(
+			String courseApplicableEducationLevelCode)
 	{
 		this.courseApplicableEducationLevelCode = courseApplicableEducationLevelCode;
+	}
+
+
+	public String getScedCourseLCode()
+	{
+		return scedCourseLCode;
+	}
+
+
+	public void setScedCourseLCode(String scedCourseLCode)
+	{
+		this.scedCourseLCode = scedCourseLCode;
 	}
 
 
@@ -153,5 +155,6 @@ public class R1Course implements Serializable
 	{
 		this.scedCourseSubjectAreaCode = scedCourseSubjectAreaCode;
 	}
-
+	
+	
 }

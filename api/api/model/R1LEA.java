@@ -38,72 +38,114 @@ public class R1LEA implements Serializable
 	private String leaSEAId;
 	private String leaNCESId;
 	private String leaName;
+	private String streetNumberAndName;
+	private String city;
+	private String stateCode;
+	private String postalCode;
+	private String addressCountyName;
 		
 	public R1LEA() {}
-	
-	//-----------------------
+
 	public String getLeaRefId()
-    {
-    	return this.leaRefId;
-    }
-	
+	{
+		return leaRefId;
+	}
+
 	public void setLeaRefId(String leaRefId)
-    {
-    	this.leaRefId = leaRefId;
-    }
-	
-	//-----------------------
+	{
+		this.leaRefId = leaRefId;
+	}
+
 	public String getLeaId()
-    {
-    	return this.leaId;
-    }
-	
+	{
+		return leaId;
+	}
+
 	public void setLeaId(String leaId)
-    {
-    	this.leaId = leaId;
-    }
-	
-	//-----------------------
+	{
+		this.leaId = leaId;
+	}
+
 	public String getLeaSEAId()
-    {
-    	return this.leaSEAId;
-    }
-	
+	{
+		return leaSEAId;
+	}
+
 	public void setLeaSEAId(String leaSEAId)
-    {
-    	this.leaSEAId = leaSEAId;
-    }
-	
-	//-----------------------
+	{
+		this.leaSEAId = leaSEAId;
+	}
+
 	public String getLeaNCESId()
-    {
-    	return this.leaNCESId;
-    }
-	
+	{
+		return leaNCESId;
+	}
+
 	public void setLeaNCESId(String leaNCESId)
-    {
-    	this.leaNCESId = leaNCESId;
-    }
+	{
+		this.leaNCESId = leaNCESId;
+	}
+
+	public String getLeaName()
+	{
+		return leaName;
+	}
+
+	public void setLeaName(String leaName)
+	{
+		this.leaName = leaName;
+	}
+
+	public String getStreetNumberAndName()
+	{
+		return streetNumberAndName;
+	}
+
+	public void setStreetNumberAndName(String streetNumberAndName)
+	{
+		this.streetNumberAndName = streetNumberAndName;
+	}
+
+	public String getCity()
+	{
+		return city;
+	}
+
+	public void setCity(String city)
+	{
+		this.city = city;
+	}
+
+	public String getStateCode()
+	{
+		return stateCode;
+	}
+
+	public void setStateCode(String stateCode)
+	{
+		this.stateCode = stateCode;
+	}
+
+	public String getPostalCode()
+	{
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode)
+	{
+		this.postalCode = postalCode;
+	}
+
+	public String getAddressCountyName()
+	{
+		return addressCountyName;
+	}
+
+	public void setAddressCountyName(String addressCountyName)
+	{
+		this.addressCountyName = addressCountyName;
+	}
 	
 	//-----------------------
-	public String getLeaName()
-    {
-    	return this.leaName;
-    }
 	
-	public void setLeaName(String leaName)
-    {
-    	this.leaName = leaName;
-    }
-	
-	
-	
-	//---------------------------------------------------
-	
-	@Override
-    public String toString()
-    {
-		String output = String.format("LEA Output [refID: %1$s], [FN: %2$s], [MN: %3$s], [LN: %4$s]", leaRefId, leaId, leaName, leaSEAId);
-	    return output;
-    }	
 }
