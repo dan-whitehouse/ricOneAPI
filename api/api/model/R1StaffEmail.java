@@ -64,6 +64,15 @@ public class R1StaffEmail implements Serializable
 		this.primaryEmailAddressIndicator = primaryEmailAddressIndicator;
 	}
 
+	@Override
+	public String toString() {
+		return "R1StaffEmail [staffEmailRefId=" + staffEmailRefId
+				+ ", staffRefId=" + staffRefId + ", emailAddress="
+				+ emailAddress + ", emailTypeCode=" + emailTypeCode
+				+ ", primaryEmailAddressIndicator="
+				+ primaryEmailAddressIndicator + "]";
+	}
+
 	
 
 
