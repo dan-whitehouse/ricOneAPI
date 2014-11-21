@@ -40,7 +40,7 @@ public class R1Course implements Serializable
 	private String description;
 	private String subjectCode;
 	private String courseApplicableEducationLevelCode;
-	private String scedCourseLCode;
+	private String scedCourseCode;
 	private String scedCourseLevelCode;
 	private String scedCourseSubjectAreaCode;
 	
@@ -121,15 +121,15 @@ public class R1Course implements Serializable
 	}
 
 
-	public String getScedCourseLCode()
+	public String getScedCourseCode()
 	{
-		return scedCourseLCode;
+		return scedCourseCode;
 	}
 
 
-	public void setScedCourseLCode(String scedCourseLCode)
+	public void setScedCourseCode(String scedCourseCode)
 	{
-		this.scedCourseLCode = scedCourseLCode;
+		this.scedCourseCode = scedCourseCode;
 	}
 
 
