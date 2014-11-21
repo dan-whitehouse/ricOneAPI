@@ -44,6 +44,7 @@ public class R1SchoolCalendarSessionDAO extends BaseDAO
          }
          catch (HibernateException e)
          {
+        	 
              throw new PersistenceException("Unable to retrieve R1SchoolCalendarSession with schoolCalendarSessionRefId = '"+ schoolCalendarSessionRefId + "'.", e);
          }	
     }
