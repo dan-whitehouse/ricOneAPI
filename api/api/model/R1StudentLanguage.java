@@ -29,6 +29,7 @@ public class R1StudentLanguage implements Serializable
 	private String studentRefId;
 	private String languageCode;
 	private String languageUseTypeCode;
+	private R1Student r1Student;
 	
 	
 	public R1StudentLanguage() {}
@@ -80,6 +81,18 @@ public class R1StudentLanguage implements Serializable
 				+ studentLanguageRefId + ", studentRefId=" + studentRefId
 				+ ", languageCode=" + languageCode + ", languageUseTypeCode="
 				+ languageUseTypeCode + "]";
+	}
+
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 
 

@@ -20,7 +20,10 @@ package api.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import sif3.common.header.HeaderValues.ServiceType;
 import sif3.common.model.EnvironmentKey;
 import sif3.common.model.SIFContext;
@@ -43,6 +46,8 @@ public class R1LEA implements Serializable
 	private String stateCode;
 	private String postalCode;
 	private String addressCountyName;
+	private Set<R1School> r1Schools = new HashSet<R1School>(0);
+	private Set<R1LEATelephone> r1LEATelephones = new HashSet<R1LEATelephone>(0);
 		
 	public R1LEA() {}
 
@@ -144,6 +149,26 @@ public class R1LEA implements Serializable
 	public void setAddressCountyName(String addressCountyName)
 	{
 		this.addressCountyName = addressCountyName;
+	}
+
+	public Set<R1School> getR1Schools()
+	{
+		return r1Schools;
+	}
+
+	public void setR1Schools(Set<R1School> r1Schools)
+	{
+		this.r1Schools = r1Schools;
+	}
+
+	public Set<R1LEATelephone> getR1LEATelephones()
+	{
+		return r1LEATelephones;
+	}
+
+	public void setR1LEATelephones(Set<R1LEATelephone> r1leaTelephones)
+	{
+		r1LEATelephones = r1leaTelephones;
 	}
 	
 	//-----------------------

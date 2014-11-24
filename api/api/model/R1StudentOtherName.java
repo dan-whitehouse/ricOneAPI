@@ -14,6 +14,7 @@ public class R1StudentOtherName implements Serializable
 	private String generationCode;
 	private String prefix; 
 	private String type;
+	private R1Student r1Student;
 		
 
 	public R1StudentOtherName() {}
@@ -109,6 +110,18 @@ public class R1StudentOtherName implements Serializable
 				+ ", firstName=" + firstName + ", middleName=" + middleName
 				+ ", lastName=" + lastName + ", generationCode="
 				+ generationCode + ", prefix=" + prefix + "]";
+	}
+
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 	
 	

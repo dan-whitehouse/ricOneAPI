@@ -69,6 +69,7 @@ public class R1StudentService extends DBService
     		tx = startTransaction();
         	row = r1StudentDAO.getStudent(tx, studentRefID, zone, context);
     		tx.getSession().delete(row);
+    		tx.commit();
     		return true;
     	}
     	catch (Exception ex)

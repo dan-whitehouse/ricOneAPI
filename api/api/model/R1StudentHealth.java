@@ -20,6 +20,7 @@ public class R1StudentHealth implements Serializable
 	private String medicalAlertIndicatorCode;
 	private String healthScreeningEquipmentUsed;
 	private String healthScreeningFollowUpRecommendation;
+	private R1Student r1Student;
 		
 
 	public R1StudentHealth() {}
@@ -175,6 +176,18 @@ public class R1StudentHealth implements Serializable
 				+ healthScreeningEquipmentUsed
 				+ ", healthScreeningFollowUpRecommendation="
 				+ healthScreeningFollowUpRecommendation + "]";
+	}
+
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 		
 

@@ -20,7 +20,10 @@ package api.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import sif3.common.header.HeaderValues.ServiceType;
 import sif3.common.model.EnvironmentKey;
 import sif3.common.model.SIFContext;
@@ -43,6 +46,9 @@ public class R1Course implements Serializable
 	private String scedCourseCode;
 	private String scedCourseLevelCode;
 	private String scedCourseSubjectAreaCode;
+	private Set<R1CourseSection> r1CourseSections = new HashSet<R1CourseSection>(0);
+	private Set<R1CourseIdentifier> r1CourseIdentifiers = new HashSet<R1CourseIdentifier>(0);
+	private R1School r1School;
 	
 	
 	public R1Course() {}
@@ -154,6 +160,42 @@ public class R1Course implements Serializable
 	public void setScedCourseSubjectAreaCode(String scedCourseSubjectAreaCode)
 	{
 		this.scedCourseSubjectAreaCode = scedCourseSubjectAreaCode;
+	}
+
+
+	public Set<R1CourseSection> getR1CourseSections()
+	{
+		return r1CourseSections;
+	}
+
+
+	public void setR1CourseSections(Set<R1CourseSection> r1CourseSections)
+	{
+		this.r1CourseSections = r1CourseSections;
+	}
+
+
+	public R1School getR1School()
+	{
+		return r1School;
+	}
+
+
+	public void setR1School(R1School r1School)
+	{
+		this.r1School = r1School;
+	}
+
+
+	public Set<R1CourseIdentifier> getR1CourseIdentifiers()
+	{
+		return r1CourseIdentifiers;
+	}
+
+
+	public void setR1CourseIdentifiers(Set<R1CourseIdentifier> r1CourseIdentifiers)
+	{
+		this.r1CourseIdentifiers = r1CourseIdentifiers;
 	}
 	
 	

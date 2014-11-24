@@ -11,6 +11,7 @@ public class R1StudentTelephone implements Serializable
 	private String telephoneNumber;
 	private boolean primaryTelephoneNumberIndicator;
 	private String telephoneNumberTypeCode;
+	private R1Student r1Student;
 		
 	public R1StudentTelephone() {}
 
@@ -62,6 +63,16 @@ public class R1StudentTelephone implements Serializable
 				+ telephoneNumber + ", primaryTelephoneNumberIndicator="
 				+ primaryTelephoneNumberIndicator
 				+ ", telephoneNumberTypeCode=" + telephoneNumberTypeCode + "]";
+	}
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 
 }

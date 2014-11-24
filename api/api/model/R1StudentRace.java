@@ -9,6 +9,7 @@ public class R1StudentRace implements Serializable
 	private String studentRaceRefId;
 	private String studentRefId;
 	private String raceCode;
+	private R1Student r1Student;
 		
 
 	public R1StudentRace() {}
@@ -49,6 +50,18 @@ public class R1StudentRace implements Serializable
 		return "R1StudentRace [studentRaceRefId=" + studentRaceRefId
 				+ ", studentRefId=" + studentRefId + ", raceCode=" + raceCode
 				+ "]";
+	}
+
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 
 

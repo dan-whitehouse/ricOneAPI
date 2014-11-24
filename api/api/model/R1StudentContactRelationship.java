@@ -15,8 +15,10 @@ public class R1StudentContactRelationship implements Serializable
 	private int contactPriorityNumber; 
 	private String contactRestrictions;
 	private boolean livesWithIndicator;
-	private boolean primaryContactIndicator;		   
-		
+	private boolean primaryContactIndicator;	
+	private R1Student r1Student;
+	private R1StudentContact r1StudentContact;
+	
 
 	public R1StudentContactRelationship() {}
 
@@ -156,5 +158,25 @@ public class R1StudentContactRelationship implements Serializable
 				+ ", contactRestrictions=" + contactRestrictions
 				+ ", livesWithIndicator=" + livesWithIndicator
 				+ ", primaryContactIndicator=" + primaryContactIndicator + "]";
+	}
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
+	}
+
+	public R1StudentContact getR1StudentContact()
+	{
+		return r1StudentContact;
+	}
+
+	public void setR1StudentContact(R1StudentContact r1StudentContact)
+	{
+		this.r1StudentContact = r1StudentContact;
 	}
 }

@@ -19,6 +19,8 @@
 package api.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class R1CourseSection implements Serializable
@@ -30,6 +32,12 @@ public class R1CourseSection implements Serializable
 	private String courseRefId;
 	private String leaSectionId;
 	private String systemSectionId;
+	private Set<R1StudentCourseSection> r1StudentCourseSections = new HashSet<R1StudentCourseSection>(0);
+	private Set<R1CourseSectionSchedule> r1CourseSectionSchedules = new HashSet<R1CourseSectionSchedule>(0);
+	private Set<R1StaffCourseSection> r1StaffCourseSections = new HashSet<R1StaffCourseSection>(0);
+	private R1Course r1Course;
+	private R1SchoolCalendarSession r1SchoolCalendarSession;
+	
 	
 	
 	public R1CourseSection() {}
@@ -94,6 +102,76 @@ public class R1CourseSection implements Serializable
 				+ schoolCalendarSessionRefId + ", courseRefId=" + courseRefId
 				+ ", leaSectionId=" + leaSectionId + ", systemSectionId="
 				+ systemSectionId + "]";
+	}
+
+
+
+	public Set<R1StudentCourseSection> getR1StudentCourseSections()
+	{
+		return r1StudentCourseSections;
+	}
+
+
+
+	public void setR1StudentCourseSections(Set<R1StudentCourseSection> r1StudentCourseSections)
+	{
+		this.r1StudentCourseSections = r1StudentCourseSections;
+	}
+
+
+
+	public Set<R1StaffCourseSection> getR1StaffCourseSections()
+	{
+		return r1StaffCourseSections;
+	}
+
+
+
+	public void setR1StaffCourseSections(Set<R1StaffCourseSection> r1StaffCourseSections)
+	{
+		this.r1StaffCourseSections = r1StaffCourseSections;
+	}
+
+
+
+	public Set<R1CourseSectionSchedule> getR1CourseSectionSchedules()
+	{
+		return r1CourseSectionSchedules;
+	}
+
+
+
+	public void setR1CourseSectionSchedules(Set<R1CourseSectionSchedule> r1CourseSectionSchedules)
+	{
+		this.r1CourseSectionSchedules = r1CourseSectionSchedules;
+	}
+
+
+
+	public R1Course getR1Course()
+	{
+		return r1Course;
+	}
+
+
+
+	public void setR1Course(R1Course r1Course)
+	{
+		this.r1Course = r1Course;
+	}
+
+
+
+	public R1SchoolCalendarSession getR1SchoolCalendarSession()
+	{
+		return r1SchoolCalendarSession;
+	}
+
+
+
+	public void setR1SchoolCalendarSession(R1SchoolCalendarSession r1SchoolCalendarSession)
+	{
+		this.r1SchoolCalendarSession = r1SchoolCalendarSession;
 	}
 
 }

@@ -2,6 +2,8 @@ package api.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class R1Staff implements Serializable
 {
@@ -16,8 +18,11 @@ public class R1Staff implements Serializable
 	private Date birthdate;
 	private String sexCode;
 	private boolean hispanicLatinoEthnicity;
-	private String usCitizenshipStatusCode;		   
-
+	private String usCitizenshipStatusCode;	
+	private Set<R1StaffCourseSection> r1StaffCourseSections = new HashSet<R1StaffCourseSection>(0);
+	private Set<R1StaffEmail> r1StaffEmails = new HashSet<R1StaffEmail>(0);
+	private Set<R1StaffIdentifier> r1StaffIdentifiers = new HashSet<R1StaffIdentifier>(0);
+	private Set<R1StaffAssignment> r1StaffAssignments = new HashSet<R1StaffAssignment>(0);
 		
 
 	public R1Staff() {}
@@ -140,6 +145,46 @@ public class R1Staff implements Serializable
 				+ ", birthdate=" + birthdate + ", sexCode=" + sexCode
 				+ ", hispanicLatinoEthnicity=" + hispanicLatinoEthnicity
 				+ ", usCitizenshipStatusCode=" + usCitizenshipStatusCode + "]";
+	}
+
+	public Set<R1StaffCourseSection> getR1StaffCourseSections()
+	{
+		return r1StaffCourseSections;
+	}
+
+	public void setR1StaffCourseSections(Set<R1StaffCourseSection> r1StaffCourseSections)
+	{
+		this.r1StaffCourseSections = r1StaffCourseSections;
+	}
+
+	public Set<R1StaffEmail> getR1StaffEmails()
+	{
+		return r1StaffEmails;
+	}
+
+	public void setR1StaffEmails(Set<R1StaffEmail> r1StaffEmails)
+	{
+		this.r1StaffEmails = r1StaffEmails;
+	}
+
+	public Set<R1StaffIdentifier> getR1StaffIdentifiers()
+	{
+		return r1StaffIdentifiers;
+	}
+
+	public void setR1StaffIdentifiers(Set<R1StaffIdentifier> r1StaffIdentifiers)
+	{
+		this.r1StaffIdentifiers = r1StaffIdentifiers;
+	}
+
+	public Set<R1StaffAssignment> getR1StaffAssignments()
+	{
+		return r1StaffAssignments;
+	}
+
+	public void setR1StaffAssignments(Set<R1StaffAssignment> r1StaffAssignments)
+	{
+		this.r1StaffAssignments = r1StaffAssignments;
 	}
 
 

@@ -10,6 +10,7 @@ public class R1SchoolIdentifier implements Serializable
 	private String schoolRefId;
 	private String identificationSystemCode;
 	private String schoolId;
+	private R1School r1School;
 	
 	public R1SchoolIdentifier() {}
 	
@@ -53,5 +54,15 @@ public class R1SchoolIdentifier implements Serializable
 				+ schoolIdentifierRefId + ", schoolRefId=" + schoolRefId
 				+ ", identificationSystemCode=" + identificationSystemCode
 				+ ", schoolId=" + schoolId + "]";
+	}
+
+	public R1School getR1School()
+	{
+		return r1School;
+	}
+
+	public void setR1School(R1School r1School)
+	{
+		this.r1School = r1School;
 	}
 }

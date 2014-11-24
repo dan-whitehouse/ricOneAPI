@@ -20,6 +20,8 @@ package api.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.math.BigDecimal;
 
 
@@ -45,6 +47,8 @@ public class R1SchoolCalendarSession implements Serializable
 	private int minutesPerDay;
 	private Date sessionStartTime;
 	private Date sessionEndTime;
+	private Set<R1CourseSection> r1CourseSections = new HashSet<R1CourseSection>(0);
+	private R1SchoolCalendar r1SchoolCalendar;
 	
 	
 	public R1SchoolCalendarSession() {}
@@ -250,6 +254,30 @@ public class R1SchoolCalendarSession implements Serializable
 				+ ", lastInstructionDate=" + lastInstructionDate
 				+ ", minutesPerDay=" + minutesPerDay + ", sessionStartTime="
 				+ sessionStartTime + ", sessionEndTime=" + sessionEndTime + "]";
+	}
+
+
+	public Set<R1CourseSection> getR1CourseSections()
+	{
+		return r1CourseSections;
+	}
+
+
+	public void setR1CourseSections(Set<R1CourseSection> r1CourseSections)
+	{
+		this.r1CourseSections = r1CourseSections;
+	}
+
+
+	public R1SchoolCalendar getR1SchoolCalendar()
+	{
+		return r1SchoolCalendar;
+	}
+
+
+	public void setR1SchoolCalendar(R1SchoolCalendar r1SchoolCalendar)
+	{
+		this.r1SchoolCalendar = r1SchoolCalendar;
 	}
 
 }

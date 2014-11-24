@@ -29,6 +29,7 @@ public class R1CourseIdentifier implements Serializable
 	private String courseRefId;
 	private String identificationSystemCode;
 	private String courseId;
+	private R1Course r1Course;
 	
 	
 	public R1CourseIdentifier() {}
@@ -80,5 +81,17 @@ public class R1CourseIdentifier implements Serializable
 				+ courseIdentifierRefId + ", courseRefId=" + courseRefId
 				+ ", identificationSystemCode=" + identificationSystemCode
 				+ ", courseId=" + courseId + "]";
+	}
+
+
+	public R1Course getR1Course()
+	{
+		return r1Course;
+	}
+
+
+	public void setR1Course(R1Course r1Course)
+	{
+		this.r1Course = r1Course;
 	}
 }

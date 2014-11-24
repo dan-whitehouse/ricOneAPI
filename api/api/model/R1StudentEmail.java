@@ -11,6 +11,7 @@ public class R1StudentEmail implements Serializable
 	private String emailAddress;
 	private String emailTypeCode;
 	private boolean primaryEmailAddressIndicator;
+	private R1Student r1Student;
 		
 	public R1StudentEmail() {}
 
@@ -62,6 +63,16 @@ public class R1StudentEmail implements Serializable
 	public void setPrimaryEmailAddressIndicator(boolean primaryEmailAddressIndicator)
 	{
 		this.primaryEmailAddressIndicator = primaryEmailAddressIndicator;
+	}
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 
 	

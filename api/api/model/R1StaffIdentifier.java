@@ -29,6 +29,7 @@ public class R1StaffIdentifier implements Serializable
 	private String staffRefId;
 	private String identificationSystemCode;
 	private String staffId;
+	private R1Staff r1Staff;
 	
 	
 	public R1StaffIdentifier() {}
@@ -80,6 +81,18 @@ public class R1StaffIdentifier implements Serializable
 				+ staffIdentifierRefId + ", staffRefId=" + staffRefId
 				+ ", identificationSystemCode=" + identificationSystemCode
 				+ ", staffId=" + staffId + "]";
+	}
+
+
+	public R1Staff getR1Staff()
+	{
+		return r1Staff;
+	}
+
+
+	public void setR1Staff(R1Staff r1Staff)
+	{
+		this.r1Staff = r1Staff;
 	}
 
 

@@ -11,6 +11,7 @@ public class R1StaffEmail implements Serializable
 	private String emailAddress;
 	private String emailTypeCode;
 	private boolean primaryEmailAddressIndicator;
+	private R1Staff r1Staff;
 		
 	public R1StaffEmail() {}
 
@@ -71,6 +72,16 @@ public class R1StaffEmail implements Serializable
 				+ emailAddress + ", emailTypeCode=" + emailTypeCode
 				+ ", primaryEmailAddressIndicator="
 				+ primaryEmailAddressIndicator + "]";
+	}
+
+	public R1Staff getR1Staff()
+	{
+		return r1Staff;
+	}
+
+	public void setR1Staff(R1Staff r1Staff)
+	{
+		this.r1Staff = r1Staff;
 	}
 
 	

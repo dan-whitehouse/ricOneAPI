@@ -14,6 +14,8 @@ public class R1StudentCourseSection implements Serializable
 	private String courseSectionExitTypeCode;
 	private String exitOrWithdrawalStatusCode;
 	private String gradeLevelWhenCourseTakenCode;
+	private R1Student r1Student;
+	private R1CourseSection r1CourseSection;
 
 	public R1StudentCourseSection() {}
 		
@@ -113,5 +115,25 @@ public class R1StudentCourseSection implements Serializable
 				+ ", exitOrWithdrawalStatusCode=" + exitOrWithdrawalStatusCode
 				+ ", gradeLevelWhenCourseTakenCode="
 				+ gradeLevelWhenCourseTakenCode + "]";
+	}
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
+	}
+
+	public R1CourseSection getR1CourseSection()
+	{
+		return r1CourseSection;
+	}
+
+	public void setR1CourseSection(R1CourseSection r1CourseSection)
+	{
+		this.r1CourseSection = r1CourseSection;
 	}
 }

@@ -12,6 +12,8 @@ public class R1StaffAssignment implements Serializable
 	private String schoolRefId;
 	private boolean primaryAssignment;
 	private String positionTitle;
+	private R1Staff r1Staff;
+	private R1School r1School;
 
 	public R1StaffAssignment() {}
 
@@ -61,6 +63,26 @@ public class R1StaffAssignment implements Serializable
 				+ staffAssignmentRefId + ", staffRefId=" + staffRefId
 				+ ", schoolRefId=" + schoolRefId + ", primaryAssignment="
 				+ primaryAssignment + ", positionTitle=" + positionTitle + "]";
+	}
+
+	public R1Staff getR1Staff()
+	{
+		return r1Staff;
+	}
+
+	public void setR1Staff(R1Staff r1Staff)
+	{
+		this.r1Staff = r1Staff;
+	}
+
+	public R1School getR1School()
+	{
+		return r1School;
+	}
+
+	public void setR1School(R1School r1School)
+	{
+		this.r1School = r1School;
 	}
 	
 	

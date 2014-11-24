@@ -24,6 +24,7 @@ public class R1StudentEnrollment implements Serializable
 	private String homeRoomIdentifier;
 	private String responsibleSchoolTypeCode;
 	private String counselorRefId;
+	private R1Student r1Student;
 		
 
 	public R1StudentEnrollment() {}
@@ -215,5 +216,15 @@ public class R1StudentEnrollment implements Serializable
 				+ ", foodServiceEligibilityCode=" + foodServiceEligibilityCode
 				+ ", firstEntryDateIntoUSSchool=" + firstEntryDateIntoUSSchool
 				+ ", homeRoomIdentifier=" + homeRoomIdentifier + "]";
+	}
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 }

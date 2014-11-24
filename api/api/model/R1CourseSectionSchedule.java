@@ -34,6 +34,7 @@ public class R1CourseSectionSchedule implements Serializable
 	private String classPeriod;
 	private String timeDayIdentifier;
 	private String classroomIdentifier;
+	private R1CourseSection r1CourseSection;
 	
 	
 	public R1CourseSectionSchedule() {}
@@ -128,6 +129,18 @@ public class R1CourseSectionSchedule implements Serializable
 				+ ", classEndingTime=" + classEndingTime + ", classPeriod="
 				+ classPeriod + ", timeDayIdentifier=" + timeDayIdentifier
 				+ ", classroomIdentifier=" + classroomIdentifier + "]";
+	}
+
+
+	public R1CourseSection getR1CourseSection()
+	{
+		return r1CourseSection;
+	}
+
+
+	public void setR1CourseSection(R1CourseSection r1CourseSection)
+	{
+		this.r1CourseSection = r1CourseSection;
 	}
 
 }

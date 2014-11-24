@@ -3,6 +3,7 @@ package api.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import sif3.common.header.HeaderValues.ServiceType;
 import sif3.common.model.EnvironmentKey;
 import sif3.common.model.SIFContext;
@@ -26,6 +27,7 @@ public class R1StudentContactAddress implements Serializable
 	private String postalCode;
 	private String addressCountyName;
 	private String countryCode;
+	private R1StudentContact r1StudentContact;
 
 		
 	public R1StudentContactAddress() {}
@@ -161,5 +163,17 @@ public class R1StudentContactAddress implements Serializable
 				+ ", city=" + city + ", stateCode=" + stateCode
 				+ ", postalCode=" + postalCode + ", addressCountyName="
 				+ addressCountyName + ", countryCode=" + countryCode + "]";
+	}
+
+
+	public R1StudentContact getR1StudentContact()
+	{
+		return r1StudentContact;
+	}
+
+
+	public void setR1StudentContact(R1StudentContact r1StudentContact)
+	{
+		this.r1StudentContact = r1StudentContact;
 	}
 }

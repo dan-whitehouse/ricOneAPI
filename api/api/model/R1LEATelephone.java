@@ -11,6 +11,7 @@ public class R1LEATelephone implements Serializable
 	private String telephoneNumber;
 	private boolean primaryTelephoneNumberIndicator;
 	private String telephoneNumberTypeCode;
+	private R1LEA r1Lea;
 		
 	public R1LEATelephone() {}
 
@@ -62,6 +63,16 @@ public class R1LEATelephone implements Serializable
 				+ telephoneNumber + ", primaryTelephoneNumberIndicator="
 				+ primaryTelephoneNumberIndicator
 				+ ", telephoneNumberTypeCode=" + telephoneNumberTypeCode + "]";
+	}
+
+	public R1LEA getR1Lea()
+	{
+		return r1Lea;
+	}
+
+	public void setR1Lea(R1LEA r1Lea)
+	{
+		this.r1Lea = r1Lea;
 	}
 
 	

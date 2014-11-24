@@ -29,6 +29,7 @@ public class R1StudentIdentifier implements Serializable
 	private String studentRefId;
 	private String identificationSystemCode;
 	private String studentId;
+	private R1Student r1Student;
 	
 	
 	public R1StudentIdentifier() {}
@@ -80,6 +81,18 @@ public class R1StudentIdentifier implements Serializable
 				+ studentIdentifierRefId + ", studentRefId=" + studentRefId
 				+ ", identificationSystemCode=" + identificationSystemCode
 				+ ", studentId=" + studentId + "]";
+	}
+
+
+	public R1Student getR1Student()
+	{
+		return r1Student;
+	}
+
+
+	public void setR1Student(R1Student r1Student)
+	{
+		this.r1Student = r1Student;
 	}
 
 

@@ -31,6 +31,8 @@ public class R1StaffCourseSection implements Serializable
 	private String courseSectionRefId;
 	private boolean teacherOfRecord;
 	private BigDecimal contributionPercentage;
+	private R1CourseSection r1CourseSection;
+	private R1Staff r1Staff;
 	
 	
 	public R1StaffCourseSection() {}
@@ -93,6 +95,30 @@ public class R1StaffCourseSection implements Serializable
 				+ ", courseSectionRefId=" + courseSectionRefId
 				+ ", teacherOfRecord=" + teacherOfRecord
 				+ ", contributionPercentage=" + contributionPercentage + "]";
+	}
+
+
+	public R1CourseSection getR1CourseSection()
+	{
+		return r1CourseSection;
+	}
+
+
+	public void setR1CourseSection(R1CourseSection r1CourseSection)
+	{
+		this.r1CourseSection = r1CourseSection;
+	}
+
+
+	public R1Staff getR1Staff()
+	{
+		return r1Staff;
+	}
+
+
+	public void setR1Staff(R1Staff r1Staff)
+	{
+		this.r1Staff = r1Staff;
 	}
 
 
