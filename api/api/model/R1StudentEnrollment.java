@@ -25,6 +25,7 @@ public class R1StudentEnrollment implements Serializable
 	private String responsibleSchoolTypeCode;
 	private String counselorRefId;
 	private R1Student r1Student;
+	private R1School r1School;
 		
 
 	public R1StudentEnrollment() {}
@@ -226,5 +227,15 @@ public class R1StudentEnrollment implements Serializable
 	public void setR1Student(R1Student r1Student)
 	{
 		this.r1Student = r1Student;
+	}
+
+	public R1School getR1School()
+	{
+		return r1School;
+	}
+
+	public void setR1School(R1School r1School)
+	{
+		this.r1School = r1School;
 	}
 }

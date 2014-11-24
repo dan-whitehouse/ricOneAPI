@@ -183,8 +183,8 @@
 		<property name="sessionStartTime" column="SessionStartTime" type="date" length="7" />
 		<property name="sessionEndTime" column="SessionEndTime" type="date" length="7" />
 		
-		<many-to-one name="r1School" class="api.model.R1School" fetch="select">
-			<column name="schoolRefId" not-null="true"></column>
+		<many-to-one name="r1SchoolCalendar" class="api.model.R1SchoolCalendar" fetch="select">
+			<column name="schoolCalendarRefId" not-null="true"></column>
 		</many-to-one>
 		
 		<set name="r1CourseSections" table="CourseSection" inverse="true" lazy="true" fetch="select">
@@ -210,7 +210,7 @@
 		<id name="schoolPhoneRefId" column="SchoolPhoneRefId" type="string">
 			<generator class="guid" />
 		</id>
-		<property name="schoolRefId" column="schoolRefId" type="string" />
+		<!--<property name="schoolRefId" column="schoolRefId" type="string" />  -->
 		<property name="telephoneNumber" column="TelephoneNumber" type="string" length="24" />
 		<property name="primaryTelephoneNumberIndicator" column="PrimaryTelephoneNumberIndicator" type="boolean" />
 		<property name="telephoneNumberTypeCode" column="TelephoneNumberTypeCode" type="string" length="50" />

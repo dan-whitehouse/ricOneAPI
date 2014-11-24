@@ -38,14 +38,7 @@ public class R1StudentMapper
 		Demographic sifDemographic = oFac.createK12StudentTypeDemographic();	
 		EnrollmentList sifEnrollmentList = oFac.createK12StudentTypeEnrollmentList();
 		Enrollment sifEnrollment = oFac.createK12StudentTypeEnrollmentListEnrollment();
-		//--------------------
-		//AcademicRecord sifAcademicRecord = oFac.createK12StudentTypeAcademicRecord();
-		//Contact sifContact = oFac.createK12StudentTypeContact();
-		//IndividualizedProgramList sifIndividualizedProgramList = oFac.createK12StudentTypeIndividualizedProgramList();
-		//IndividualizedProgram sifIndividualizedProgram = oFac.createK12StudentTypeIndividualizedProgramListIndividualizedProgram();
-		//Lep sifLep = oFac.createK12StudentTypeLep();
-		//Immigrant sifImmigrant = oFac.createK12StudentTypeImmigrant();
-		
+
 		//Identity
 		Name name = new Name();
 		name.setFirstName(r1Student.getFirstName());
@@ -78,7 +71,6 @@ public class R1StudentMapper
 		sifStudent.setIdentity(sifIdentity);
 		sifStudent.setDemographic(sifDemographic);
 		sifStudent.setEnrollmentList(sifEnrollmentList);
-		//sifStudent.setAcademicRecord(sifAcademicRecord);
 		return sifStudent;
 	}
 	
