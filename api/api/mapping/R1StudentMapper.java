@@ -10,6 +10,24 @@ import java.text.SimpleDateFormat;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+import sif.dd.us32.model.K12StudentType.Contact.EmailList;
+import sif.dd.us32.model.K12StudentType.Contact.EmailList.Email;
+import sif.dd.us32.model.K12StudentType.Contact.PhoneNumberList;
+import sif.dd.us32.model.K12StudentType.Contact.PhoneNumberList.PhoneNumber;
+import sif.dd.us32.model.K12StudentType.Identity.Identification;
+import sif.dd.us32.model.K12StudentType.Identity.OtherNameList;
+import sif.dd.us32.model.K12StudentType.Identity.OtherNameList.OtherName;
 import sif.dd.us32.model.K12StudentType.LanguageList;
 import sif.dd.us32.model.K12StudentType.LanguageList.Language;
 //SIF Student
@@ -26,8 +44,12 @@ import sif.dd.us32.model.K12StudentType.Contact.AddressList.Address.Street;
 import sif.dd.us32.model.K12StudentType.EnrollmentList.Enrollment;
 import api.model.R1Student;
 import api.model.R1StudentAddress;
+import api.model.R1StudentEmail;
 import api.model.R1StudentEnrollment;
+import api.model.R1StudentIdentifier;
 import api.model.R1StudentLanguage;
+import api.model.R1StudentOtherName;
+import api.model.R1StudentTelephone;
 
 
 
@@ -45,17 +67,45 @@ public class R1StudentMapper
 		EnrollmentList sifEnrollmentList = oFac.createK12StudentTypeEnrollmentList();
 		AddressList sifAddressList = oFac.createK12StudentTypeContactAddressList();
 		LanguageList sifLanaguageList = oFac.createK12StudentTypeLanguageList();
-
-		//Identity
-		Name name = new Name();
-		name.setFirstName(r1Student.getFirstName());
-		name.setMiddleName(r1Student.getMiddleName());
-		name.setLastName(r1Student.getLastName());
-		name.setPrefix(r1Student.getPrefix());
-		sifIdentity.setName(name);
+		OtherNameList sifOtherNameList = oFac.createK12StudentTypeIdentityOtherNameList();
+		EmailList sifEmailList = oFac.createK12StudentTypeContactEmailList();
+		PhoneNumberList sifPhoneNumberList = oFac.createK12StudentTypeContactPhoneNumberList();
 		
 
-		//Demographics
+		/********** Identity **********/
+		Name sifName = new Name();
+		sifName.setFirstName(r1Student.getFirstName());
+		sifName.setMiddleName(r1Student.getMiddleName());
+		sifName.setLastName(r1Student.getLastName());
+		sifName.setPrefix(r1Student.getPrefix());
+		sifName.setSuffix(r1Student.getGenerationCode());
+		
+		//OtherNames
+		for(R1StudentOtherName otherName : r1Student.getR1StudentOtherNames())
+		{
+			OtherName sifOtherName = oFac.createK12StudentTypeIdentityOtherNameListOtherName();
+			sifOtherName.setOtherFirstName(otherName.getFirstName());
+			sifOtherName.setOtherMiddleName(otherName.getMiddleName());
+			sifOtherName.setOtherLastName(otherName.getLastName());
+			sifOtherNameList.getOtherName().add(sifOtherName);
+		}
+		
+		//StudentIdentifier
+		for(R1StudentIdentifier identifier : r1Student.getR1StudentIdentifiers())
+		{
+			Identification sifIdentification = oFac.createK12StudentTypeIdentityIdentification();
+			sifIdentification.setIdVerification(identifier.getIdentificationSystemCode());
+			sifIdentification.setStudentId(identifier.getStudentId());			
+			sifIdentity.setIdentification(sifIdentification);
+		}
+		
+		
+		//Set Identity
+		sifIdentity.setName(sifName);
+		sifIdentity.setOtherNameList(sifOtherNameList);
+		
+	
+		/********** Demographics **********/
 		sifDemographic.setSex(r1Student.getSexCode());
 		sifDemographic.setBirthdate(r1Student.getBirthdate().toString());
 		
@@ -68,7 +118,7 @@ public class R1StudentMapper
 			sifDemographic.setHispanicOrLatinoEthnicity("No");
 		}
 								
-		//Enrollments			
+		/********** Enrollments **********/
 		for(R1StudentEnrollment enrollment : r1Student.getR1StudentEnrollments())
 		{		
 			Enrollment sifEnrollment = new Enrollment();
@@ -85,7 +135,19 @@ public class R1StudentMapper
 			sifEnrollmentList.getEnrollment().add(sifEnrollment);
 		}
 		
-		//Addresses
+			
+		/********** Languages **********/
+		for(R1StudentLanguage language : r1Student.getR1StudentLanguages())
+		{
+			Language sifLanguage = oFac.createK12StudentTypeLanguageListLanguage();			
+			sifLanguage.setCode(language.getLanguageCode());
+			sifLanguage.setType(language.getLanguageUseTypeCode());
+			
+			sifLanaguageList.getLanguage().add(sifLanguage);		
+		}
+		
+		
+		/********** Addresses **********/
 		for(R1StudentAddress address : r1Student.getR1StudentAddresses())
 		{
 			Address sifAddress = oFac.createK12StudentTypeContactAddressListAddress();
@@ -106,27 +168,52 @@ public class R1StudentMapper
 			sifAddressList.getAddress().add(sifAddress);	
 		}
 		
-		//Languages
-		for(R1StudentLanguage language : r1Student.getR1StudentLanguages())
+		/********** Email **********/
+		for(R1StudentEmail email : r1Student.getR1StudentEmails())
 		{
-			Language sifLanguage = oFac.createK12StudentTypeLanguageListLanguage();
-			
-			sifLanguage.setCode(language.getLanguageCode());
-			sifLanguage.setType(language.getLanguageUseTypeCode());
-			
-			sifLanaguageList.getLanguage().add(sifLanguage);		
+			Email sifEmail = oFac.createK12StudentTypeContactEmailListEmail();		
+			sifEmail.setEmailType(email.getEmailTypeCode());
+
+			sifEmailList.getEmail().add(sifEmail);
 		}
 		
+		
+		/********** PhoneNumber**********/
+		for(R1StudentTelephone phone : r1Student.getR1StudentTelephones())
+		{
+			PhoneNumber sifPhoneNumber = oFac.createK12StudentTypeContactPhoneNumberListPhoneNumber();
+			sifPhoneNumber.setNumber(phone.getTelephoneNumber());
+			sifPhoneNumber.setPhoneNumberType(phone.getTelephoneNumberTypeCode());
+			
+			if(phone.getPrimaryTelephoneNumberIndicator() == true)
+			{
+				sifPhoneNumber.setPhoneNumberIndicator("True");
+			}
+			else if(phone.getPrimaryTelephoneNumberIndicator() == false)
+			{
+				sifPhoneNumber.setPhoneNumberIndicator("False");
+			}
+			else
+			{
+				sifPhoneNumber.setPhoneNumberIndicator("Null");
+			}						
+			sifPhoneNumberList.getPhoneNumber().add(sifPhoneNumber);
+		}
+		
+		
 
-
-		//Set K12Student
+		/********** Set K12StudentCore **********/
 		sifStudent.setRefId(r1Student.getStudentRefId());
 		sifStudent.setIdentity(sifIdentity);
 		sifStudent.setDemographic(sifDemographic);
 		sifContact.setAddressList(sifAddressList);	
-		sifStudent.setContact(sifContact);
+		sifContact.setEmailList(sifEmailList);
+		sifContact.setPhoneNumberList(sifPhoneNumberList);
+		sifStudent.setContact(sifContact);		
 		sifStudent.setEnrollmentList(sifEnrollmentList);
 		sifStudent.setLanguageList(sifLanaguageList);
+		
+
 		return sifStudent;
 	}
 	
