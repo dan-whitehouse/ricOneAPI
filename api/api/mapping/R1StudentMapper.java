@@ -7,22 +7,27 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/*import sif.dd.us32.model.K12StudentType.AcademicRecord;
-import sif.dd.us32.model.K12StudentType.Contact;
-import sif.dd.us32.model.K12StudentType.Immigrant;
-import sif.dd.us32.model.K12StudentType.IndividualizedProgramList;
-import sif.dd.us32.model.K12StudentType.IndividualizedProgramList.IndividualizedProgram;
-import sif.dd.us32.model.K12StudentType.Lep;*/
 
+
+
+import sif.dd.us32.model.K12StudentType.LanguageList;
+import sif.dd.us32.model.K12StudentType.LanguageList.Language;
 //SIF Student
 import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.K12StudentType;
+import sif.dd.us32.model.K12StudentType.Contact;
 import sif.dd.us32.model.K12StudentType.Demographic;
 import sif.dd.us32.model.K12StudentType.Identity;
 import sif.dd.us32.model.K12StudentType.Identity.Name;
 import sif.dd.us32.model.K12StudentType.EnrollmentList;
+import sif.dd.us32.model.K12StudentType.Contact.AddressList;
+import sif.dd.us32.model.K12StudentType.Contact.AddressList.Address;
+import sif.dd.us32.model.K12StudentType.Contact.AddressList.Address.Street;
 import sif.dd.us32.model.K12StudentType.EnrollmentList.Enrollment;
 import api.model.R1Student;
+import api.model.R1StudentAddress;
+import api.model.R1StudentEnrollment;
+import api.model.R1StudentLanguage;
 
 
 
@@ -35,9 +40,11 @@ public class R1StudentMapper
 	{
 		K12StudentType sifStudent = oFac.createK12StudentType();
 		Identity sifIdentity = oFac.createK12StudentTypeIdentity();
-		Demographic sifDemographic = oFac.createK12StudentTypeDemographic();	
+		Demographic sifDemographic = oFac.createK12StudentTypeDemographic();
+		Contact sifContact = oFac.createK12StudentTypeContact();
 		EnrollmentList sifEnrollmentList = oFac.createK12StudentTypeEnrollmentList();
-		Enrollment sifEnrollment = oFac.createK12StudentTypeEnrollmentListEnrollment();
+		AddressList sifAddressList = oFac.createK12StudentTypeContactAddressList();
+		LanguageList sifLanaguageList = oFac.createK12StudentTypeLanguageList();
 
 		//Identity
 		Name name = new Name();
@@ -61,16 +68,65 @@ public class R1StudentMapper
 			sifDemographic.setHispanicOrLatinoEthnicity("No");
 		}
 								
-		//Enrollment	
-		sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
-		sifEnrollmentList.getEnrollment().add(sifEnrollment);
+		//Enrollments			
+		for(R1StudentEnrollment enrollment : r1Student.getR1StudentEnrollments())
+		{		
+			Enrollment sifEnrollment = new Enrollment();
+			sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
+			sifEnrollment.setSchoolId(enrollment.getSchoolRefId());
+			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());
+			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
+			sifEnrollment.setEntryType(enrollment.getEntryTypeCode());
+			sifEnrollment.setExitGradeLevel(enrollment.getExitGradeLevelCode());
+			sifEnrollment.setExitStatus(enrollment.getExitOrWithdrawalStatusCode());
+			sifEnrollment.setExitType(enrollment.getExitOrWithdrawalTypeCode());
+			sifEnrollment.setDisplacedStudent(enrollment.getDisplacedStudentStatus());
+			
+			sifEnrollmentList.getEnrollment().add(sifEnrollment);
+		}
 		
+		//Addresses
+		for(R1StudentAddress address : r1Student.getR1StudentAddresses())
+		{
+			Address sifAddress = oFac.createK12StudentTypeContactAddressListAddress();
+			Street sifStreet = oFac.createK12StudentTypeContactAddressListAddressStreet();
+			
+			sifStreet.setLine1(address.getStreetNumberAndName());
+			sifStreet.setApartmentNumber(address.getApartmentRoomOrSuiteNumber());
+			
+			//Set Address
+			sifAddress.setAddressType(address.getAddressTypeCode());
+			sifAddress.setCity(address.getCity());
+			sifAddress.setCounty(address.getAddressCountyName());
+			sifAddress.setPostalCode(address.getPostalCode());
+			sifAddress.setStateProvince(address.getStateCode());
+			sifAddress.setCountry(address.getCountryCode());				
+			sifAddress.setStreet(sifStreet);
+			
+			sifAddressList.getAddress().add(sifAddress);	
+		}
+		
+		//Languages
+		for(R1StudentLanguage language : r1Student.getR1StudentLanguages())
+		{
+			Language sifLanguage = oFac.createK12StudentTypeLanguageListLanguage();
+			
+			sifLanguage.setCode(language.getLanguageCode());
+			sifLanguage.setType(language.getLanguageUseTypeCode());
+			
+			sifLanaguageList.getLanguage().add(sifLanguage);		
+		}
+		
+
 
 		//Set K12Student
 		sifStudent.setRefId(r1Student.getStudentRefId());
 		sifStudent.setIdentity(sifIdentity);
 		sifStudent.setDemographic(sifDemographic);
+		sifContact.setAddressList(sifAddressList);	
+		sifStudent.setContact(sifContact);
 		sifStudent.setEnrollmentList(sifEnrollmentList);
+		sifStudent.setLanguageList(sifLanaguageList);
 		return sifStudent;
 	}
 	
