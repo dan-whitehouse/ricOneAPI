@@ -37,7 +37,10 @@ public class R1StaffProvider extends BaseProvider
 	@Override
 	public Object retrieve(SIFZone zone, SIFContext context,PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, IllegalArgumentException 
 	{
+		System.out.println("DW-CONTEXT1: " + zone.getId());
+		
 		Collection<R1Staff> r1Staffs = staffService.getStaffs(zone, context, pagingInfo);
+		
 		Collection<K12StaffType> sifStaffs = new ArrayList<K12StaffType>();
 
 		for (R1Staff r1Staff : r1Staffs) 

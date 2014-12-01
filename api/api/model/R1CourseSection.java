@@ -27,7 +27,7 @@ public class R1CourseSection implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
-	private String courseSectionRefId;
+	private String courseSectionRefId;	
 	private String schoolCalendarSessionRefId;
 	private String courseRefId;
 	private String leaSectionId;

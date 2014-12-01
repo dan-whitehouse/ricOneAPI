@@ -1,19 +1,21 @@
 package api.mapping;
-
-//SIF Common
-
-
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import sif.dd.us32.model.K12StaffType.Assignment;
 import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.K12StaffType;
 import sif.dd.us32.model.K12StaffType.Demographic;
 import sif.dd.us32.model.K12StaffType.Identity;
 import sif.dd.us32.model.K12StaffType.Identity.Name;
+import sif.dd.us32.model.K12StaffType.Contact;
+import sif.dd.us32.model.K12StaffType.Contact.EmailList;
+import sif.dd.us32.model.K12StaffType.Contact.EmailList.Email;
+import api.model.R1School;
 import api.model.R1Staff;
+import api.model.R1StaffEmail;
+import api.model.R1StaffAssignment;
 
 
 public class R1StaffMapper
@@ -28,6 +30,8 @@ public class R1StaffMapper
 			K12StaffType sifStaff = oFac.createK12StaffType();		
 			Identity sifIdentity = oFac.createK12StaffTypeIdentity();
 			Demographic sifDemographic = oFac.createK12StaffTypeDemographic();
+			Contact sifContact = oFac.createK12StaffTypeContact();
+			EmailList sifEmailList = oFac.createK12StaffTypeContactEmailList();
 						
 			//Identity
 			Name name = new Name();
@@ -35,6 +39,7 @@ public class R1StaffMapper
 			name.setMiddleName(r1Staff.getMiddleName());
 			name.setLastName(r1Staff.getLastName());
 			name.setPrefix(r1Staff.getPrefix());
+			name.setSuffix(r1Staff.getGenerationCode());
 			sifIdentity.setName(name);
 			
 			//Demographics
@@ -63,10 +68,36 @@ public class R1StaffMapper
 				}
 			}
 			
+			
+			/********** Email **********/
+			for(R1StaffEmail email : r1Staff.getR1StaffEmails())
+			{
+				Email sifEmail = oFac.createK12StaffTypeContactEmailListEmail();		
+				sifEmail.setEmailType(email.getEmailTypeCode());
+
+				sifEmailList.getEmail().add(sifEmail);
+			}						
+			sifContact.setEmailList(sifEmailList);
+			
+			
+			/********** Assignment **********/
+			Assignment sifAssignment = oFac.createK12StaffTypeAssignment();
+			for(R1StaffAssignment assignment : r1Staff.getR1StaffAssignments())
+			{		
+				//sifAssignment.setLeaId(assignment.getR1School().getLeaRefId());
+				sifAssignment.setSchoolId(assignment.getSchoolRefId());
+				sifAssignment.setClassroomPositionType(assignment.getPositionTitle());
+			}	
+			
+			
 			//Fill Object
+			
 			sifStaff.setRefId(r1Staff.getStaffRefId());
 			sifStaff.setIdentity(sifIdentity);
 			sifStaff.setDemographic(sifDemographic);
+			sifStaff.setContact(sifContact);
+			sifStaff.setAssignment(sifAssignment);
+			
 			
 			return sifStaff;
 		}
