@@ -1,6 +1,7 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1SchoolCalendarDAO;
 import api.model.R1SchoolCalendar;
@@ -35,6 +36,7 @@ public class R1SchoolCalendarService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "(Error: R1SchoolCalendarService) Failed to retrieve schoolCalendar for schoolCalendarRefID = "+ schoolCalendarRefID, true, false);
     	}
 		return row;
@@ -48,12 +50,14 @@ public class R1SchoolCalendarService extends DBService
     	try
     	{
     		tx = startTransaction();
+    		
         	list = r1SchoolCalendarDAO.getSchoolCalendars(tx, zone, context, pagingInfo);
     		tx.commit();
     	}
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "Failed to retrieve schoolCalendars...some error here = '" , true, false);
     	}
 		return list;

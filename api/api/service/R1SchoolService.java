@@ -1,6 +1,7 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1SchoolDAO;
 import api.model.R1School;
@@ -35,6 +36,7 @@ public class R1SchoolService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "(Error: R1SchoolService) Failed to retrieve school for schoolRefID = "+ schoolRefID, true, false);
     	}
 		return row;
@@ -54,6 +56,7 @@ public class R1SchoolService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "Failed to retrieve schools...some error here = '" , true, false);
     	}
 		return list;

@@ -44,6 +44,7 @@ public class R1StaffDAO extends BaseDAO
          }
          catch (HibernateException e)
          {
+        	 System.out.println("DW-Exception-DAO: " + e.getMessage());
              throw new PersistenceException("Unable to retrieve R1Staff with staffRefId = "+ staffRefId, e);
          }	
     }
@@ -62,7 +63,7 @@ public class R1StaffDAO extends BaseDAO
         }
         catch (HibernateException e)
         {
-        	System.out.println("!!!!!!!!!!!!!STAFFDAO " + e.getMessage());
+        	System.out.println("DW-Exception-DAO: " + e.getMessage());
             throw new PersistenceException("Unable to retrieve List of R1Staffs from R1StaffDAO");
         }	
     }

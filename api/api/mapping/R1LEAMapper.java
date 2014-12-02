@@ -1,18 +1,16 @@
 package api.mapping;
 
 //SIF Common
+import sif.dd.us32.model.LeaCEDSType.PhoneNumberList;
+import sif.dd.us32.model.LeaCEDSType.PhoneNumberList.PhoneNumber;
+import sif.dd.us32.model.LeaCEDSType.AddressList.Address;
+import sif.dd.us32.model.LeaCEDSType.AddressList.Address.Street;
+import sif.dd.us32.model.LeaCEDSType.AddressList;
 import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.LeaCEDSType;
 import sif.dd.us32.model.LeaCEDSType.Identification;
-
-/*import sif.dd.us32.model.LeaCEDSType.Accountability;
-import sif.dd.us32.model.LeaCEDSType.Directory;
-import sif.dd.us32.model.LeaCEDSType.FederalFunds;
-import sif.dd.us32.model.LeaCEDSType.Finance;
-import sif.dd.us32.model.LeaCEDSType.ProgramFederalReporting;
-import sif.dd.us32.model.LeaCEDSType.ProgramsServices;*/
-
 import api.model.R1LEA;
+import api.model.R1LEATelephone;
 
 
 public class R1LEAMapper
@@ -25,20 +23,57 @@ public class R1LEAMapper
 		{
 			LeaCEDSType sifLEA = oFac.createLeaCEDSType();		
 			Identification sifIdentification = oFac.createLeaCEDSTypeIdentification();
-			//Directory sifDirectory = oFac.createLeaCEDSTypeDirectory();
-			//FederalFunds sifFederalFunds = oFac.createLeaCEDSTypeFederalFunds();
-			//Accountability sifAccountability = oFac.createLeaCEDSTypeAccountability();
-			//Finance sifFinance = oFac.createLeaCEDSTypeFinance();
-			//ProgramFederalReporting sifProgramFederalReporting = oFac.createLeaCEDSTypeProgramFederalReporting();
-			//ProgramsServices sifProgramsServices = oFac.createLeaCEDSTypeProgramsServices();
+			AddressList sifAddressList = oFac.createLeaCEDSTypeAddressList();
+			PhoneNumberList sifPhoneNumberList = oFac.createLeaCEDSTypePhoneNumberList();
 			
 			//Identification
 			sifIdentification.setLeaId(r1LEA.getLeaId());
 			sifIdentification.setName(r1LEA.getLeaName());
 			
+			/********** Address **********/
+			Address sifAddress = oFac.createLeaCEDSTypeAddressListAddress();
+			Street sifStreet = oFac.createLeaCEDSTypeAddressListAddressStreet();
+			
+			sifStreet.setLine1(r1LEA.getStreetNumberAndName());
+			
+			//Set Address
+			sifAddress.setCity(r1LEA.getCity());
+			sifAddress.setCounty(r1LEA.getAddressCountyName());
+			sifAddress.setPostalCode(r1LEA.getPostalCode());
+			sifAddress.setStateProvince(r1LEA.getStateCode());			
+			sifAddress.setStreet(sifStreet);
+			
+			sifAddressList.getAddress().add(sifAddress);	
+
+			
+			/********** PhoneNumber**********/
+			for(R1LEATelephone phone : r1LEA.getR1LEATelephones())
+			{
+				PhoneNumber sifPhoneNumber = oFac.createLeaCEDSTypePhoneNumberListPhoneNumber();
+				sifPhoneNumber.setNumber(phone.getTelephoneNumber());
+				sifPhoneNumber.setPhoneNumberType(phone.getTelephoneNumberTypeCode());
+				
+				if(phone.isPrimaryTelephoneNumberIndicator() == true)
+				{
+					sifPhoneNumber.setPhoneNumberIndicator("True");
+				}
+				else if(phone.isPrimaryTelephoneNumberIndicator() == false)
+				{
+					sifPhoneNumber.setPhoneNumberIndicator("False");
+				}
+				else
+				{
+					sifPhoneNumber.setPhoneNumberIndicator("Null");
+				}						
+				sifPhoneNumberList.getPhoneNumber().add(sifPhoneNumber);
+			}
+			
+			
 			//Fill Object
 			sifLEA.setRefId(r1LEA.getLeaId());			
 			sifLEA.setIdentification(sifIdentification);
+			sifLEA.setAddressList(sifAddressList);
+			sifLEA.setPhoneNumberList(sifPhoneNumberList);
 			return sifLEA;
 		}
 		

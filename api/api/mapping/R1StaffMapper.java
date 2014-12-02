@@ -84,7 +84,7 @@ public class R1StaffMapper
 			Assignment sifAssignment = oFac.createK12StaffTypeAssignment();
 			for(R1StaffAssignment assignment : r1Staff.getR1StaffAssignments())
 			{		
-				//sifAssignment.setLeaId(assignment.getR1School().getLeaRefId());
+				sifAssignment.setLeaId(assignment.getR1School().getLeaRefId());
 				sifAssignment.setSchoolId(assignment.getSchoolRefId());
 				sifAssignment.setClassroomPositionType(assignment.getPositionTitle());
 			}	

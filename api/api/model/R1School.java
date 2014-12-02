@@ -32,6 +32,7 @@ public class R1School implements Serializable
 	private Set<R1SchoolIdentifier> r1SchoolIdentifiers = new HashSet<R1SchoolIdentifier>(0);
 	private Set<R1SchoolCalendar> r1SchoolCalendars = new HashSet<R1SchoolCalendar>(0);
 	private Set<R1StaffAssignment> r1StaffAssignments = new HashSet<R1StaffAssignment>(0);
+	private Set<R1SchoolTelephone> r1SchoolTelephones = new HashSet<R1SchoolTelephone>(0);
 	private R1LEA r1Lea;
 	public R1School() {}
 	
@@ -191,5 +192,13 @@ public class R1School implements Serializable
 	public void setR1Lea(R1LEA r1Lea)
 	{
 		this.r1Lea = r1Lea;
+	}
+
+	public Set<R1SchoolTelephone> getR1SchoolTelephones() {
+		return r1SchoolTelephones;
+	}
+
+	public void setR1SchoolTelephones(Set<R1SchoolTelephone> r1SchoolTelephones) {
+		this.r1SchoolTelephones = r1SchoolTelephones;
 	}	
 }

@@ -12,7 +12,7 @@ public class R1StudentContactRelationship implements Serializable
 	private String relationshipCode;
 	private boolean custodialRelationshipIndicator;
 	private boolean emergencyContactIndicator;
-	private int contactPriorityNumber; 
+	private Integer contactPriorityNumber; 
 	private String contactRestrictions;
 	private boolean livesWithIndicator;
 	private boolean primaryContactIndicator;	
@@ -95,7 +95,7 @@ public class R1StudentContactRelationship implements Serializable
 	}
 
 
-	public int getContactPriorityNumber() 
+	public Integer getContactPriorityNumber() 
 	{
 		return contactPriorityNumber;
 	}

@@ -44,6 +44,7 @@ public class R1SchoolCalendarDAO extends BaseDAO
          }
          catch (HibernateException e)
          {
+        	 System.out.println("DW-Exception-DAO: " + e.getMessage());
              throw new PersistenceException("Unable to retrieve R1SchoolCalendar with schoolCalendarRefId = '"+ schoolCalendarRefId + "'.", e);
          }	
     }
@@ -62,6 +63,7 @@ public class R1SchoolCalendarDAO extends BaseDAO
         }
         catch (HibernateException e)
         {
+        	System.out.println("DW-Exception-DAO: " + e.getMessage());
             throw new PersistenceException("Unable to retrieve List of R1SchoolCalendars from R1SchoolCalendarDAO");
         }	
     }

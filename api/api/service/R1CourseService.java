@@ -35,6 +35,7 @@ public class R1CourseService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "(Error: R1CourseService) Failed to retrieve course for courseRefID = "+ courseRefID, true, false);
     	}
 		return row;
@@ -54,7 +55,9 @@ public class R1CourseService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "Failed to retrieve all courses...(R1CourseService)" , true, false);
+    		
     	}
 		return list;
     }

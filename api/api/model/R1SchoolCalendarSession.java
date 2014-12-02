@@ -41,10 +41,10 @@ public class R1SchoolCalendarSession implements Serializable
 	private boolean markingTermIndicator;
 	private boolean schedulingTermIndicator;
 	private boolean attendanceTermIndicator;
-	private int daysInSession;
+	private Integer daysInSession;
 	private Date firstInstructionDate;
 	private Date lastInstructionDate;
-	private int minutesPerDay;
+	private Integer minutesPerDay;
 	private Date sessionStartTime;
 	private Date sessionEndTime;
 	private Set<R1CourseSection> r1CourseSections = new HashSet<R1CourseSection>(0);
@@ -119,8 +119,17 @@ public class R1SchoolCalendarSession implements Serializable
 	}
 
 
-	public void setInstructionalMinutes(BigDecimal instructionalMinutes) {
-		this.instructionalMinutes = instructionalMinutes;
+	public void setInstructionalMinutes(BigDecimal instructionalMinutes) 
+	{
+		if(instructionalMinutes != null)
+		{
+			this.instructionalMinutes = instructionalMinutes;
+		}
+		else
+		{
+			this.instructionalMinutes = this.instructionalMinutes.ZERO;
+		}
+		
 	}
 
 
@@ -177,22 +186,26 @@ public class R1SchoolCalendarSession implements Serializable
 	}
 
 
-	public int getDaysInSession() {
+	public Integer getDaysInSession() 
+	{
 		return daysInSession;
 	}
 
 
-	public void setDaysInSession(int daysInSession) {
+	public void setDaysInSession(Integer daysInSession) 
+	{
 		this.daysInSession = daysInSession;
 	}
 
 
-	public Date getFirstInstructionDate() {
+	public Date getFirstInstructionDate() 
+	{
 		return firstInstructionDate;
 	}
 
 
-	public void setFirstInstructionDate(Date firstInstructionDate) {
+	public void setFirstInstructionDate(Date firstInstructionDate) 
+	{
 		this.firstInstructionDate = firstInstructionDate;
 	}
 
@@ -207,12 +220,13 @@ public class R1SchoolCalendarSession implements Serializable
 	}
 
 
-	public int getMinutesPerDay() {
+	public Integer getMinutesPerDay() 
+	{
 		return minutesPerDay;
 	}
 
 
-	public void setMinutesPerDay(int minutesPerDay) {
+	public void setMinutesPerDay(Integer minutesPerDay) {
 		this.minutesPerDay = minutesPerDay;
 	}
 

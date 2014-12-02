@@ -1,6 +1,7 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1StaffDAO;
 import api.model.R1Staff;
@@ -35,6 +36,7 @@ public class R1StaffService extends DBService
     	catch (Exception ex)
     	{
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve staff for staffRefID ="+ staffRefID, true, false);
     	}
 		return row;
@@ -53,8 +55,8 @@ public class R1StaffService extends DBService
     	}
     	catch (Exception ex)
     	{
-    		System.out.println("~~~~DW" + ex.getMessage());
     		rollback(tx);
+    		System.out.println("DW-Exception: " + ex.getMessage());
     		exceptionMapper(ex, "Failed to retrieve all staffs...(R1StaffService)" , true, false);
     	}
 		return list;
