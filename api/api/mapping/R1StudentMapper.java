@@ -35,6 +35,7 @@ import api.model.R1StudentEnrollment;
 import api.model.R1StudentIdentifier;
 import api.model.R1StudentLanguage;
 import api.model.R1StudentOtherName;
+import api.model.R1StudentRace;
 import api.model.R1StudentTelephone;
 
 
@@ -73,7 +74,9 @@ public class R1StudentMapper
 			sifOtherName.setOtherFirstName(otherName.getFirstName());
 			sifOtherName.setOtherMiddleName(otherName.getMiddleName());
 			sifOtherName.setOtherLastName(otherName.getLastName());
+			sifOtherName.setOtherNameType(otherName.getType());
 			sifOtherNameList.getOtherName().add(sifOtherName);
+			
 		}
 		
 		//StudentIdentifier
@@ -94,30 +97,63 @@ public class R1StudentMapper
 		/********** Demographics **********/
 		sifDemographic.setSex(r1Student.getSexCode());
 		sifDemographic.setBirthdate(r1Student.getBirthdate().toString());
+		sifDemographic.setResidenceStatus(r1Student.getUsCitizenshipStatusCode()); //Not sure if Residence is correct
 		
-		if(r1Student.isHispanicLatinoEthnicity())
+		if(r1Student.isHispanicLatinoEthnicity() == true)
 		{
-			sifDemographic.setHispanicOrLatinoEthnicity("Yes");
+			sifDemographic.setHispanicOrLatinoEthnicity("True");
 		}
 		else
 		{
-			sifDemographic.setHispanicOrLatinoEthnicity("No");
+			sifDemographic.setHispanicOrLatinoEthnicity("False");
 		}
-								
+		
+		
+		if(r1Student.getR1StudentRaces() != null)
+		{
+			for(R1StudentRace race : r1Student.getR1StudentRaces())
+			{
+				if(race.getRaceCode().equalsIgnoreCase("AmericanIndianOrAlaskaNative"))
+				{
+					sifDemographic.setAmericanIndianOrAlaskaNative("True");
+				}
+				else if(race.getRaceCode().equalsIgnoreCase("Asian"))
+				{
+					sifDemographic.setAsian("True");
+				}
+				else if(race.getRaceCode().equalsIgnoreCase("BlackOrAfricanAmerican"))
+				{
+					sifDemographic.setBlackOrAfricanAmerican("True");
+				}
+				else if(race.getRaceCode().equalsIgnoreCase("NativeHawaiianOrOtherPacificIslander"))
+				{
+					sifDemographic.setNativeHawaiianOrOtherPacificIslander("True");
+				}
+				else if(race.getRaceCode().equalsIgnoreCase("White"))
+				{
+					sifDemographic.setWhite("True");
+				}
+				else if(race.getRaceCode().equalsIgnoreCase("DemographicRaceTwoOrMoreRaces"))
+				{
+					sifDemographic.setTwoOrMoreRaces("True");
+				}
+				
+			}	
+		}
+						
 		/********** Enrollments **********/
 		for(R1StudentEnrollment enrollment : r1Student.getR1StudentEnrollments())
 		{		
 			Enrollment sifEnrollment = new Enrollment();
 			sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
 			sifEnrollment.setSchoolId(enrollment.getSchoolRefId());
-			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());
-			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
+			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
 			sifEnrollment.setEntryType(enrollment.getEntryTypeCode());
 			sifEnrollment.setExitGradeLevel(enrollment.getExitGradeLevelCode());
 			sifEnrollment.setExitStatus(enrollment.getExitOrWithdrawalStatusCode());
 			sifEnrollment.setExitType(enrollment.getExitOrWithdrawalTypeCode());
 			sifEnrollment.setDisplacedStudent(enrollment.getDisplacedStudentStatus());
-			
+
 			sifEnrollmentList.getEnrollment().add(sifEnrollment);
 		}
 		

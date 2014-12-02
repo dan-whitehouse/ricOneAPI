@@ -39,7 +39,7 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
-                <service name="k12StudentAddresses" contextId="DEFAULT" type="OBJECT">
+                <service name="k12StudentHealths" contextId="DEFAULT" type="OBJECT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
                     <right type="CREATE">APPROVED</right>
