@@ -11,6 +11,7 @@ import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
+import sif3.common.ws.OperationStatus;
 
 public class R1StaffService extends DBService
 {
@@ -83,7 +84,39 @@ public class R1StaffService extends DBService
     		return false;
     	}		
     }
+    
+    @SuppressWarnings("null")
+	public List<OperationStatus> deleteStaffs(List<String> staffRefIds, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    {
+    	BasicTransaction tx = startTransaction();
+		List<R1Staff> rows = null;
+		List<OperationStatus> status = null;	
+    	try
+    	{
+    		for(String id : staffRefIds)
+    		{
+    			R1Staff row = r1StaffDAO.getStaff(tx, id, zone, context);
+    	    	rows.add(row);
+    		}
+    		
+    		for(R1Staff staff : rows)
+    		{
+    			tx.getSession().delete(staff);
+    			OperationStatus s = new OperationStatus();
+    			s.setResourceID(staff.getStaffRefId());
+    			s.setStatus(1);
+    			status.add(s);
+    		}   		
+    		tx.commit();
+    		return status;
+    	}
+    	catch (Exception ex)
+    	{
+    		rollback(tx);
+    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve Staffs", true, false);
+    		return status;
+    	}		
+    }
 
     
-
 }

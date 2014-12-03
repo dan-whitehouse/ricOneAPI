@@ -108,10 +108,10 @@ public class R1StaffProvider extends BaseProvider
 	}
 
 	@Override
-	public List<OperationStatus> deleteMany(List<String> arg0, SIFZone arg1, SIFContext arg2, RequestMetadata arg3) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
+	public List<OperationStatus> deleteMany(List<String> refIds, SIFZone zone, SIFContext context, RequestMetadata meta) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<OperationStatus> status = staffService.deleteStaffs(refIds, zone, context);
+		return status;
 	}
 
 	@Override

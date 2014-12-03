@@ -97,44 +97,6 @@
 	</class>
 
 
-
-
-		<class name="api.model.R1Staff" table="Staff">
-		<id name="staffRefId" column="StaffRefId" type="string">
-			<generator class="guid" />
-		</id>
-		<property name="firstName" column="FirstName" type="string" length="35" />
-		<property name="middleName" column="MiddleName" type="string" length="35" />
-		<property name="lastName" column="LastName" type="string" length="35" />
-		<property name="generationCode" column="GenerationCode" type="string" length="10" />
-		<property name="prefix" column="Prefix" type="string" length="30" />
-		<property name="birthdate" column="Birthdate" type="date" />
-		<property name="sexCode" column="SexCode" type="string" length="50" />
-		<property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean" />
-		<property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50" />
-		
-		<set name="r1StaffCourseSections" table="StaffCourseSection" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="courseSectionRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StaffCourseSection"/>
-		</set>	
-		
-		<set name="r1StaffEmails" table="StaffEmail" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="staffRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StaffEmail"/>
-		</set>	
-		
-		<set name="r1StaffIdentifiers" table="StaffIdentifier" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="staffRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StaffIdentifier"/>
-		</set>	
-		
-		<set name="r1StaffAssignments" table="StaffAssignment" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="staffRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StaffAssignment"/>
-		</set>	
-		
-	</class>
-
 	<class name="api.model.R1StaffAssignment" table="StaffAssignment">
 		<id name="staffAssignmentRefId" column="StaffAssignmentRefId" type="string">
 			<generator class="guid" />
@@ -732,27 +694,45 @@
 		</many-to-one>
 	</class>
 	
-	<class name="api.model.R1StaffCourseSection" table="StaffCourseSection">
-		<id name="staffCourseSectionRefId" column="StaffCourseSectionRefId" type="string">
-			<generator class="guid" />
-		</id>
-		<property name="staffRefId" column="StaffRefId" type="string" />
-		<property name="courseSectionRefId" column="CourseSectionRefId" type="string" />
-		<property name="teacherOfRecord" column="TeacherOfRecord" type="boolean" />
-		<property name="contributionPercentage" column="ContributionPercentage" type="big_decimal" length="5" />
-		
-		<many-to-one name="r1CourseSection" class="api.model.R1CourseSection" fetch="select">
-			<column name="courseSectionRefId" not-null="true"></column>
-		</many-to-one>
-		
-		<many-to-one name="r1Staff" class="api.model.R1Staff" fetch="select">
-			<column name="staffRefId" not-null="true"></column>
-		</many-to-one>
-	</class>
+	
 	
 	<!-- ########################################## R1STAFF ########################################## -->
 
 
+	<class name="api.model.R1Staff" table="Staff">
+		<id name="staffRefId" column="StaffRefId" type="string">
+			<generator class="guid" />
+		</id>
+		<property name="firstName" column="FirstName" type="string" length="35" />
+		<property name="middleName" column="MiddleName" type="string" length="35" />
+		<property name="lastName" column="LastName" type="string" length="35" />
+		<property name="generationCode" column="GenerationCode" type="string" length="10" />
+		<property name="prefix" column="Prefix" type="string" length="30" />
+		<property name="birthdate" column="Birthdate" type="date" />
+		<property name="sexCode" column="SexCode" type="string" length="50" />
+		<property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean" />
+		<property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50" />
+		
+		<set name="r1StaffCourseSections" table="StaffCourseSection" inverse="true" lazy="true" fetch="join" cascade="save-update, delete">
+			<key column="courseSectionRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StaffCourseSection"/>
+		</set>	
+		
+		<set name="r1StaffEmails" table="StaffEmail" inverse="true" lazy="true" fetch="join" cascade="save-update, delete">
+			<key column="staffRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StaffEmail"/>
+		</set>	
+		
+		<set name="r1StaffIdentifiers" table="StaffIdentifier" inverse="true" lazy="true" fetch="join" cascade="save-update, delete">
+			<key column="staffRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StaffIdentifier"/>
+		</set>	
+		
+		<set name="r1StaffAssignments" table="StaffAssignment" inverse="true" lazy="true" fetch="join" cascade="save-update, delete">
+			<key column="staffRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StaffAssignment"/>
+		</set>			
+	</class>
 	
 	<class name="api.model.R1StaffEmail" table="StaffEmail">
 		<id name="staffEmailRefId" column="StaffEmailRefId" type="string">
@@ -781,6 +761,23 @@
 		</many-to-one>
 	</class>
 	
+	<class name="api.model.R1StaffCourseSection" table="StaffCourseSection">
+		<id name="staffCourseSectionRefId" column="StaffCourseSectionRefId" type="string">
+			<generator class="guid" />
+		</id>
+		<property name="staffRefId" column="StaffRefId" type="string" />
+		<property name="courseSectionRefId" column="CourseSectionRefId" type="string" />
+		<property name="teacherOfRecord" column="TeacherOfRecord" type="boolean" />
+		<property name="contributionPercentage" column="ContributionPercentage" type="big_decimal" length="5" />
+		
+		<many-to-one name="r1CourseSection" class="api.model.R1CourseSection" fetch="select">
+			<column name="courseSectionRefId" not-null="true"></column>
+		</many-to-one>
+		
+		<many-to-one name="r1Staff" class="api.model.R1Staff" fetch="select">
+			<column name="staffRefId" not-null="true"></column>
+		</many-to-one>
+	</class>
 
 
 </hibernate-mapping>
