@@ -307,57 +307,57 @@
 		<property name="cohortGraduationYear" column="CohortGraduationYear" type="string" length="4" />
 		<property name="gradeLevelCode" column="GradeLevelCode" type="string" length="50" />
 		
-		<set name="r1StudentIdentifiers" table="StudentIdentifier" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentIdentifiers" table="StudentIdentifier" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentIdentifier"/>
 		</set>		
 		
-		<set name="r1StudentOtherNames" table="StudentOtherName" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentOtherNames" table="StudentOtherName" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentOtherName"/>
 		</set>		
 		
-		<set name="r1StudentAddresses" table="StudentAddress" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentAddresses" table="StudentAddress" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentAddress"/>
 		</set>	
 		
-		<set name="r1StudentEmails" table="StudentEmail" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentEmails" table="StudentEmail" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentEmail"/>
 		</set>
 		
-		<set name="r1StudentTelephones" table="StudentTelephone" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentTelephones" table="StudentTelephone" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentTelephone"/>
 		</set>
 		
-		<set name="r1StudentRaces" table="StudentRace" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentRaces" table="StudentRace" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentRace"/>
 		</set>
 				
-		<set name="r1StudentHealthRecords" table="StudentHealth" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentHealthRecords" table="StudentHealth" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentHealth"/>
 		</set>
 		
-		<set name="r1StudentLanguages" table="StudentLanguage" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentLanguages" table="StudentLanguage" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentLanguage"/>
 		</set>
 		
-		<set name="r1StudentContactRelationships" table="StudentContactRelationship" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentContactRelationships" table="StudentContactRelationship" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentContactRelationship"/>
 		</set>
 		
-		<set name="r1StudentCourseSections" table="StudentCourseSection" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentCourseSections" table="StudentCourseSection" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentCourseSection"/>
 		</set>
 		
-		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="join" cascade="delete">
+		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="studentRefId" not-null="true"/>
 			<one-to-many class="api.model.R1StudentEnrollment"/>
 		</set>

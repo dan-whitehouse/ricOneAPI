@@ -1,9 +1,11 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1LEADAO;
 import api.model.R1LEA;
+import api.model.R1SchoolCalendar;
 import api.common.BasicTransaction;
 import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
@@ -60,6 +62,25 @@ public class R1LEAService extends DBService
     }
     
 
-    
+    public boolean deleteLEA(String leaRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    {
+    	R1LEA row = null;
+    	BasicTransaction tx = null;
+
+    	try
+    	{
+    		tx = startTransaction();
+        	row = r1LEADAO.getLEA(tx, leaRefID, zone, context);
+    		tx.getSession().delete(row);
+    		tx.commit();
+    		return true;
+    	}
+    	catch (Exception ex)
+    	{
+    		rollback(tx);
+    		exceptionMapper(ex, "(Error: R1LEA) Failed to retrieve LEA for LEARefID = "+ leaRefID, true, false);
+    		return false;
+    	}		
+    }
 
 }

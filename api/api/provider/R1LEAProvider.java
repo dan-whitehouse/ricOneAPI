@@ -21,7 +21,6 @@ import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
-
 import api.common.ModelObjectConstants;
 import api.mapping.R1LEAMapper;
 import api.model.R1LEA;
@@ -113,10 +112,10 @@ public class R1LEAProvider extends BaseProvider
 	}
 
 	@Override
-	public boolean deleteSingle(String arg0, SIFZone arg1, SIFContext arg2,RequestMetadata arg3) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
+	public boolean deleteSingle(String refId, SIFZone zone, SIFContext context,RequestMetadata meta) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = leaService.deleteLEA(refId, zone, context);
+		return isDeleted;
 	}
 
 	@Override

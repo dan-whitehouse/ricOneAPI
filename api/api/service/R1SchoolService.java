@@ -5,6 +5,7 @@ import java.util.List;
 import api.dao.BaseDAO;
 import api.dao.R1SchoolDAO;
 import api.model.R1School;
+import api.model.R1Student;
 import api.common.BasicTransaction;
 import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
@@ -62,6 +63,26 @@ public class R1SchoolService extends DBService
 		return list;
     }
     
+    public boolean deleteSchool(String schoolRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    {
+    	R1School row = null;
+    	BasicTransaction tx = null;
+
+    	try
+    	{
+    		tx = startTransaction();
+        	row = r1SchoolDAO.getSchool(tx, schoolRefID, zone, context);
+    		tx.getSession().delete(row);
+    		tx.commit();
+    		return true;
+    	}
+    	catch (Exception ex)
+    	{
+    		rollback(tx);
+    		exceptionMapper(ex, "(Error: R1SchoolService) Failed to retrieve School for schoolRefID = "+ schoolRefID, true, false);
+    		return false;
+    	}		
+    }
 
     
 

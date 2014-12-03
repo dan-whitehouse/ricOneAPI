@@ -112,10 +112,10 @@ public class R1StudentContactProvider extends BaseProvider
 	}
 
 	@Override
-	public boolean deleteSingle(String arg0, SIFZone arg1, SIFContext arg2,RequestMetadata arg3) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
+	public boolean deleteSingle(String refId, SIFZone zone, SIFContext context,RequestMetadata meta) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = studentContactService.deleteStudentContact(refId, zone, context);
+		return isDeleted;
 	}
 
 	@Override

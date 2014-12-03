@@ -5,6 +5,7 @@ import java.util.List;
 import api.dao.BaseDAO;
 import api.dao.R1StaffDAO;
 import api.model.R1Staff;
+import api.model.R1Student;
 import api.common.BasicTransaction;
 import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
@@ -62,6 +63,26 @@ public class R1StaffService extends DBService
 		return list;
     }
     
+    public boolean deleteStaff(String staffRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    {
+    	R1Staff row = null;
+    	BasicTransaction tx = null;
+
+    	try
+    	{
+    		tx = startTransaction();
+        	row = r1StaffDAO.getStaff(tx, staffRefID, zone, context);
+    		tx.getSession().delete(row);
+    		tx.commit();
+    		return true;
+    	}
+    	catch (Exception ex)
+    	{
+    		rollback(tx);
+    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve Staff for staffRefID = "+ staffRefID, true, false);
+    		return false;
+    	}		
+    }
 
     
 

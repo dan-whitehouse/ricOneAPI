@@ -21,7 +21,6 @@ import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
-
 import api.common.ModelObjectConstants;
 import api.mapping.R1CourseSectionMapper;
 import api.model.R1CourseSection;
@@ -30,7 +29,7 @@ import api.service.R1CourseSectionService;
 public class R1CourseSectionProvider extends BaseProvider 
 {
 	private ObjectFactory oFac = new ObjectFactory();
-	private R1CourseSectionService CourseSectionService = new R1CourseSectionService(); 
+	private R1CourseSectionService courseSectionService = new R1CourseSectionService(); 
 	private R1CourseSectionMapper mapper = new R1CourseSectionMapper();
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
@@ -38,7 +37,7 @@ public class R1CourseSectionProvider extends BaseProvider
 	@Override
 	public Object retrieve(SIFZone zone, SIFContext context,PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, IllegalArgumentException 
 	{
-		Collection<R1CourseSection> r1CourseSections = CourseSectionService.getCourseSections(zone,context, pagingInfo);
+		Collection<R1CourseSection> r1CourseSections = courseSectionService.getCourseSections(zone,context, pagingInfo);
 		Collection<K12CourseType> sifCourseSections = new ArrayList<K12CourseType>();
 
 		for (R1CourseSection r1CourseSection : r1CourseSections) 
@@ -55,7 +54,7 @@ public class R1CourseSectionProvider extends BaseProvider
 	@Override
 	public Object retrievByPrimaryKey(String resourceID, SIFZone zone,SIFContext context, RequestMetadata metadata) throws PersistenceException, IllegalArgumentException 
 	{
-		R1CourseSection r1CourseSection = CourseSectionService.getCourseSection(resourceID, zone, context);
+		R1CourseSection r1CourseSection = courseSectionService.getCourseSection(resourceID, zone, context);
 
 		if (r1CourseSection == null) 
 		{
@@ -113,10 +112,10 @@ public class R1CourseSectionProvider extends BaseProvider
 	}
 
 	@Override
-	public boolean deleteSingle(String arg0, SIFZone arg1, SIFContext arg2,RequestMetadata arg3) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
+	public boolean deleteSingle(String refId, SIFZone zone, SIFContext context,RequestMetadata meta) throws IllegalArgumentException,sif3.common.exception.PersistenceException 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = courseSectionService.deleteCourseSection(refId, zone, context);
+		return isDeleted;
 	}
 
 	@Override

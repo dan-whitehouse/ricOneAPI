@@ -1,9 +1,11 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1CourseDAO;
 import api.model.R1Course;
+import api.model.R1SchoolCalendar;
 import api.common.BasicTransaction;
 import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
@@ -62,7 +64,26 @@ public class R1CourseService extends DBService
 		return list;
     }
     
+    public boolean deleteCourse(String courseRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    {
+    	R1Course row = null;
+    	BasicTransaction tx = null;
 
+    	try
+    	{
+    		tx = startTransaction();
+        	row = r1CourseDAO.getCourse(tx, courseRefID, zone, context);
+    		tx.getSession().delete(row);
+    		tx.commit();
+    		return true;
+    	}
+    	catch (Exception ex)
+    	{
+    		rollback(tx);
+    		exceptionMapper(ex, "(Error: R1CourseService) Failed to retrieve Course for courseRefID = "+ courseRefID, true, false);
+    		return false;
+    	}		
+    }
     
 
 }
