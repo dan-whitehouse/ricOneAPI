@@ -70,7 +70,7 @@ public class R1LEAMapper
 			
 			
 			//Fill Object
-			sifLEA.setRefId(r1LEA.getLeaId());			
+			sifLEA.setRefId(r1LEA.getLeaRefId());			
 			sifLEA.setIdentification(sifIdentification);
 			sifLEA.setAddressList(sifAddressList);
 			sifLEA.setPhoneNumberList(sifPhoneNumberList);

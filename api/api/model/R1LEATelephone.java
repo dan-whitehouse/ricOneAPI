@@ -6,7 +6,7 @@ public class R1LEATelephone implements Serializable
 {
 	private static final long serialVersionUID = 4255199616263324176L;
     
-	private String schoolPhoneRefId;
+	private String leaTelephoneRefId;
 	private String leaRefId;
 	private String telephoneNumber;
 	private boolean primaryTelephoneNumberIndicator;
@@ -15,13 +15,7 @@ public class R1LEATelephone implements Serializable
 		
 	public R1LEATelephone() {}
 
-	public String getSchoolPhoneRefId() {
-		return schoolPhoneRefId;
-	}
-
-	public void setSchoolPhoneRefId(String schoolPhoneRefId) {
-		this.schoolPhoneRefId = schoolPhoneRefId;
-	}
+	
 
 	public String getLeaRefId() {
 		return leaRefId;
@@ -58,7 +52,7 @@ public class R1LEATelephone implements Serializable
 
 	@Override
 	public String toString() {
-		return "R1LEATelephone [schoolPhoneRefId=" + schoolPhoneRefId
+		return "R1LEATelephone [schoolPhoneRefId=" + leaTelephoneRefId
 				+ ", leaRefId=" + leaRefId + ", telephoneNumber="
 				+ telephoneNumber + ", primaryTelephoneNumberIndicator="
 				+ primaryTelephoneNumberIndicator
@@ -73,6 +67,20 @@ public class R1LEATelephone implements Serializable
 	public void setR1Lea(R1LEA r1Lea)
 	{
 		this.r1Lea = r1Lea;
+	}
+
+
+
+	public String getLeaTelephoneRefId()
+	{
+		return leaTelephoneRefId;
+	}
+
+
+
+	public void setLeaTelephoneRefId(String leaTelephoneRefId)
+	{
+		this.leaTelephoneRefId = leaTelephoneRefId;
 	}
 
 	

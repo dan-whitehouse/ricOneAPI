@@ -70,7 +70,7 @@
 		<property name="postalCode" column="PostalCode" type="string" length="50" />
 		<property name="addressCountyName" column="AddressCountyName" type="string" length="30" />
 		
-		<set name="r1Schools" table="School" inverse="true" lazy="true" fetch="select" cascade="save-update, delete-orphan">
+		<set name="r1Schools" table="School" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
 			<key column="leaRefId" not-null="true"/>
 			<one-to-many class="api.model.R1School"/>
 		</set>
@@ -83,7 +83,7 @@
 	</class>
 	
 	<class name="api.model.R1LEATelephone" table="LEATelephone">
-		<id name="schoolPhoneRefId" column="SchoolPhoneRefId" type="string">
+		<id name="leaTelephoneRefId" column="LEATelephoneRefId" type="string">
 			<generator class="guid" />
 		</id>
 		<property name="leaRefId" column="LEARefId" type="string" />

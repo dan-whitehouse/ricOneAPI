@@ -28,6 +28,17 @@
     <provisionedZones>
        <provisionedZone id="DemoZone">
             <services>   
+                <service name="csv" contextId="DEFAULT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">REJECTED</right>
+                    <right type="DELETE">REJECTED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">REJECTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
                 <service name="k12Students" contextId="DEFAULT">
                   <rights>
                     <right type="QUERY">APPROVED</right>

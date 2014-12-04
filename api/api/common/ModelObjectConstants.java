@@ -54,7 +54,11 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo c_Course = new ModelObjectInfo("k12Course", K12CourseType.class);
 	
 	public static final ModelObjectInfo c_CourseSections = new ModelObjectInfo("k12Rosters", K12SectionCollectionType.class);
-	public static final ModelObjectInfo c_CourseSection = new ModelObjectInfo("k12Rosters", K12SectionType.class);
+	public static final ModelObjectInfo c_CourseSection = new ModelObjectInfo("k12Roster", K12SectionType.class);
+	
+	/**********************************************MISC STUFF**********************************************/	
+	public static final ModelObjectInfo c_CSVs= new ModelObjectInfo("csvs", null);
+	public static final ModelObjectInfo c_CSV = new ModelObjectInfo("csv", null);
 
 
 
