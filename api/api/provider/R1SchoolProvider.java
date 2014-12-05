@@ -22,7 +22,7 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
 import api.common.ModelObjectConstants;
-import api.mapping.R1SchoolMapper;
+import api.mapping.sif32.R1SchoolMapper;
 import api.model.R1School;
 import api.service.R1SchoolService;
 

@@ -1,4 +1,4 @@
-package api.mapping;
+package api.mapping.sif32;
 
 //SIF Common
 import sif.dd.us32.model.LeaCEDSType.PhoneNumberList;

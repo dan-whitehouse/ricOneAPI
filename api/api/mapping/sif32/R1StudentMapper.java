@@ -1,4 +1,4 @@
-package api.mapping;
+package api.mapping.sif32;
 
 //SIF Common
 
@@ -6,6 +6,7 @@ package api.mapping;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 
 import sif.dd.us32.model.K12StudentType.Contact.EmailList;
 import sif.dd.us32.model.K12StudentType.Contact.EmailList.Email;
@@ -43,9 +44,10 @@ import api.model.R1StudentTelephone;
 public class R1StudentMapper
 {
 	private ObjectFactory oFac = new ObjectFactory();
-	
+
+		
 	//--Student---------------------------------------------------------------//
-	public K12StudentType modelToSIF(R1Student r1Student)
+	public K12StudentType modelToSIF32(R1Student r1Student)
 	{
 		K12StudentType sifStudent = oFac.createK12StudentType();
 		Identity sifIdentity = oFac.createK12StudentTypeIdentity();
@@ -147,7 +149,8 @@ public class R1StudentMapper
 			Enrollment sifEnrollment = new Enrollment();
 			sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
 			sifEnrollment.setSchoolId(enrollment.getSchoolRefId());
-			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
+			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());			
+			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
 			sifEnrollment.setEntryType(enrollment.getEntryTypeCode());
 			sifEnrollment.setExitGradeLevel(enrollment.getExitGradeLevelCode());
 			sifEnrollment.setExitStatus(enrollment.getExitOrWithdrawalStatusCode());
@@ -239,7 +242,11 @@ public class R1StudentMapper
 		return sifStudent;
 	}
 	
-	public R1Student sifToModel(K12StudentType sifStudent)
+	
+	
+	
+	
+	public R1Student sif32ToModel(K12StudentType sifStudent)
 	{
 		R1Student r1Student = new R1Student();
 		r1Student.setStudentRefId(sifStudent.getRefId());		
@@ -250,7 +257,8 @@ public class R1StudentMapper
 		r1Student.setLastName(sifStudent.getIdentity().getName().getLastName());
 		r1Student.setPrefix(sifStudent.getIdentity().getName().getPrefix());
 				
-		//Demographics
+		
+		/********** Demographics **********/
 		r1Student.setSexCode(sifStudent.getDemographic().getSex());
 		
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -287,7 +295,7 @@ public class R1StudentMapper
 	}
 	
 
-	
+
 	
 	
 }

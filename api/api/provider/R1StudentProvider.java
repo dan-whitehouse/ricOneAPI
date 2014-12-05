@@ -21,9 +21,8 @@ import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
-
 import api.common.ModelObjectConstants;
-import api.mapping.R1StudentMapper;
+import api.mapping.sif32.R1StudentMapper;
 import api.model.R1Student;
 import api.service.R1StudentService;
 
@@ -43,7 +42,7 @@ public class R1StudentProvider extends BaseProvider
 
 		for (R1Student r1Student : r1Students) 
 		{
-			sifStudents.add(mapper.modelToSIF(r1Student));
+			sifStudents.add(mapper.modelToSIF32(r1Student));
 		}
 
 		K12StudentCollectionType sifStudentCollection = oFac.createK12StudentCollectionType();
@@ -62,7 +61,7 @@ public class R1StudentProvider extends BaseProvider
 			return null;
 		}
 
-		K12StudentType sifStudent = mapper.modelToSIF(r1Student);
+		K12StudentType sifStudent = mapper.modelToSIF32(r1Student);
 		return sifStudent;
 	}
 
