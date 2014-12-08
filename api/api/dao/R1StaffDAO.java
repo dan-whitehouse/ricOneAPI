@@ -1,6 +1,7 @@
 package api.dao;
 
 import api.model.R1Staff;
+import api.model.R1Student;
 import api.common.BasicTransaction;
 
 import java.util.List;
@@ -66,6 +67,22 @@ public class R1StaffDAO extends BaseDAO
         	System.out.println("DW-Exception-DAO: " + e.getMessage());
             throw new PersistenceException("Unable to retrieve List of R1Staffs from R1StaffDAO");
         }	
+    }
+    
+    public boolean deleteStaff(BasicTransaction tx, String staffRefId, SIFZone zone, SIFContext context)
+    {
+    	R1Staff staff = null;
+    	try
+    	{
+    		staff = getStaff(tx, staffRefId, zone, context);
+    		tx.getSession().delete(staff);
+    		return true;
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("R1StaffDAO deleteStaff() Error: " + e.getMessage());
+    		return false; 		
+    	}
     }
 
 }

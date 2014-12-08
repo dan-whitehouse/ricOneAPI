@@ -52,6 +52,18 @@ public class R1StudentMapper
 		GOtherNameListType sifOtherNameList = oFac.createGOtherNameListType();
 	
 
+		
+		/********** Name **********/
+		GNameOfRecordType nameRecordType  = oFac.createGNameOfRecordType();	
+		GBaseNameType name = oFac.createGBaseNameType();
+		name.setGivenName(r1Student.getFirstName());
+		name.setMiddleName(r1Student.getMiddleName());
+		name.setFamilyName(r1Student.getLastName());
+		name.setPrefix(r1Student.getPrefix());
+		name.setSuffix(r1Student.getGenerationCode());	
+		nameRecordType.setNameOfRecord(name);
+		
+		
 		/********** Demographics **********/
 		sifDemographic.setBirthDate(api.common.Helper.getDateValue(r1Student.getBirthdate().toString()));
 		sifDemographic.setUsCitizenshipStatus(r1Student.getUsCitizenshipStatusCode());
@@ -175,7 +187,7 @@ public class R1StudentMapper
 		}
 		
 		
-		/********** OTHER NAMES **********/
+		/********** Other Names **********/
 		for(R1StudentOtherName otherName : r1Student.getR1StudentOtherNames())
 		{
 			GOtherNameType sifOtherName = oFac.createGOtherNameType();
@@ -194,11 +206,10 @@ public class R1StudentMapper
 		}
 		
 		
-		
-		
-		
+
 		/********** LISTS **********/
 		sifStudent.setRefId(r1Student.getStudentRefId());
+		sifStudent.setName(nameRecordType);
 		sifStudent.setDemographics(sifDemographic);	
 		sifStudent.setLanguages(sifLanaguageList);	
 		sifStudent.setOtherEmails(sifEmailList);

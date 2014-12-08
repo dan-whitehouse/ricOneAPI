@@ -64,59 +64,29 @@ public class R1StaffService extends DBService
 		return list;
     }
     
-    public boolean deleteStaff(String staffRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    public boolean deleteStaff(String staffRefId, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
     {
-    	R1Staff row = null;
     	BasicTransaction tx = null;
-
     	try
     	{
     		tx = startTransaction();
-        	row = r1StaffDAO.getStaff(tx, staffRefID, zone, context);
-    		tx.getSession().delete(row);
-    		tx.commit();
-    		return true;
+    		if(r1StaffDAO.deleteStaff(tx, staffRefId, zone, context))
+    		{
+    			tx.commit();
+    			return true;
+    		}
+    		else
+    		{
+    			rollback(tx);
+    			return false;
+    		}  		
     	}
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve Staff for staffRefID = "+ staffRefID, true, false);
+    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve staff for staffRefID = "+ staffRefId, true, false);
     		return false;
     	}		
     }
-    
-    @SuppressWarnings("null")
-	public List<OperationStatus> deleteStaffs(List<String> staffRefIds, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
-    {
-    	BasicTransaction tx = startTransaction();
-		List<R1Staff> rows = null;
-		List<OperationStatus> status = null;	
-    	try
-    	{
-    		for(String id : staffRefIds)
-    		{
-    			R1Staff row = r1StaffDAO.getStaff(tx, id, zone, context);
-    	    	rows.add(row);
-    		}
-    		
-    		for(R1Staff staff : rows)
-    		{
-    			tx.getSession().delete(staff);
-    			OperationStatus s = new OperationStatus();
-    			s.setResourceID(staff.getStaffRefId());
-    			s.setStatus(1);
-    			status.add(s);
-    		}   		
-    		tx.commit();
-    		return status;
-    	}
-    	catch (Exception ex)
-    	{
-    		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1StaffService) Failed to retrieve Staffs", true, false);
-    		return status;
-    	}		
-    }
-
     
 }

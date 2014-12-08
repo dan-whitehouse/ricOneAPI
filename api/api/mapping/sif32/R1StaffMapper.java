@@ -3,6 +3,11 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import sif.dd.us32.model.K12SectionType;
+import sif.dd.us32.model.K12SectionType.Course;
+import sif.dd.us32.model.K12StaffType.Employment;
+import sif.dd.us32.model.K12StaffType.Identity.Identification;
+import sif.dd.us32.model.K12StaffType.Identity;
 import sif.dd.us32.model.K12StaffType.Assignment;
 import sif.dd.us32.model.ObjectFactory;
 import sif.dd.us32.model.K12StaffType;
@@ -12,10 +17,11 @@ import sif.dd.us32.model.K12StaffType.Identity.Name;
 import sif.dd.us32.model.K12StaffType.Contact;
 import sif.dd.us32.model.K12StaffType.Contact.EmailList;
 import sif.dd.us32.model.K12StaffType.Contact.EmailList.Email;
-import api.model.R1School;
 import api.model.R1Staff;
+import api.model.R1StaffCourseSection;
 import api.model.R1StaffEmail;
 import api.model.R1StaffAssignment;
+import api.model.R1StaffIdentifier;
 
 
 public class R1StaffMapper
@@ -90,6 +96,29 @@ public class R1StaffMapper
 			}	
 			
 			
+			/********** Course Section **********/
+			for(R1StaffCourseSection courseSection : r1Staff.getR1StaffCourseSections())
+			{
+				K12SectionType sifSection = oFac.createK12SectionType();
+
+				
+				//Course sifCourse = oFac.createK12SectionTypeCourse();
+				//sifSection.setCourse(sifCourse);
+				sifSection.setRefId(courseSection.getStaffCourseSectionRefId());
+				
+			}
+			
+			
+			
+			/********** Identification **********/
+			for(R1StaffIdentifier identifier : r1Staff.getR1StaffIdentifiers())
+			{
+				Identification sifIdentification = oFac.createK12StaffTypeIdentityIdentification();
+				sifIdentification.setStaffId(identifier.getStaffId());			
+				sifIdentity.setIdentification(sifIdentification);
+			}
+			
+			
 			//Fill Object
 			
 			sifStaff.setRefId(r1Staff.getStaffRefId());
@@ -97,6 +126,9 @@ public class R1StaffMapper
 			sifStaff.setDemographic(sifDemographic);
 			sifStaff.setContact(sifContact);
 			sifStaff.setAssignment(sifAssignment);
+			sifStaff.set
+
+			
 			
 			
 			return sifStaff;

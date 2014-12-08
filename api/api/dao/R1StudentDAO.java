@@ -65,5 +65,23 @@ public class R1StudentDAO extends BaseDAO
             throw new PersistenceException("Unable to retrieve List of R1Students from R1StudentDAO");
         }	
     }
+    
+    
+    public boolean deleteStudent(BasicTransaction tx, String studentRefId, SIFZone zone, SIFContext context)
+    {
+    	R1Student student = null;
+    	try
+    	{
+    		student = getStudent(tx, studentRefId, zone, context);
+    		tx.getSession().delete(student);
+    		return true;
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("R1StudentDAO deleteStudent() Error: " + e.getMessage());
+    		return false; 		
+    	}
+    }
+    
 
 }

@@ -1,6 +1,7 @@
 package api.service;
 
 import java.util.List;
+
 import api.dao.BaseDAO;
 import api.dao.R1StudentHealthDAO;
 import api.model.R1StudentHealth;
@@ -59,23 +60,27 @@ public class R1StudentHealthService extends DBService
 		return list;
     }
     
-    public boolean deleteStudentHealth(String StudentHealthRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    public boolean deleteStudentHealth(String studentHealthRefId, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
     {
-    	R1StudentHealth row = null;
     	BasicTransaction tx = null;
-
     	try
     	{
     		tx = startTransaction();
-        	row = r1StudentHealthDAO.getStudentHealth(tx, StudentHealthRefID, zone, context);
-    		tx.getSession().delete(row);
-    		tx.commit();
-    		return true;
+    		if(r1StudentHealthDAO.deleteStudentHealth(tx, studentHealthRefId, zone, context))
+    		{
+    			tx.commit();
+    			return true;
+    		}
+    		else
+    		{
+    			rollback(tx);
+    			return false;
+    		}  		
     	}
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1StudentHealthService) Failed to retrieve StudentHealth for StudentHealthRefID = "+ StudentHealthRefID, true, false);
+    		exceptionMapper(ex, "(Error: R1StudentHealthService) Failed to retrieve student for studentRefID = "+ studentHealthRefId, true, false);
     		return false;
     	}		
     }

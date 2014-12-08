@@ -59,23 +59,27 @@ public class R1StudentService extends DBService
 		return list;
     }
     
-    public boolean deleteStudent(String studentRefID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+    public boolean deleteStudent(String studentRefId, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
     {
-    	R1Student row = null;
     	BasicTransaction tx = null;
-
     	try
     	{
     		tx = startTransaction();
-        	row = r1StudentDAO.getStudent(tx, studentRefID, zone, context);
-    		tx.getSession().delete(row);
-    		tx.commit();
-    		return true;
+    		if(r1StudentDAO.deleteStudent(tx, studentRefId, zone, context))
+    		{
+    			tx.commit();
+    			return true;
+    		}
+    		else
+    		{
+    			rollback(tx);
+    			return false;
+    		}  		
     	}
     	catch (Exception ex)
     	{
     		rollback(tx);
-    		exceptionMapper(ex, "(Error: R1StudentService) Failed to retrieve student for studentRefID = "+ studentRefID, true, false);
+    		exceptionMapper(ex, "(Error: R1StudentService) Failed to retrieve student for studentRefID = "+ studentRefId, true, false);
     		return false;
     	}		
     }

@@ -1,5 +1,6 @@
 package api.dao;
 
+import api.model.R1Student;
 import api.model.R1StudentHealth;
 import api.common.BasicTransaction;
 
@@ -64,6 +65,22 @@ public class R1StudentHealthDAO extends BaseDAO
         {
             throw new PersistenceException("Unable to retrieve List of R1StudentHealths from R1StudentHealthDAO");
         }	
+    }
+    
+    public boolean deleteStudentHealth(BasicTransaction tx, String studentHealthRefId, SIFZone zone, SIFContext context)
+    {
+    	R1StudentHealth student = null;
+    	try
+    	{
+    		student = getStudentHealth(tx, studentHealthRefId, zone, context);
+    		tx.getSession().delete(student);
+    		return true;
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("R1StudentHealthDAO deleteStudentHealth() Error: " + e.getMessage());
+    		return false; 		
+    	}
     }
 
 }
