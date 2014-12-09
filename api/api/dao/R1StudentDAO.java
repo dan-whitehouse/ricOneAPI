@@ -25,8 +25,13 @@ public class R1StudentDAO extends BaseDAO
     {
     	 try
          {
-             Criteria criteria = tx.getSession().createCriteria(R1Student.class)
-                .add(Restrictions.eq("studentRefId", studentRefId)); //the actual sql type query
+    		 Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")
+    		    .add(Restrictions.eq("r1Student.studentRefId", studentRefId))
+            	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
+                .createAlias("r1Enrollments.r1School", "r1School")
+                .createAlias("r1School.r1Lea", "r1Lea")
+                .add(Restrictions.eq("r1Lea.leaId", zone.getId()));
+                //the actual sql type query
                
              
              List<R1Student> students = criteria.list();
@@ -54,9 +59,12 @@ public class R1StudentDAO extends BaseDAO
     {        
     	try
         {
-            Criteria criteria = tx.getSession().createCriteria(R1Student.class);
-               //.add(Restrictions.eq("environmentID", environmentID))
-               //.add(Restrictions.eq("adapterType", adapterType.name()));
+            Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")
+            	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
+            	.createAlias("r1Enrollments.r1School", "r1School")
+            	.createAlias("r1School.r1Lea", "r1Lea")           	
+            	.add(Restrictions.eq("r1Lea.leaId", zone.getId()));
+
             
             return criteria.list();  
         }

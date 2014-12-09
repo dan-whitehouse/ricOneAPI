@@ -49,9 +49,7 @@ public class R1StudentMapper
 		SLanguageList sifLanaguageList = oFac.createSLanguageList();
 		STelephoneList sifPhoneNumberList = oFac.createSTelephoneList();
 		SEnrollmentList sifEnrollmentList = oFac.createSEnrollmentList();
-		GOtherNameListType sifOtherNameList = oFac.createGOtherNameListType();
-	
-
+		GOtherNameListType sifOtherNameList = oFac.createGOtherNameListType();	
 		
 		/********** Name **********/
 		GNameOfRecordType nameRecordType  = oFac.createGNameOfRecordType();	

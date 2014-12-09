@@ -133,11 +133,6 @@
 		<property name="postalCode" column="PostalCode" type="string" length="50" />
 		<property name="addressCountyName" column="AddressCountyName" type="string" length="30" />
 		
-		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="select" cascade="save-update, delete-orphan">
-			<key column="schoolRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentEnrollment"/>
-		</set>
-		
 		<set name="r1Courses" table="Course" inverse="true" lazy="true" fetch="select" cascade="save-update, delete-orphan">
 			<key column="schoolRefId" not-null="true"/>
 			<one-to-many class="api.model.R1Course"/>
@@ -163,10 +158,149 @@
 			<one-to-many class="api.model.R1StaffAssignment"/>
 		</set>
 		
+		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="schoolRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentEnrollment"/>
+		</set>
+		
 		<many-to-one name="r1Lea" class="api.model.R1LEA" fetch="select">
 			<column name="leaRefId" not-null="true"></column>
 		</many-to-one>
+		
+		
 	</class>
+
+
+	
+	<class name="api.model.R1StudentEnrollment" table="StudentEnrollment">
+		<id name="studentEnrollmentRefId" column="StudentEnrollmentRefId" type="string">
+			<generator class="guid" />
+		</id>
+		<property name="studentRefId" column="StudentRefId" type="string" />
+		<property name="schoolRefId" column="SchoolRefId" type="string" />
+		<property name="entryGradeLevelCode" column="EntryGradeLevelCode" type="string" length="50" />
+		<property name="enrollmentStatusCode" column="EnrollmentStatusCode" type="string" length="50" />
+		<property name="entryTypeCode" column="EntryTypeCode" type="string" length="50" />
+		<property name="exitGradeLevelCode" column="ExitGradeLevelCode" type="string" length="50" />
+		<property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50" />
+		<property name="exitOrWithdrawalTypeCode" column="ExitOrWithdrawalTypeCode" type="string" length="50" />
+		<property name="displacedStudentStatus" column="DisplacedStudentStatus" type="boolean" />
+		<property name="endOfTermStatusCode" column="EndOfTermStatusCode" type="string" length="50" />
+		<property name="promotionReasonCode" column="PromotionReasonCode" type="string" length="50" />
+		<property name="foodServiceEligibilityCode" column="FoodServiceEligibilityCode" type="string" length="50" />
+		<property name="firstEntryDateIntoUSSchool" column="FirstEntryDateIntoUSSchool" type="date" />
+		<property name="homeRoomIdentifier" column="HomeRoomIdentifier" type="string" length="30" />
+		<property name="responsibleSchoolTypeCode" column="ResponsibleSchoolTypeCode" type="string" length="50" />
+		<property name="counselorRefId" column="CounselorRefId" type="string" />
+		
+		<many-to-one name="r1Student" class="api.model.R1Student" fetch="select">
+			<column name="studentRefId" not-null="true"></column>
+		</many-to-one>
+		
+		<many-to-one name="r1School" class="api.model.R1School" fetch="select">
+			<column name="schoolRefId" not-null="true"></column>
+		</many-to-one>
+	</class>
+
+	<!-- ########################################## R1STUDENT ########################################## -->
+	<class name="api.model.R1Student" table="Student">
+		<id name="studentRefId" column="StudentRefId" type="string">
+			<generator class="guid" />
+		</id>
+		<property name="firstName" column="FirstName" type="string" length="35" />
+		<property name="middleName" column="MiddleName" type="string" length="35" />
+		<property name="lastName" column="LastName" type="string" length="35" />
+		<property name="generationCode" column="GenerationCode" type="string" length="10" />
+		<property name="prefix" column="Prefix" type="string" length="30" />
+		<property name="birthdate" column="Birthdate" type="date" />
+		<property name="sexCode" column="SexCode" type="string" length="30" />
+		<property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean" />
+		<property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50" />
+		<property name="counselor" column="Counselor" type="string" length="50" />
+		<property name="cohortGraduationYear" column="CohortGraduationYear" type="string" length="4" />
+		<property name="gradeLevelCode" column="GradeLevelCode" type="string" length="50" />
+		
+		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="select" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentEnrollment"/>
+		</set>
+		
+		<set name="r1StudentIdentifiers" table="StudentIdentifier" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentIdentifier"/>
+		</set>		
+		
+		<set name="r1StudentOtherNames" table="StudentOtherName" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentOtherName"/>
+		</set>		
+		
+		<set name="r1StudentAddresses" table="StudentAddress" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentAddress"/>
+		</set>	
+		
+		<set name="r1StudentEmails" table="StudentEmail" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentEmail"/>
+		</set>
+		
+		<set name="r1StudentTelephones" table="StudentTelephone" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentTelephone"/>
+		</set>
+		
+		<set name="r1StudentRaces" table="StudentRace" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentRace"/>
+		</set>
+				
+		<set name="r1StudentHealthRecords" table="StudentHealth" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentHealth"/>
+		</set>
+		
+		<set name="r1StudentLanguages" table="StudentLanguage" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentLanguage"/>
+		</set>
+		
+		<set name="r1StudentContactRelationships" table="StudentContactRelationship" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentContactRelationship"/>
+		</set>
+		
+		<set name="r1StudentCourseSections" table="StudentCourseSection" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
+			<key column="studentRefId" not-null="true"/>
+			<one-to-many class="api.model.R1StudentCourseSection"/>
+		</set>
+		
+		
+	</class>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<class name="api.model.R1SchoolCalendar" table="SchoolCalendar">
 		<id name="schoolCalendarRefId" column="SchoolCalendarRefId" type="string">
@@ -251,109 +385,7 @@
 	
 
 
-	<!-- ########################################## R1STUDENT ########################################## -->
-	<class name="api.model.R1Student" table="Student">
-		<id name="studentRefId" column="StudentRefId" type="string">
-			<generator class="guid" />
-		</id>
-		<property name="firstName" column="FirstName" type="string" length="35" />
-		<property name="middleName" column="MiddleName" type="string" length="35" />
-		<property name="lastName" column="LastName" type="string" length="35" />
-		<property name="generationCode" column="GenerationCode" type="string" length="10" />
-		<property name="prefix" column="Prefix" type="string" length="30" />
-		<property name="birthdate" column="Birthdate" type="date" />
-		<property name="sexCode" column="SexCode" type="string" length="30" />
-		<property name="hispanicLatinoEthnicity" column="HispanicLatinoEthnicity" type="boolean" />
-		<property name="usCitizenshipStatusCode" column="USCitizenshipStatusCode" type="string" length="50" />
-		<property name="counselor" column="Counselor" type="string" length="50" />
-		<property name="cohortGraduationYear" column="CohortGraduationYear" type="string" length="4" />
-		<property name="gradeLevelCode" column="GradeLevelCode" type="string" length="50" />
-		
-		<set name="r1StudentIdentifiers" table="StudentIdentifier" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentIdentifier"/>
-		</set>		
-		
-		<set name="r1StudentOtherNames" table="StudentOtherName" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentOtherName"/>
-		</set>		
-		
-		<set name="r1StudentAddresses" table="StudentAddress" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentAddress"/>
-		</set>	
-		
-		<set name="r1StudentEmails" table="StudentEmail" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentEmail"/>
-		</set>
-		
-		<set name="r1StudentTelephones" table="StudentTelephone" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentTelephone"/>
-		</set>
-		
-		<set name="r1StudentRaces" table="StudentRace" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentRace"/>
-		</set>
-				
-		<set name="r1StudentHealthRecords" table="StudentHealth" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentHealth"/>
-		</set>
-		
-		<set name="r1StudentLanguages" table="StudentLanguage" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentLanguage"/>
-		</set>
-		
-		<set name="r1StudentContactRelationships" table="StudentContactRelationship" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentContactRelationship"/>
-		</set>
-		
-		<set name="r1StudentCourseSections" table="StudentCourseSection" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentCourseSection"/>
-		</set>
-		
-		<set name="r1StudentEnrollments" table="StudentEnrollment" inverse="true" lazy="true" fetch="join" cascade="save-update, delete-orphan">
-			<key column="studentRefId" not-null="true"/>
-			<one-to-many class="api.model.R1StudentEnrollment"/>
-		</set>
-	</class>
 	
-	<class name="api.model.R1StudentEnrollment" table="StudentEnrollment">
-		<id name="studentEnrollmentRefId" column="StudentEnrollmentRefId" type="string">
-			<generator class="guid" />
-		</id>
-		<property name="studentRefId" column="StudentRefId" type="string" />
-		<property name="schoolRefId" column="SchoolRefId" type="string" />
-		<property name="entryGradeLevelCode" column="EntryGradeLevelCode" type="string" length="50" />
-		<property name="enrollmentStatusCode" column="EnrollmentStatusCode" type="string" length="50" />
-		<property name="entryTypeCode" column="EntryTypeCode" type="string" length="50" />
-		<property name="exitGradeLevelCode" column="ExitGradeLevelCode" type="string" length="50" />
-		<property name="exitOrWithdrawalStatusCode" column="ExitOrWithdrawalStatusCode" type="string" length="50" />
-		<property name="exitOrWithdrawalTypeCode" column="ExitOrWithdrawalTypeCode" type="string" length="50" />
-		<property name="displacedStudentStatus" column="DisplacedStudentStatus" type="boolean" />
-		<property name="endOfTermStatusCode" column="EndOfTermStatusCode" type="string" length="50" />
-		<property name="promotionReasonCode" column="PromotionReasonCode" type="string" length="50" />
-		<property name="foodServiceEligibilityCode" column="FoodServiceEligibilityCode" type="string" length="50" />
-		<property name="firstEntryDateIntoUSSchool" column="FirstEntryDateIntoUSSchool" type="date" />
-		<property name="homeRoomIdentifier" column="HomeRoomIdentifier" type="string" length="30" />
-		<property name="responsibleSchoolTypeCode" column="ResponsibleSchoolTypeCode" type="string" length="50" />
-		<property name="counselorRefId" column="CounselorRefId" type="string" />
-		
-		<many-to-one name="r1Student" class="api.model.R1Student" fetch="select">
-			<column name="studentRefId" not-null="true"></column>
-		</many-to-one>
-		
-		<many-to-one name="r1School" class="api.model.R1School" fetch="select">
-			<column name="schoolRefId" not-null="true"></column>
-		</many-to-one>
-	</class>
 	
 	
 	<class name="api.model.R1StudentLanguage" table="StudentLanguage">

@@ -68,20 +68,6 @@ public class R1StudentProvider extends BaseProvider
 		return sifStudent;
 	}
 
-//	@Override
-//	public Object retrievByPrimaryKey(String resourceID, SIFZone zone,SIFContext context, RequestMetadata metadata) throws PersistenceException, IllegalArgumentException 
-//	{
-//		R1Student r1Student = studentService.getStudent(resourceID, zone, context);
-//		api.mapping.sif32composite.R1StudentMapper m = new api.mapping.sif32composite.R1StudentMapper();
-//
-//		if (r1Student == null) 
-//		{
-//			return null;
-//		}
-//
-//		sif.dd.us321api.model.K12StudentCoreType sifStudent = m.modelToSIF32Simple(r1Student);
-//		return sifStudent;
-//	}
 	
 	@Override
 	public MarshalFactory getMarshaller() 

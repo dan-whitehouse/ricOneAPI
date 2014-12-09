@@ -126,7 +126,6 @@ public class R1StaffMapper
 			sifStaff.setDemographic(sifDemographic);
 			sifStaff.setContact(sifContact);
 			sifStaff.setAssignment(sifAssignment);
-			sifStaff.set
 
 			
 			
