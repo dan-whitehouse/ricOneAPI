@@ -20,79 +20,109 @@ package api.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="StaffIdentifier")
 public class R1StaffIdentifier implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="StaffIdentifierRefId", unique=true, nullable=false)
 	private String staffIdentifierRefId;
+	
+	//@Column(name="StaffRefId")
 	private String staffRefId;
+	
+	@Column(name="IdentificationSystemCode")
 	private String identificationSystemCode;
+	
+	@Column(name="StaffId")
 	private String staffId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="StaffRefId", nullable=false)
 	private R1Staff r1Staff;
 	
-	
+	//--
 	public R1StaffIdentifier() {}
 
+	public R1StaffIdentifier(String staffIdentifierRefId, String staffRefId,
+			String identificationSystemCode, String staffId, R1Staff r1Staff) 
+	{
+		this.staffIdentifierRefId = staffIdentifierRefId;
+		this.staffRefId = staffRefId;
+		this.identificationSystemCode = identificationSystemCode;
+		this.staffId = staffId;
+		this.r1Staff = r1Staff;
+	}
 
-	public String getStaffIdentifierRefId() {
+	public String getStaffIdentifierRefId() 
+	{
 		return staffIdentifierRefId;
 	}
 
-
-	public void setStaffIdentifierRefId(String staffIdentifierRefId) {
+	public void setStaffIdentifierRefId(String staffIdentifierRefId) 
+	{
 		this.staffIdentifierRefId = staffIdentifierRefId;
 	}
-
-
-	public String getStaffRefId() {
+	
+	public String getStaffRefId() 
+	{
 		return staffRefId;
 	}
-
 
 	public void setStaffRefId(String staffRefId) {
 		this.staffRefId = staffRefId;
 	}
-
-
-	public String getIdentificationSystemCode() {
+	
+	public String getIdentificationSystemCode() 
+	{
 		return identificationSystemCode;
 	}
 
-
-	public void setIdentificationSystemCode(String identificationSystemCode) {
+	public void setIdentificationSystemCode(String identificationSystemCode) 
+	{
 		this.identificationSystemCode = identificationSystemCode;
 	}
-
-
-	public String getStaffId() {
+	
+	public String getStaffId() 
+	{
 		return staffId;
 	}
 
-
-	public void setStaffId(String staffId) {
+	public void setStaffId(String staffId) 
+	{
 		this.staffId = staffId;
 	}
-
-
-	@Override
-	public String toString() {
-		return "R1StaffIdentifier [staffIdentifierRefId="
-				+ staffIdentifierRefId + ", staffRefId=" + staffRefId
-				+ ", identificationSystemCode=" + identificationSystemCode
-				+ ", staffId=" + staffId + "]";
-	}
-
 
 	public R1Staff getR1Staff()
 	{
 		return r1Staff;
 	}
 
-
 	public void setR1Staff(R1Staff r1Staff)
 	{
 		this.r1Staff = r1Staff;
+	}
+
+	//--
+	@Override
+	public String toString() {
+		return "R1StaffIdentifier [staffIdentifierRefId="
+				+ staffIdentifierRefId + ", staffRefId=" + staffRefId
+				+ ", identificationSystemCode=" + identificationSystemCode
+				+ ", staffId=" + staffId + "]";
 	}
 
 

@@ -44,7 +44,7 @@ public class R1StudentService extends DBService
     {
     	List<R1Student> list = null;
     	BasicTransaction tx = null;
-
+    	System.out.println("StudentService -Pre Try");
     	try
     	{
     		tx = startTransaction();

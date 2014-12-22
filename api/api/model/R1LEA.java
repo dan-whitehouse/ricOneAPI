@@ -24,6 +24,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import sif3.common.header.HeaderValues.ServiceType;
 import sif3.common.model.EnvironmentKey;
 import sif3.common.model.SIFContext;
@@ -32,25 +43,79 @@ import sif3.common.model.ServiceInfo;
 import sif3.common.model.ServiceRights.AccessRight;
 import sif3.common.model.ServiceRights.AccessType;
 
+@Entity
+@Table(name="LEA")
 public class R1LEA implements Serializable
 {
 	private static final long serialVersionUID = 4255199616263324177L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="LEARefId", unique=true, nullable=false)
 	private String leaRefId;
+	
+	@Column(name="LEAId", nullable=true, length=30)
 	private String leaId;
+	
+	@Column(name="LEASEAId", nullable=true, length=30)
 	private String leaSEAId;
+	
+	@Column(name="LEANCESId", nullable=true, length=30)
 	private String leaNCESId;
+	
+	@Column(name="LEAName", nullable=true, length=60)
 	private String leaName;
+	
+	@Column(name="StreetNumberAndName", nullable=true, length=40)
 	private String streetNumberAndName;
+	
+	@Column(name="City", nullable=true, length=30)
 	private String city;
+	
+	@Column(name="StateCode", nullable=true, length=50)
 	private String stateCode;
+	
+	@Column(name="PostalCode", nullable=true, length=50)
 	private String postalCode;
+	
+	@Column(name="AddressCountyName", nullable=true, length=30)
 	private String addressCountyName;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="r1Lea")
 	private Set<R1School> r1Schools = new HashSet<R1School>(0);
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="r1Lea")
 	private Set<R1LEATelephone> r1LEATelephones = new HashSet<R1LEATelephone>(0);
-		
+	
+	
+	//--
 	public R1LEA() {}
+	
+	
 
+	public R1LEA(String leaRefId, String leaId, String leaSEAId,
+			String leaNCESId, String leaName, String streetNumberAndName,
+			String city, String stateCode, String postalCode,
+			String addressCountyName, Set<R1School> r1Schools,
+			Set<R1LEATelephone> r1leaTelephones) 
+	{
+		this.leaRefId = leaRefId;
+		this.leaId = leaId;
+		this.leaSEAId = leaSEAId;
+		this.leaNCESId = leaNCESId;
+		this.leaName = leaName;
+		this.streetNumberAndName = streetNumberAndName;
+		this.city = city;
+		this.stateCode = stateCode;
+		this.postalCode = postalCode;
+		this.addressCountyName = addressCountyName;
+		this.r1Schools = r1Schools;
+		r1LEATelephones = r1leaTelephones;
+	}
+
+
+
+	
 	public String getLeaRefId()
 	{
 		return leaRefId;
@@ -61,6 +126,7 @@ public class R1LEA implements Serializable
 		this.leaRefId = leaRefId;
 	}
 
+	
 	public String getLeaId()
 	{
 		return leaId;
@@ -71,6 +137,7 @@ public class R1LEA implements Serializable
 		this.leaId = leaId;
 	}
 
+	
 	public String getLeaSEAId()
 	{
 		return leaSEAId;
@@ -80,7 +147,8 @@ public class R1LEA implements Serializable
 	{
 		this.leaSEAId = leaSEAId;
 	}
-
+	
+	
 	public String getLeaNCESId()
 	{
 		return leaNCESId;
@@ -91,6 +159,7 @@ public class R1LEA implements Serializable
 		this.leaNCESId = leaNCESId;
 	}
 
+	
 	public String getLeaName()
 	{
 		return leaName;
@@ -101,6 +170,7 @@ public class R1LEA implements Serializable
 		this.leaName = leaName;
 	}
 
+	
 	public String getStreetNumberAndName()
 	{
 		return streetNumberAndName;
@@ -111,6 +181,7 @@ public class R1LEA implements Serializable
 		this.streetNumberAndName = streetNumberAndName;
 	}
 
+	
 	public String getCity()
 	{
 		return city;
@@ -121,6 +192,7 @@ public class R1LEA implements Serializable
 		this.city = city;
 	}
 
+	
 	public String getStateCode()
 	{
 		return stateCode;
@@ -131,6 +203,7 @@ public class R1LEA implements Serializable
 		this.stateCode = stateCode;
 	}
 
+	
 	public String getPostalCode()
 	{
 		return postalCode;
@@ -141,6 +214,7 @@ public class R1LEA implements Serializable
 		this.postalCode = postalCode;
 	}
 
+	
 	public String getAddressCountyName()
 	{
 		return addressCountyName;
@@ -151,6 +225,7 @@ public class R1LEA implements Serializable
 		this.addressCountyName = addressCountyName;
 	}
 
+	
 	public Set<R1School> getR1Schools()
 	{
 		return r1Schools;

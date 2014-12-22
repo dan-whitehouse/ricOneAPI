@@ -21,104 +21,188 @@ package api.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
+@Table(name="CourseSectionSchedule")
 public class R1CourseSectionSchedule implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="CourseSectionScheduleRefId", unique=true, nullable=false)
 	private String courseSectionScheduleRefId;
+	
+	//@Column(name="CourseSectionRefId", nullable=false)
 	private String courseSectionRefId;
+	
+	@Column(name="ClassMeetingDays", nullable=true)
 	private String classMeetingDays;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name = "ClassBeginningTime", length = 16)
 	private Date classBeginningTime;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name = "ClassEndingTime", length = 16)
 	private Date classEndingTime;
+	
+	@Column(name="ClassPeriod", nullable=true, length=30)
 	private String classPeriod;
+	
+	@Column(name="TimeDayIdentifier", nullable=true, length=30)
 	private String timeDayIdentifier;
+	
+	@Column(name="ClassroomIdentifier", nullable=true, length=30)
 	private String classroomIdentifier;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="CourseSectionRefId")
 	private R1CourseSection r1CourseSection;
 	
-	
+	//--
 	public R1CourseSectionSchedule() {}
 
+	
+	
+	public R1CourseSectionSchedule(String courseSectionScheduleRefId,
+			String courseSectionRefId, String classMeetingDays,
+			Date classBeginningTime, Date classEndingTime, String classPeriod,
+			String timeDayIdentifier, String classroomIdentifier,
+			R1CourseSection r1CourseSection) 
+	{
+		this.courseSectionScheduleRefId = courseSectionScheduleRefId;
+		this.courseSectionRefId = courseSectionRefId;
+		this.classMeetingDays = classMeetingDays;
+		this.classBeginningTime = classBeginningTime;
+		this.classEndingTime = classEndingTime;
+		this.classPeriod = classPeriod;
+		this.timeDayIdentifier = timeDayIdentifier;
+		this.classroomIdentifier = classroomIdentifier;
+		this.r1CourseSection = r1CourseSection;
+	}
 
-	public String getCourseSectionScheduleRefId() {
+
+
+	
+	public String getCourseSectionScheduleRefId() 
+	{
 		return courseSectionScheduleRefId;
 	}
 
 
-	public void setCourseSectionScheduleRefId(String courseSectionScheduleRefId) {
+	public void setCourseSectionScheduleRefId(String courseSectionScheduleRefId) 
+	{
 		this.courseSectionScheduleRefId = courseSectionScheduleRefId;
 	}
 
-
-	public String getCourseSectionRefId() {
+	
+	public String getCourseSectionRefId() 
+	{
 		return courseSectionRefId;
 	}
 
 
-	public void setCourseSectionRefId(String courseSectionRefId) {
+	public void setCourseSectionRefId(String courseSectionRefId) 
+	{
 		this.courseSectionRefId = courseSectionRefId;
 	}
 
-
-	public String getClassMeetingDays() {
+	
+	public String getClassMeetingDays() 
+	{
 		return classMeetingDays;
 	}
 
 
-	public void setClassMeetingDays(String classMeetingDays) {
+	public void setClassMeetingDays(String classMeetingDays) 
+	{
 		this.classMeetingDays = classMeetingDays;
 	}
 
-
-	public Date getClassBeginningTime() {
+	
+	public Date getClassBeginningTime() 
+	{
 		return classBeginningTime;
 	}
 
 
-	public void setClassBeginningTime(Date classBeginningTime) {
+	public void setClassBeginningTime(Date classBeginningTime) 
+	{
 		this.classBeginningTime = classBeginningTime;
 	}
 
-
-	public Date getClassEndingTime() {
+	
+	public Date getClassEndingTime() 
+	{
 		return classEndingTime;
 	}
 
 
-	public void setClassEndingTime(Date classEndingTime) {
+	public void setClassEndingTime(Date classEndingTime) 
+	{
 		this.classEndingTime = classEndingTime;
 	}
-
-
-	public String getClassPeriod() {
+	
+	
+	public String getClassPeriod() 
+	{
 		return classPeriod;
 	}
 
 
-	public void setClassPeriod(String classPeriod) {
+	public void setClassPeriod(String classPeriod) 
+	{
 		this.classPeriod = classPeriod;
 	}
 
-
-	public String getTimeDayIdentifier() {
+	
+	public String getTimeDayIdentifier() 
+	{
 		return timeDayIdentifier;
 	}
 
 
-	public void setTimeDayIdentifier(String timeDayIdentifier) {
+	public void setTimeDayIdentifier(String timeDayIdentifier) 
+	{
 		this.timeDayIdentifier = timeDayIdentifier;
 	}
 
-
-	public String getClassroomIdentifier() {
+	
+	public String getClassroomIdentifier() 
+	{
 		return classroomIdentifier;
 	}
 
 
-	public void setClassroomIdentifier(String classroomIdentifier) {
+	public void setClassroomIdentifier(String classroomIdentifier) 
+	{
 		this.classroomIdentifier = classroomIdentifier;
 	}
 
+	
+	public R1CourseSection getR1CourseSection()
+	{
+		return r1CourseSection;
+	}
+
+
+	public void setR1CourseSection(R1CourseSection r1CourseSection)
+	{
+		this.r1CourseSection = r1CourseSection;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -131,16 +215,5 @@ public class R1CourseSectionSchedule implements Serializable
 				+ ", classroomIdentifier=" + classroomIdentifier + "]";
 	}
 
-
-	public R1CourseSection getR1CourseSection()
-	{
-		return r1CourseSection;
-	}
-
-
-	public void setR1CourseSection(R1CourseSection r1CourseSection)
-	{
-		this.r1CourseSection = r1CourseSection;
-	}
 
 }

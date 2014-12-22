@@ -1,13 +1,17 @@
 package api.dao;
 
+import api.model.InfraZoneLEA;
 import api.model.R1Student;
+import api.service.InfraZoneLEAService;
 import api.common.BasicTransaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 
 import sif3.common.exception.PersistenceException;
@@ -25,18 +29,26 @@ public class R1StudentDAO extends BaseDAO
     {
     	 try
          {
-    		 Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")
-    		    .add(Restrictions.eq("r1Student.studentRefId", studentRefId))
-            	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
-                .createAlias("r1Enrollments.r1School", "r1School")
-                .createAlias("r1School.r1Lea", "r1Lea")
-                .add(Restrictions.eq("r1Lea.leaId", zone.getId()));
-                //the actual sql type query
+    		 InfraZoneLEAService t = new InfraZoneLEAService();
+    		 List<InfraZoneLEA> zones = t.getZoneLEAs(zone, context);
+    		 List<String> leaRefIds = new ArrayList<String>();
+    		
+    		 for(InfraZoneLEA z : zones)
+    		 {
+    			leaRefIds.add(z.getLeaRefId());
+    		 }
+	    		
+    		 Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")   		    
+    		 	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
+    		 	.createAlias("r1Enrollments.r1School", "r1School")
+    		 	.createAlias("r1School.r1Lea", "r1Lea")    
+    		 	.add(Restrictions.eq("r1Student.studentRefId", studentRefId))
+    		 	.add(Restrictions.in("r1Lea.leaRefId", leaRefIds))
+    		 	.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);	
                
              
              List<R1Student> students = criteria.list();
              
-             // There can only be a maximum of one
              if (students.isEmpty()) 
              {
             	 logger.debug("No Student with staffRefID = "+ studentRefId);
@@ -59,14 +71,33 @@ public class R1StudentDAO extends BaseDAO
     {        
     	try
         {
-            Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")
-            	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
-            	.createAlias("r1Enrollments.r1School", "r1School")
-            	.createAlias("r1School.r1Lea", "r1Lea")           	
-            	.add(Restrictions.eq("r1Lea.leaId", zone.getId()));
-
+    		
+    		try
+    		{
+	    		InfraZoneLEAService t = new InfraZoneLEAService();
+	    		List<InfraZoneLEA> zones = t.getZoneLEAs(zone, context);
+	    		List<String> leaRefIds = new ArrayList<String>();
+	    		
+	    		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	    		for(InfraZoneLEA z : zones)
+	    		{
+	    			leaRefIds.add(z.getLeaRefId());
+	    		}
+	    		
+	    		Criteria criteria = tx.getSession().createCriteria(R1Student.class, "r1Student")
+	                	.createAlias("r1Student.r1StudentEnrollments", "r1Enrollments")
+	                	.createAlias("r1Enrollments.r1School", "r1School")
+	                	.createAlias("r1School.r1Lea", "r1Lea")           		               
+	                	.add(Restrictions.in("r1Lea.leaRefId", leaRefIds))
+	                	.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+	    		return criteria.list();  
+    		}
+    		catch(Exception e)
+    		{
+    			System.out.println("Couldn't load Zones from service - " + e.getMessage());
+    			return null;  
+    		}          
             
-            return criteria.list();  
         }
         catch (HibernateException e)
         {

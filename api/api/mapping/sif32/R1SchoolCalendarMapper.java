@@ -27,7 +27,7 @@ public class R1SchoolCalendarMapper
 		SessionList sifSessionList = oFac.createK12SchoolTypeSessionList();
 		
 		//Identification Data	
-		sifSchool.setRefId(r1SchoolCalendar.getSchoolRefId());
+		//sifSchool.setRefId(r1SchoolCalendar.getSchoolRefId());
 		
 		//Session Data
 		for(R1SchoolCalendarSession session : r1SchoolCalendar.getR1SchoolCalendarSessions())
@@ -68,7 +68,7 @@ public class R1SchoolCalendarMapper
 		R1SchoolCalendar r1SchoolCalendar = new R1SchoolCalendar();
 		
 		//Identification Data
-		r1SchoolCalendar.setSchoolRefId(sifSchool.getRefId());
+		//r1SchoolCalendar.setSchoolRefId(sifSchool.getRefId());
 				
 		return r1SchoolCalendar;
 		

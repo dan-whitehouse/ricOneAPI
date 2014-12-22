@@ -20,84 +20,112 @@ package api.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="StudentContactIdentifier")
 public class R1StudentContactIdentifier implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="StudentContactIdentifierRefId", unique=true, nullable=false)
 	private String studentContactIdentifierRefId;
+	
+	//@Column(name="StudentContactRefId")
 	private String studentContactRefId;
+	
+	@Column(name="IdentificationSystemCode")
 	private String identificationSystemCode;
+	
+	@Column(name="StudentContactId")
 	private String studentContactId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="StudentContactRefId")
 	private R1StudentContact r1StudentContact;
 	
+	//--
 	public R1StudentContactIdentifier() {}
 
 
-	public String getStudentContactIdentifierRefId() {
+	public R1StudentContactIdentifier(String studentContactIdentifierRefId,
+			String studentContactRefId, String identificationSystemCode,
+			String studentContactId, R1StudentContact r1StudentContact) 
+	{
+		this.studentContactIdentifierRefId = studentContactIdentifierRefId;
+		this.studentContactRefId = studentContactRefId;
+		this.identificationSystemCode = identificationSystemCode;
+		this.studentContactId = studentContactId;
+		this.r1StudentContact = r1StudentContact;
+	}
+
+	public String getStudentContactIdentifierRefId() 
+	{
 		return studentContactIdentifierRefId;
 	}
 
-
-	public void setStudentContactIdentifierRefId(
-			String studentContactIdentifierRefId) {
+	public void setStudentContactIdentifierRefId(String studentContactIdentifierRefId) 
+	{
 		this.studentContactIdentifierRefId = studentContactIdentifierRefId;
 	}
 
-
-	public String getStudentContactRefId() {
+	public String getStudentContactRefId() 
+	{
 		return studentContactRefId;
 	}
 
-
-	public void setStudentContactRefId(String studentContactRefId) {
+	public void setStudentContactRefId(String studentContactRefId) 
+	{
 		this.studentContactRefId = studentContactRefId;
 	}
 
-
-	public String getIdentificationSystemCode() {
+	public String getIdentificationSystemCode() 
+	{
 		return identificationSystemCode;
 	}
 
-
-	public void setIdentificationSystemCode(String identificationSystemCode) {
+	public void setIdentificationSystemCode(String identificationSystemCode) 
+	{
 		this.identificationSystemCode = identificationSystemCode;
 	}
-
-
-	public String getStudentContactId() {
+	
+	public String getStudentContactId() 
+	{
 		return studentContactId;
 	}
 
-
-	public void setStudentContactId(String studentContactId) {
+	public void setStudentContactId(String studentContactId) 
+	{
 		this.studentContactId = studentContactId;
 	}
-
-
-	@Override
-	public String toString() {
-		return "R1StudentContactIdentifier [studentContactIdentifierRefId="
-				+ studentContactIdentifierRefId + ", studentContactRefId="
-				+ studentContactRefId + ", identificationSystemCode="
-				+ identificationSystemCode + ", studentContactId="
-				+ studentContactId + "]";
-	}
-
-
+	
 	public R1StudentContact getR1StudentContact()
 	{
 		return r1StudentContact;
 	}
-
 
 	public void setR1StudentContact(R1StudentContact r1StudentContact)
 	{
 		this.r1StudentContact = r1StudentContact;
 	}
 
-
-
-
-	
+	@Override
+	public String toString() 
+	{
+		return "R1StudentContactIdentifier [studentContactIdentifierRefId="
+				+ studentContactIdentifierRefId + ", studentContactRefId="
+				+ studentContactRefId + ", identificationSystemCode="
+				+ identificationSystemCode + ", studentContactId="
+				+ studentContactId + "]";
+	}
 }

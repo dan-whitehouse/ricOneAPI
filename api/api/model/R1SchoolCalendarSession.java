@@ -24,97 +24,206 @@ import java.util.HashSet;
 import java.util.Set;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
+@Table(name="SchoolCalendarSession")
 public class R1SchoolCalendarSession implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="SchoolCalendarSessionRefId", unique=true, nullable=false)
 	private String schoolCalendarSessionRefId;
+	
+	//@Column(name="SchoolCalendarRefId", nullable=false)
 	private String schoolCalendarRefId;
+	
+	@Column(name="Designator", nullable=true, length=7)
 	private String designator;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "BeginDate", length = 10)
 	private Date beginDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "EndDate", length = 10)
 	private Date endDate;
+	
+	@Column(name="SessionTypeCode", nullable=true, length=50)
 	private String sessionTypeCode;
+	
+	@Column(name="InstructionalMinutes", nullable=true)
 	private BigDecimal instructionalMinutes;
+	
+	@Column(name="Code", nullable=true, length=30)
 	private String code;
+	
+	@Column(name="Description", nullable=true, length=254)
 	private String description;
+	
+	@Column(name="MarkingTermIndicator", nullable=true)
 	private boolean markingTermIndicator;
+	
+	@Column(name="SchedulingTermIndicator", nullable=true)
 	private boolean schedulingTermIndicator;
+	
+	@Column(name="AttendanceTermIndicator", nullable=true)
 	private boolean attendanceTermIndicator;
+	
+	@Column(name="DaysInSession", nullable=true)
 	private Integer daysInSession;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "FirstInstructionDate", length = 10)
 	private Date firstInstructionDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "LastInstructionDate", length = 10)
 	private Date lastInstructionDate;
+	
+	@Column(name="MinutesPerDay", nullable=true)
 	private Integer minutesPerDay;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name = "SessionStartTime", length = 16)
 	private Date sessionStartTime;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name = "SessionEndTime", length = 16)
 	private Date sessionEndTime;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="r1SchoolCalendarSession")
 	private Set<R1CourseSection> r1CourseSections = new HashSet<R1CourseSection>(0);
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="SchoolCalendarRefId", nullable=false)
 	private R1SchoolCalendar r1SchoolCalendar;
 	
-	
+	//--
 	public R1SchoolCalendarSession() {}
 
+	public R1SchoolCalendarSession(String schoolCalendarSessionRefId,
+			String schoolCalendarRefId, String designator, Date beginDate,
+			Date endDate, String sessionTypeCode,
+			BigDecimal instructionalMinutes, String code, String description,
+			boolean markingTermIndicator, boolean schedulingTermIndicator,
+			boolean attendanceTermIndicator, Integer daysInSession,
+			Date firstInstructionDate, Date lastInstructionDate,
+			Integer minutesPerDay, Date sessionStartTime, Date sessionEndTime,
+			Set<R1CourseSection> r1CourseSections,
+			R1SchoolCalendar r1SchoolCalendar) 
+	{
 
-	public String getSchoolCalendarSessionRefId() {
+		this.schoolCalendarSessionRefId = schoolCalendarSessionRefId;
+		this.schoolCalendarRefId = schoolCalendarRefId;
+		this.designator = designator;
+		this.beginDate = beginDate;
+		this.endDate = endDate;
+		this.sessionTypeCode = sessionTypeCode;
+		this.instructionalMinutes = instructionalMinutes;
+		this.code = code;
+		this.description = description;
+		this.markingTermIndicator = markingTermIndicator;
+		this.schedulingTermIndicator = schedulingTermIndicator;
+		this.attendanceTermIndicator = attendanceTermIndicator;
+		this.daysInSession = daysInSession;
+		this.firstInstructionDate = firstInstructionDate;
+		this.lastInstructionDate = lastInstructionDate;
+		this.minutesPerDay = minutesPerDay;
+		this.sessionStartTime = sessionStartTime;
+		this.sessionEndTime = sessionEndTime;
+		this.r1CourseSections = r1CourseSections;
+		this.r1SchoolCalendar = r1SchoolCalendar;
+	}
+
+	public String getSchoolCalendarSessionRefId() 
+	{
 		return schoolCalendarSessionRefId;
 	}
 
 
-	public void setSchoolCalendarSessionRefId(String schoolCalendarSessionRefId) {
+	public void setSchoolCalendarSessionRefId(String schoolCalendarSessionRefId) 
+	{
 		this.schoolCalendarSessionRefId = schoolCalendarSessionRefId;
 	}
 
 
-	public String getSchoolCalendarRefId() {
+	
+	public String getSchoolCalendarRefId() 
+	{
 		return schoolCalendarRefId;
 	}
 
 
-	public void setSchoolCalendarRefId(String schoolCalendarRefId) {
+	public void setSchoolCalendarRefId(String schoolCalendarRefId) 
+	{
 		this.schoolCalendarRefId = schoolCalendarRefId;
 	}
 
-
-	public String getDesignator() {
+	
+	public String getDesignator() 
+	{
 		return designator;
 	}
 
 
-	public void setDesignator(String designator) {
+	public void setDesignator(String designator) 
+	{
 		this.designator = designator;
 	}
 
-
-	public Date getBeginDate() {
+	
+	public Date getBeginDate() 
+	{
 		return beginDate;
 	}
 
 
-	public void setBeginDate(Date beginDate) {
+	public void setBeginDate(Date beginDate)
+	{
 		this.beginDate = beginDate;
 	}
 
-
-	public Date getEndDate() {
+	
+	public Date getEndDate() 
+	{
 		return endDate;
 	}
 
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Date endDate) 
+	{
 		this.endDate = endDate;
 	}
 
-
-	public String getSessionTypeCode() {
+	
+	public String getSessionTypeCode()
+	{
 		return sessionTypeCode;
 	}
 
 
-	public void setSessionTypeCode(String sessionTypeCode) {
+	public void setSessionTypeCode(String sessionTypeCode)
+	{
 		this.sessionTypeCode = sessionTypeCode;
 	}
 
-
-	public BigDecimal getInstructionalMinutes() {
+	
+	public BigDecimal getInstructionalMinutes() 
+	{
 		return instructionalMinutes;
 	}
 
@@ -132,7 +241,7 @@ public class R1SchoolCalendarSession implements Serializable
 		
 	}
 
-
+	
 	public String getCode() {
 		return code;
 	}
@@ -142,17 +251,19 @@ public class R1SchoolCalendarSession implements Serializable
 		this.code = code;
 	}
 
-
-	public String getDescription() {
+	
+	public String getDescription() 
+	{
 		return description;
 	}
 
 
-	public void setDescription(String description) {
+	public void setDescription(String description) 
+	{
 		this.description = description;
 	}
 
-
+	
 	public boolean isMarkingTermIndicator() 
 	{
 		return markingTermIndicator;
@@ -164,28 +275,31 @@ public class R1SchoolCalendarSession implements Serializable
 		this.markingTermIndicator = markingTermIndicator;
 	}
 
-
+	
 	public boolean isSchedulingTermIndicator() 
 	{
 		return schedulingTermIndicator;
 	}
 
 
-	public void setSchedulingTermIndicator(boolean schedulingTermIndicator) {
+	public void setSchedulingTermIndicator(boolean schedulingTermIndicator) 
+	{
 		this.schedulingTermIndicator = schedulingTermIndicator;
 	}
 
 
-	public boolean isAttendanceTermIndicator() {
+	public boolean isAttendanceTermIndicator() 
+	{
 		return attendanceTermIndicator;
 	}
 
 
-	public void setAttendanceTermIndicator(boolean attendanceTermIndicator) {
+	public void setAttendanceTermIndicator(boolean attendanceTermIndicator) 
+	{
 		this.attendanceTermIndicator = attendanceTermIndicator;
 	}
 
-
+	
 	public Integer getDaysInSession() 
 	{
 		return daysInSession;
@@ -197,7 +311,7 @@ public class R1SchoolCalendarSession implements Serializable
 		this.daysInSession = daysInSession;
 	}
 
-
+	
 	public Date getFirstInstructionDate() 
 	{
 		return firstInstructionDate;
@@ -209,17 +323,19 @@ public class R1SchoolCalendarSession implements Serializable
 		this.firstInstructionDate = firstInstructionDate;
 	}
 
-
-	public Date getLastInstructionDate() {
+	
+	public Date getLastInstructionDate() 
+	{
 		return lastInstructionDate;
 	}
 
 
-	public void setLastInstructionDate(Date lastInstructionDate) {
+	public void setLastInstructionDate(Date lastInstructionDate) 
+	{
 		this.lastInstructionDate = lastInstructionDate;
 	}
 
-
+	
 	public Integer getMinutesPerDay() 
 	{
 		return minutesPerDay;
@@ -230,7 +346,7 @@ public class R1SchoolCalendarSession implements Serializable
 		this.minutesPerDay = minutesPerDay;
 	}
 
-
+	
 	public Date getSessionStartTime() {
 		return sessionStartTime;
 	}
@@ -240,17 +356,40 @@ public class R1SchoolCalendarSession implements Serializable
 		this.sessionStartTime = sessionStartTime;
 	}
 
-
 	public Date getSessionEndTime() {
 		return sessionEndTime;
 	}
 
 
-	public void setSessionEndTime(Date sessionEndTime) {
+	public void setSessionEndTime(Date sessionEndTime) 
+	{
 		this.sessionEndTime = sessionEndTime;
 	}
 
 
+	
+	public Set<R1CourseSection> getR1CourseSections()
+	{
+		return r1CourseSections;
+	}
+
+	public void setR1CourseSections(Set<R1CourseSection> r1CourseSections)
+	{
+		this.r1CourseSections = r1CourseSections;
+	}
+
+	public R1SchoolCalendar getR1SchoolCalendar()
+	{
+		return r1SchoolCalendar;
+	}
+
+
+	public void setR1SchoolCalendar(R1SchoolCalendar r1SchoolCalendar)
+	{
+		this.r1SchoolCalendar = r1SchoolCalendar;
+	}
+	
+	//--
 	@Override
 	public String toString() {
 		return "R1SchoolCalendarSession [schoolCalendarSessionRefId="
@@ -270,28 +409,5 @@ public class R1SchoolCalendarSession implements Serializable
 				+ sessionStartTime + ", sessionEndTime=" + sessionEndTime + "]";
 	}
 
-
-	public Set<R1CourseSection> getR1CourseSections()
-	{
-		return r1CourseSections;
-	}
-
-
-	public void setR1CourseSections(Set<R1CourseSection> r1CourseSections)
-	{
-		this.r1CourseSections = r1CourseSections;
-	}
-
-
-	public R1SchoolCalendar getR1SchoolCalendar()
-	{
-		return r1SchoolCalendar;
-	}
-
-
-	public void setR1SchoolCalendar(R1SchoolCalendar r1SchoolCalendar)
-	{
-		this.r1SchoolCalendar = r1SchoolCalendar;
-	}
 
 }

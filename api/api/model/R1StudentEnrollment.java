@@ -3,34 +3,124 @@ package api.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="StudentEnrollment")
 public class R1StudentEnrollment implements Serializable
 {
 	private static final long serialVersionUID = 4255199616263324174L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="StudentEnrollmentRefId", unique=true, nullable=false)
 	private String studentEnrollmentRefId;
+	
+	//@Column(name="StudentRefId")
 	private String studentRefId;
+	
+	//@Column(name="SchoolRefId")
 	private String schoolRefId;
+	
+	@Column(name="EntryGradeLevelCode")
 	private String entryGradeLevelCode;
+	
+	@Column(name="EnrollmentStatusCode")
 	private String enrollmentStatusCode;
+	
+	@Column(name="EntryTypeCode")
 	private String entryTypeCode;
+	
+	@Column(name="ExitGradeLevelCode")
 	private String exitGradeLevelCode;
+	
+	@Column(name="ExitOrWithdrawalStatusCode")
 	private String exitOrWithdrawalStatusCode;
+	
+	@Column(name="ExitOrWithdrawalTypeCode")
 	private String exitOrWithdrawalTypeCode;
+	
+	@Column(name="DisplacedStudentStatus")
 	private String displacedStudentStatus;
+	
+	@Column(name="EndOfTermStatusCode")
 	private String endOfTermStatusCode;
-	private String promotionReasonCode;		   
+	
+	@Column(name="PromotionReasonCode")
+	private String promotionReasonCode;		  
+	
+	@Column(name="FoodServiceEligibilityCode")
 	private String foodServiceEligibilityCode;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "FirstEntryDateIntoUSSchool", length = 10)
 	private Date firstEntryDateIntoUSSchool;
+	
+	@Column(name="HomeRoomIdentifier")
 	private String homeRoomIdentifier;
+	
+	@Column(name="ResponsibleSchoolTypeCode")
 	private String responsibleSchoolTypeCode;
-	private String counselorRefId;
-	private R1Student r1Student;
-	private R1School r1School;
-		
 
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="StudentRefId", nullable=false)
+	private R1Student r1Student;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="SchoolRefId", nullable=false)
+	private R1School r1School;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CounselorRefId")
+	private R1Staff r1Staff;
+	
+			
+	//--
 	public R1StudentEnrollment() {}
 		
-	//-----------------------
+	
+	public R1StudentEnrollment(String studentEnrollmentRefId,
+			String studentRefId, String schoolRefId,
+			String entryGradeLevelCode, String enrollmentStatusCode,
+			String entryTypeCode, String exitGradeLevelCode,
+			String exitOrWithdrawalStatusCode, String exitOrWithdrawalTypeCode,
+			String displacedStudentStatus, String endOfTermStatusCode,
+			String promotionReasonCode, String foodServiceEligibilityCode,
+			Date firstEntryDateIntoUSSchool, String homeRoomIdentifier,
+			String responsibleSchoolTypeCode, String counselorRefId,
+			R1Student r1Student, R1School r1School) 
+	{
+		this.studentEnrollmentRefId = studentEnrollmentRefId;
+		this.studentRefId = studentRefId;
+		this.schoolRefId = schoolRefId;
+		this.entryGradeLevelCode = entryGradeLevelCode;
+		this.enrollmentStatusCode = enrollmentStatusCode;
+		this.entryTypeCode = entryTypeCode;
+		this.exitGradeLevelCode = exitGradeLevelCode;
+		this.exitOrWithdrawalStatusCode = exitOrWithdrawalStatusCode;
+		this.exitOrWithdrawalTypeCode = exitOrWithdrawalTypeCode;
+		this.displacedStudentStatus = displacedStudentStatus;
+		this.endOfTermStatusCode = endOfTermStatusCode;
+		this.promotionReasonCode = promotionReasonCode;
+		this.foodServiceEligibilityCode = foodServiceEligibilityCode;
+		this.firstEntryDateIntoUSSchool = firstEntryDateIntoUSSchool;
+		this.homeRoomIdentifier = homeRoomIdentifier;
+		this.responsibleSchoolTypeCode = responsibleSchoolTypeCode;
+		this.r1Student = r1Student;
+		this.r1School = r1School;
+	}
+	
 	public String getStudentEnrollmentRefId() 
 	{
 		return studentEnrollmentRefId;
@@ -86,11 +176,13 @@ public class R1StudentEnrollment implements Serializable
 		return entryTypeCode;
 	}
 
-	public void setEntryTypeCode(String entryTypeCode) {
+	public void setEntryTypeCode(String entryTypeCode) 
+	{
 		this.entryTypeCode = entryTypeCode;
 	}
-
-	public String getExitGradeLevelCode() {
+	
+	public String getExitGradeLevelCode() 
+	{
 		return exitGradeLevelCode;
 	}
 
@@ -98,7 +190,7 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.exitGradeLevelCode = exitGradeLevelCode;
 	}
-
+	
 	public String getExitOrWithdrawalStatusCode() 
 	{
 		return exitOrWithdrawalStatusCode;
@@ -108,7 +200,7 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.exitOrWithdrawalStatusCode = exitOrWithdrawalStatusCode;
 	}
-
+	
 	public String getExitOrWithdrawalTypeCode() {
 		return exitOrWithdrawalTypeCode;
 	}
@@ -118,6 +210,7 @@ public class R1StudentEnrollment implements Serializable
 		this.exitOrWithdrawalTypeCode = exitOrWithdrawalTypeCode;
 	}
 
+	
 	public String getDisplacedStudentStatus() 
 	{
 		return displacedStudentStatus;
@@ -127,7 +220,7 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.displacedStudentStatus = displacedStudentStatus;
 	}
-
+	
 	public String getEndOfTermStatusCode() {
 		return endOfTermStatusCode;
 	}
@@ -136,7 +229,7 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.endOfTermStatusCode = endOfTermStatusCode;
 	}
-
+	
 	public String getPromotionReasonCode() 
 	{
 		return promotionReasonCode;
@@ -146,7 +239,7 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.promotionReasonCode = promotionReasonCode;
 	}
-
+	
 	public String getFoodServiceEligibilityCode() 
 	{
 		return foodServiceEligibilityCode;
@@ -177,9 +270,6 @@ public class R1StudentEnrollment implements Serializable
 		this.homeRoomIdentifier = homeRoomIdentifier;
 	}	
 	
-	
-	//---------------------------------------------------
-	
 	public String getResponsibleSchoolTypeCode()
 	{
 		return responsibleSchoolTypeCode;
@@ -189,16 +279,38 @@ public class R1StudentEnrollment implements Serializable
 	{
 		this.responsibleSchoolTypeCode = responsibleSchoolTypeCode;
 	}
-
-	public String getCounselorRefId()
+	
+	public R1Student getR1Student()
 	{
-		return counselorRefId;
+		return r1Student;
 	}
 
-	public void setCounselorRefId(String counselorRefId)
+	public void setR1Student(R1Student r1Student)
 	{
-		this.counselorRefId = counselorRefId;
+		this.r1Student = r1Student;
 	}
+
+	public R1School getR1School()
+	{
+		return r1School;
+	}
+
+	public void setR1School(R1School r1School)
+	{
+		this.r1School = r1School;
+	}
+
+	public R1Staff getR1Staff() 
+	{
+		return r1Staff;
+	}
+
+
+	public void setR1Staff(R1Staff r1Staff) 
+	{
+		this.r1Staff = r1Staff;
+	}
+
 
 	@Override
 	public String toString() 
@@ -219,23 +331,4 @@ public class R1StudentEnrollment implements Serializable
 				+ ", homeRoomIdentifier=" + homeRoomIdentifier + "]";
 	}
 
-	public R1Student getR1Student()
-	{
-		return r1Student;
-	}
-
-	public void setR1Student(R1Student r1Student)
-	{
-		this.r1Student = r1Student;
-	}
-
-	public R1School getR1School()
-	{
-		return r1School;
-	}
-
-	public void setR1School(R1School r1School)
-	{
-		this.r1School = r1School;
-	}
 }

@@ -28,7 +28,7 @@
     <provisionedZones>
        <provisionedZone id="DemoZone">
             <services>   
-                <service name="csv" contextId="DEFAULT">
+                <service name="k12StudentsSif32Simple" contextId="DEFAULT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
                     <right type="CREATE">APPROVED</right>

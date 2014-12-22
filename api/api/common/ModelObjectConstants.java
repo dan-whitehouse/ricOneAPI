@@ -1,4 +1,8 @@
 package api.common;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import sif.dd.us32.model.ContactPersonCEDSCollectionType;
 import sif.dd.us32.model.ContactPersonCEDSType;
 import sif.dd.us32.model.K12CourseCollectionType;
@@ -59,6 +63,8 @@ public class ModelObjectConstants
 	/**********************************************MISC STUFF**********************************************/	
 	public static final ModelObjectInfo c_CSVs= new ModelObjectInfo("csvs", null);
 	public static final ModelObjectInfo c_CSV = new ModelObjectInfo("csv", null);
+	
+
 
 
 

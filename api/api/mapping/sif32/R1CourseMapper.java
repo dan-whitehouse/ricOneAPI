@@ -19,7 +19,7 @@ public class R1CourseMapper
 	{
 		K12CourseType sifCourse = oFac.createK12CourseType();	
 		sifCourse.setRefId(r1Course.getCourseRefId());
-		sifCourse.setSchoolInfoRefId(r1Course.getSchoolRefId());
+		//sifCourse.setSchoolInfoRefId(r1Course.getSchoolRefId());
 		sifCourse.setCourseTitle(r1Course.getTitle());
 		sifCourse.setCourseDescription(r1Course.getDescription());
 		
@@ -39,7 +39,7 @@ public class R1CourseMapper
 		r1Course.setDescription(sifCourse.getCourseDescription());
 		r1Course.setScedCourseLevelCode(sifCourse.getScedCourseLevel());
 		r1Course.setScedCourseSubjectAreaCode(sifCourse.getScedCourseSubjectArea());
-		r1Course.setSchoolRefId(sifCourse.getSchoolInfoRefId());
+		//r1Course.setSchoolRefId(sifCourse.getSchoolInfoRefId());
 		r1Course.setTitle(sifCourse.getCourseTitle());
 	
 		return r1Course;

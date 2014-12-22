@@ -20,81 +20,109 @@ package api.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="StudentLanguage")
 public class R1StudentLanguage implements Serializable
 {
 	private static final long serialVersionUID = 4255194616261324178L;
     
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="StudentLanguageRefId", unique=true, nullable=false)
 	private String studentLanguageRefId;
+	
+	//@Column(name="StudentRefId")
 	private String studentRefId;
+	
+	@Column(name="LanguageCode")
 	private String languageCode;
+	
+	@Column(name="LanguageUseTypeCode")
 	private String languageUseTypeCode;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="StudentRefId", nullable=false)
 	private R1Student r1Student;
 	
-	
+	//--
 	public R1StudentLanguage() {}
+	
+	public R1StudentLanguage(String studentLanguageRefId, String studentRefId,
+			String languageCode, String languageUseTypeCode, R1Student r1Student) 
+	{
+		this.studentLanguageRefId = studentLanguageRefId;
+		this.studentRefId = studentRefId;
+		this.languageCode = languageCode;
+		this.languageUseTypeCode = languageUseTypeCode;
+		this.r1Student = r1Student;
+	}
 
-
-	public String getStudentLanguageRefId() {
+	public String getStudentLanguageRefId() 
+	{
 		return studentLanguageRefId;
 	}
 
-
-	public void setStudentLanguageRefId(String studentLanguageRefId) {
+	public void setStudentLanguageRefId(String studentLanguageRefId) 
+	{
 		this.studentLanguageRefId = studentLanguageRefId;
 	}
 
-
-	public String getStudentRefId() {
+	public String getStudentRefId() 
+	{
 		return studentRefId;
 	}
 
-
-	public void setStudentRefId(String studentRefId) {
+	public void setStudentRefId(String studentRefId) 
+	{
 		this.studentRefId = studentRefId;
 	}
-
-
-	public String getLanguageCode() {
+	
+	public String getLanguageCode() 
+	{
 		return languageCode;
 	}
 
-
-	public void setLanguageCode(String languageCode) {
+	public void setLanguageCode(String languageCode) 
+	{
 		this.languageCode = languageCode;
 	}
-
-
-	public String getLanguageUseTypeCode() {
+	
+	public String getLanguageUseTypeCode() 
+	{
 		return languageUseTypeCode;
 	}
-
-
-	public void setLanguageUseTypeCode(String languageUseTypeCode) {
+	
+	public void setLanguageUseTypeCode(String languageUseTypeCode) 
+	{
 		this.languageUseTypeCode = languageUseTypeCode;
 	}
-
-
-	@Override
-	public String toString() {
-		return "R1StudentLanguage [studentLanguageRefId="
-				+ studentLanguageRefId + ", studentRefId=" + studentRefId
-				+ ", languageCode=" + languageCode + ", languageUseTypeCode="
-				+ languageUseTypeCode + "]";
-	}
-
-
+	
 	public R1Student getR1Student()
 	{
 		return r1Student;
 	}
-
 
 	public void setR1Student(R1Student r1Student)
 	{
 		this.r1Student = r1Student;
 	}
 
-
-	
+	@Override
+	public String toString() 
+	{
+		return "R1StudentLanguage [studentLanguageRefId="
+				+ studentLanguageRefId + ", studentRefId=" + studentRefId
+				+ ", languageCode=" + languageCode + ", languageUseTypeCode="
+				+ languageUseTypeCode + "]";
+	}
 }

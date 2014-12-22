@@ -60,7 +60,40 @@
         <!-- ************** -->
         <!--  Mapping Files -->
         <!-- ************** -->
-        <mapping resource="api/model/R1.hbm.xml"/>  
+        <!--<mapping resource="api/model/R1.hbm.xml"/> -->
+        <mapping class="api.model.R1Course" />
+        <mapping class="api.model.R1CourseIdentifier" />
+        <mapping class="api.model.R1CourseSection" />
+        <mapping class="api.model.R1CourseSectionSchedule" />
+        <mapping class="api.model.R1LEA" />
+        <mapping class="api.model.R1LEATelephone" />
+        <mapping class="api.model.R1School" />
+        <mapping class="api.model.R1SchoolCalendar" />
+        <mapping class="api.model.R1SchoolCalendarSession" />
+        <mapping class="api.model.R1SchoolIdentifier" />
+        <mapping class="api.model.R1SchoolTelephone" />
+        <mapping class="api.model.R1Staff" />
+        <mapping class="api.model.R1StaffAssignment" />
+        <mapping class="api.model.R1StaffCourseSection" />
+        <mapping class="api.model.R1StaffEmail" />
+        <mapping class="api.model.R1StaffIdentifier" />
+        <mapping class="api.model.R1Student" />
+        <mapping class="api.model.R1StudentAddress" />
+        <mapping class="api.model.R1StudentContact" />
+        <mapping class="api.model.R1StudentContactAddress" />
+        <mapping class="api.model.R1StudentContactEmail" />
+        <mapping class="api.model.R1StudentContactIdentifier" />
+        <mapping class="api.model.R1StudentContactRelationship" />
+        <mapping class="api.model.R1StudentContactTelephone" />
+        <mapping class="api.model.R1StudentCourseSection" />
+        <mapping class="api.model.R1StudentEmail" />
+        <mapping class="api.model.R1StudentEnrollment" />
+        <mapping class="api.model.R1StudentHealth" />
+        <mapping class="api.model.R1StudentIdentifier" />
+        <mapping class="api.model.R1StudentLanguage" />
+        <mapping class="api.model.R1StudentOtherName" />
+        <mapping class="api.model.R1StudentRace" />
+        <mapping class="api.model.R1StudentTelephone" />
         
 	</session-factory>
 </hibernate-configuration>

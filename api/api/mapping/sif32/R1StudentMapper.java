@@ -148,7 +148,7 @@ public class R1StudentMapper
 		{		
 			Enrollment sifEnrollment = new Enrollment();
 			sifEnrollment.setCohortGraduationYear(r1Student.getCohortGraduationYear());
-			sifEnrollment.setSchoolId(enrollment.getSchoolRefId());
+			//sifEnrollment.setSchoolId(enrollment.getSchoolRefId());
 			sifEnrollment.setEntryGradeLevel(enrollment.getEntryGradeLevelCode());			
 			sifEnrollment.setEnrollmentStatus(enrollment.getEnrollmentStatusCode());
 			sifEnrollment.setEntryType(enrollment.getEntryTypeCode());
@@ -242,10 +242,7 @@ public class R1StudentMapper
 		return sifStudent;
 	}
 	
-	
-	
-	
-	
+
 	public R1Student sif32ToModel(K12StudentType sifStudent)
 	{
 		R1Student r1Student = new R1Student();
